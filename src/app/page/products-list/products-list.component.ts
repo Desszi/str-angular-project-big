@@ -4,11 +4,11 @@ import { ProductsService } from 'app/service/products.service';
 import { BehaviorSubject } from 'rxjs';
 
 @Component({
-  selector: 'app-table-list',
-  templateUrl: './table-list.component.html',
-  styleUrls: ['./table-list.component.css']
+  selector: 'app-products-list',
+  templateUrl: './products-list.component.html',
+  styleUrls: ['./products-list.component.css']
 })
-export class TableListComponent implements OnInit {
+export class ProductsListComponent implements OnInit {
 
   products: BehaviorSubject<Product[]> = this.productsService.productList$;
 
