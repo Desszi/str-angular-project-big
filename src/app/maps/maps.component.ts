@@ -21,6 +21,6 @@ export class MapsComponent implements OnInit {
     ngOnInit(): void {
 
         this.ordersService.getAll();
-        this.orders.subscribe(item => console.log(item));
+
     }
 }
