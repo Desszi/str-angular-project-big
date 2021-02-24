@@ -3,6 +3,7 @@ import { NgForm } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Customer } from 'app/model/customer';
 import { CustomerService } from 'app/service/customer.service';
+import { BehaviorSubject } from 'rxjs';
 
 @Component({
   selector: 'app-customer-list',
@@ -11,7 +12,7 @@ import { CustomerService } from 'app/service/customer.service';
 })
 export class CustomerListComponent implements OnInit {
 
-  customer:Customer = new Customer();
+  customer$: BehaviorSubject<Customer[]> = this.customerService.clist$;
 
   constructor(
     private customerService:CustomerService, 
@@ -22,7 +23,11 @@ export class CustomerListComponent implements OnInit {
 
   ngOnInit(): void {
 
-    this.activatedRoute.params.subscribe(
+    this.customerService.getAll();
+  
+
+
+   /* this.activatedRoute.params.subscribe(
       params=> 
           this.customerService.getById(params.id).subscribe(
           item =>{
@@ -30,11 +35,11 @@ export class CustomerListComponent implements OnInit {
             this.customer = item || new Customer();
           }
         )
-     )
+     )*/
     }
 
 
-    onUpdate(form: NgForm, item: Customer): void {
+   /* onUpdate(form: NgForm, item: Customer): void {
       if(item.id == 0){
         this.customerService.update(item);
         this.router.navigate(['/customer-list']);
@@ -43,6 +48,6 @@ export class CustomerListComponent implements OnInit {
         this.customerService.update(item)
         this.router.navigate(['/customer-list']);    
       }
-  }
+  }*/
  
 }
