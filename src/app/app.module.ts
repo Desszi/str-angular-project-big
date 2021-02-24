@@ -24,6 +24,7 @@ import { AdminLayoutComponent } from './layouts/admin-layout/admin-layout.compon
 import { ProductsListComponent } from './page/products-list/products-list.component';
 import { EditProductComponent } from './common/edit-product/edit-product.component';
 import { AddressListComponent } from './common/address-list/address-list.component';
+import { CustomerListComponent } from './common/customer-list/customer-list.component';
 
 
 @NgModule({
@@ -43,6 +44,7 @@ import { AddressListComponent } from './common/address-list/address-list.compone
     ProductsListComponent,
     EditProductComponent,
     AddressListComponent,
+    CustomerListComponent,
   ],
   providers: [],
   bootstrap: [AppComponent]
