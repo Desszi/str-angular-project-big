@@ -10,16 +10,18 @@ import { BehaviorSubject } from 'rxjs';
 })
 export class TableListComponent implements OnInit {
 
-  products: BehaviorSubject<Product[]> = this.productsService.productList$;
+  products: BehaviorSubject<Product[]> = this.productsService.list$;
 
   constructor(
     private productsService: ProductsService
   ) { }
 
   ngOnInit(): void {
-
     this.productsService.getAll();
-    this.products.subscribe(item => console.log(item));
+  }
+
+  onDelete(item:Product){
+    this.productsService.remove(item.id);
   }
 
 }
