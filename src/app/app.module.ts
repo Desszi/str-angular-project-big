@@ -1,30 +1,28 @@
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { NgModule } from '@angular/core';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http';
-import { RouterModule } from '@angular/router';
+import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
+import { NgModule } from "@angular/core";
+import { FormsModule, ReactiveFormsModule } from "@angular/forms";
+import { HttpClientModule } from "@angular/common/http";
+import { RouterModule } from "@angular/router";
 
+import { AppRoutingModule } from "./app.routing";
+import { ComponentsModule } from "./components/components.module";
 
-import { AppRoutingModule } from './app.routing';
-import { ComponentsModule } from './components/components.module';
+import { AppComponent } from "./app.component";
 
-import { AppComponent } from './app.component';
+import { DashboardComponent } from "./dashboard/dashboard.component";
+import { UserProfileComponent } from "./user-profile/user-profile.component";
+import { TableListComponent } from "./common/table-list/table-list.component";
+import { TypographyComponent } from "./typography/typography.component";
+import { IconsComponent } from "./icons/icons.component";
+import { NotificationsComponent } from "./notifications/notifications.component";
+import { UpgradeComponent } from "./upgrade/upgrade.component";
+import { AgmCoreModule } from "@agm/core";
+import { AdminLayoutComponent } from "./layouts/admin-layout/admin-layout.component";
+import { ProductsListComponent } from "./page/products-list/products-list.component";
+import { EditProductComponent } from "./common/edit-product/edit-product.component";
+import { AddressListComponent } from "./common/address-list/address-list.component";
 
-import { DashboardComponent } from './dashboard/dashboard.component';
-import { UserProfileComponent } from './user-profile/user-profile.component';
-import { TableListComponent } from  './common/table-list/table-list.component';
-import { TypographyComponent } from './typography/typography.component';
-import { IconsComponent } from './icons/icons.component';
-import { NotificationsComponent } from './notifications/notifications.component';
-import { UpgradeComponent } from './upgrade/upgrade.component';
-import {
-  AgmCoreModule
-} from '@agm/core';
-import { AdminLayoutComponent } from './layouts/admin-layout/admin-layout.component';
-import { ProductsListComponent } from './page/products-list/products-list.component';
-import { EditProductComponent } from './common/edit-product/edit-product.component';
-import { AddressListComponent } from './common/address-list/address-list.component';
-
+import { BillListComponent } from "./page/bill-list/bill-list.component";
 
 @NgModule({
   imports: [
@@ -35,7 +33,6 @@ import { AddressListComponent } from './common/address-list/address-list.compone
     ComponentsModule,
     RouterModule,
     AppRoutingModule,
-    
   ],
   declarations: [
     AppComponent,
@@ -43,8 +40,9 @@ import { AddressListComponent } from './common/address-list/address-list.compone
     ProductsListComponent,
     EditProductComponent,
     AddressListComponent,
+    BillListComponent,
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}
