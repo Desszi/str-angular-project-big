@@ -23,6 +23,7 @@ import {
 } from '@agm/core';
 import { AdminLayoutComponent } from './layouts/admin-layout/admin-layout.component';
 import { ProductsListComponent } from './page/products-list/products-list.component';
+import { BillListComponent } from './page/bill-list/bill-list.component';
 
 @NgModule({
   imports: [
@@ -41,6 +42,7 @@ import { ProductsListComponent } from './page/products-list/products-list.compon
     AppComponent,
     AdminLayoutComponent,
     ProductsListComponent,
+    BillListComponent,
 
   ],
   providers: [],
