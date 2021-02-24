@@ -24,7 +24,6 @@ export const ROUTES: RouteInfo[] = [
   },
   { path: "/bill-list", title: "Bill List", icon: "receipt", class: "" },
   { path: "/icons", title: "Icons", icon: "bubble_chart", class: "" },
-  { path: "/maps", title: "Maps", icon: "location_on", class: "" },
   {
     path: "/notifications",
     title: "Notifications",
@@ -39,7 +38,8 @@ export const ROUTES: RouteInfo[] = [
   },
 
   { path: '/order-list', title: 'Order', icon: 'location_on', class: '' },
-
+  { path: '/customer-list', title: 'Vásárlók',  icon:'library_books', class: '' },
+    
 ];
 
 @Component({

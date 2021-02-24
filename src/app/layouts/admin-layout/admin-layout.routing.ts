@@ -11,6 +11,7 @@ import { AddressListComponent } from "app/common/address-list/address-list.compo
 import { EditProductComponent } from "app/common/edit-product/edit-product.component";
 import { BillListComponent } from "app/page/bill-list/bill-list.component";
 import { OrderListComponent } from '../../page/order-list/order-list.component';
+import { CustomerListComponent } from 'app/common/customer-list/customer-list.component';
 
 export const AdminLayoutRoutes: Routes = [
   { path: "dashboard", component: DashboardComponent },
@@ -24,5 +25,6 @@ export const AdminLayoutRoutes: Routes = [
   { path: "upgrade", component: UpgradeComponent },
   { path: "bill-list", component: BillListComponent },
   { path: 'order-list', component: OrderListComponent },
+  { path: 'customer-list',   component: CustomerListComponent },
 
 ];
