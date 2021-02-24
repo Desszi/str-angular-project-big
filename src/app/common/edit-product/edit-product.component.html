@@ -1,0 +1,20 @@
+<div class="row">
+  <div *ngIf="product" class="col-6 offset-3">
+    <form #productForm="ngForm" (ngSubmit)="onUpdate(productForm, product)">
+      <div class="form-group">
+        <label for="">Name</label>
+        <input  name="name" [(ngModel)]="product.name" type="text"
+                class="form-control"
+                pattern=".{8,25}" 
+                required
+                value="Default product">
+        <div [hidden]="productForm.controls.name?.valid" class="error-message">
+          The name must be minimum 8 characters.
+        </div>
+      </div>
+      <button [disabled]="productForm.invalid" type="submit" class="btn btn-primary btn-block btn-lg">
+        <i class="fa fa-save"></i>
+      </button>
+    </form>
+  </div>
+</div>
