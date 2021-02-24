@@ -37,6 +37,9 @@ export const ROUTES: RouteInfo[] = [
     icon: "unarchive",
     class: "active-pro",
   },
+
+  { path: '/order-list', title: 'Order', icon: 'location_on', class: '' },
+
 ];
 
 @Component({
@@ -47,7 +50,7 @@ export const ROUTES: RouteInfo[] = [
 export class SidebarComponent implements OnInit {
   menuItems: any[];
 
-  constructor() {}
+  constructor() { }
 
   ngOnInit() {
     this.menuItems = ROUTES.filter((menuItem) => menuItem);
