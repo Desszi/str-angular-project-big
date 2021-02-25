@@ -4,8 +4,11 @@
             <div class="col-md-12">
                 <div class="card">
                     <div class="card-header card-header-danger">
-                        <h4 class="card-title ">Orders Table</h4>
-                        <p class="card-category"> Here is a subtitle for this table</p>
+                        <h4 class="card-title ">Rendelések</h4>
+                        <p class="card-category"> Beszéljük meg egy sör mellett!</p>
+                        <button class="btn btn-large btn-warning">
+                            <i>Egészségedre</i>
+                        </button>
                     </div>
                     <div class="card-body">
                         <div class="table-responsive">
@@ -17,15 +20,26 @@
                                         <th>productID</th>
                                         <th>amount</th>
                                         <th>status</th>
+                                        <th>Edit/Delete</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr *ngFor="let order of orders | async">
+                                    <tr *ngFor="let order of orders">
                                         <td>{{ order.id }}</td>
                                         <td>{{ order.customerID }}</td>
                                         <td>{{ order.productID }}</td>
                                         <td>{{ order.amount}}</td>
                                         <td>{{ order.status }}</td>
+                                        <td>
+                                            <div class="btn-group">
+                                                <button [routerLink]="'/edit-product/' + order.id" class="btn btn-info">
+                                                    <i class="fa fa-edit"></i>
+                                                </button>
+                                                <button (click)="onDelete(order)" class="btn btn-danger">
+                                                    <i class="fa fa-trash"></i>
+                                                </button>
+                                            </div>
+                                        </td>
                                     </tr>
                                 </tbody>
                             </table>

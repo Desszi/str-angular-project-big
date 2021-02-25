@@ -4,23 +4,23 @@
       <div *ngIf="product" class="col-6 offset-3">
         <form #productForm="ngForm" (ngSubmit)="onUpdate(productForm, product)">
           <div class="form-group my-5">
-            <label for="name">NAME</label>
+            <label for="name">NÉV</label>
             <input name="name" [(ngModel)]="product.name" type="text" class="form-control" pattern=".{5,25}" required
               value="Default product">
             <div [hidden]="productForm.controls.name?.valid" class="error-message">
-              The name must be minimum 5, maximum 25 characters.
+              A Név mezőnek legalább 5, legfeljebb 25 karakterből kell állnia.
             </div>
           </div>
           <div class="form-group my-5">
-            <label for="type">TYPE</label>
+            <label for="type">TÍPUS</label>
             <input name="type" [(ngModel)]="product.type" type="text" class="form-control" pattern=".{5,25}" required
               value="Default product">
             <div [hidden]="productForm.controls.type?.valid" class="error-message">
-              The type must be minimum 5, maximum 25 characters.
+              A Típus mezőnek legalább 5, legfeljebb 25 karakterből kell állnia.
             </div>
           </div>
           <div class="form-group my-5">
-            <label for="catid">CATID</label>
+            <label for="catid">KATEGÓRIA SZÁM</label>
             <select name="catid" [(ngModel)]="product.catID" class="form-control" required value="Default product">
               <option value="1">1</option>
               <option value="2">2</option>
@@ -33,23 +33,23 @@
             </select>
           </div>
           <div class="form-group my-5">
-            <label for="description">DESCRIPTION</label>
+            <label for="description">LEÍRÁS</label>
             <textarea name="description" [(ngModel)]="product.description" cols="60" rows="2" pattern=".{5,100}"
               required value="Default product"></textarea>
             <div [hidden]="productForm.controls.description?.valid" class="error-message">
-              The description must be minimum 5, maximum 100 characters.
+              A Leírás mezőnek legalább 5, legfeljebb 100 karakterből kell állnia.
             </div>
           </div>
           <div class="form-group my-5">
-            <label for="price">PRICE</label>
+            <label for="price">ÁR</label>
             <input name="price" [(ngModel)]="product.price" type="text" class="form-control" pattern="[0-9]{3,}"
               required value="Default product">
             <div [hidden]="productForm.controls.price?.valid" class="error-message">
-              The price must be minimum 3 number characters.
+              Az Ár mezőnek legalább 3 számkarakterből kell állnia.
             </div>
           </div>
           <div class="form-group my-5">
-            <label for="featured">FEATURED</label>
+            <label for="featured">KIEMELT</label>
             <select name="featured" [(ngModel)]="product.featured" class="form-control" required
               value="Default product">
               <option value="true">true</option>
@@ -57,7 +57,7 @@
             </select>
           </div>
           <div class="form-group my-5">
-            <label for="active">ACTIVE</label>
+            <label for="active">ELÉRHETŐ</label>
             <select name="active" [(ngModel)]="product.active" class="form-control" required value="Default product">
               <option value="true">true</option>
               <option value="false">false</option>

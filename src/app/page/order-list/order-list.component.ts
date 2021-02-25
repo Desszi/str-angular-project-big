@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Order } from 'app/model/order';
 import { OrdersService } from '../../service/orders.service';
 import { BehaviorSubject } from 'rxjs';
+import { finalize } from 'rxjs/operators';
 
 
 @Component({
@@ -10,7 +11,8 @@ import { BehaviorSubject } from 'rxjs';
   styleUrls: ['./order-list.component.css']
 })
 export class OrderListComponent implements OnInit {
-  orders: BehaviorSubject<Order[]> = this.ordersService.orderList$;
+  orders: Order[] = null;
+  loading: boolean = true;
 
 
   constructor(
@@ -19,8 +21,20 @@ export class OrderListComponent implements OnInit {
 
   ngOnInit(): void {
 
-    this.ordersService.getAll();
+    this.update();
 
+  }
+  onDelete(item: Order) {
+    this.ordersService.remove(item).subscribe(i => {
+      this.update();
+    });
+  }
+
+  update(): void {
+    this.loading = true;
+    this.ordersService.getAll().pipe(
+      finalize(() => this.loading = false)
+    ).subscribe(items => this.orders = items)
   }
 
 }
