@@ -6,8 +6,8 @@
                     <div class="card-header card-header-primary">
                         <h4 class="card-title ">Termékek</h4>
                         <p class="card-category"> Válogasson gazdag terméklistánkból!</p>
-                        <button [routerLink]="'/edit-product/0'" class="btn btn-large btn-success">
-                            <i class="fa fa-plus"> Új termék hozzáadása</i>
+                        <button [routerLink]="'/edit-product/0'" class="btn btn-large btn-success btn-block">
+                            <i class="fa fa-plus"></i>
                         </button>
                     </div>
                     <div class="card-body">
@@ -16,14 +16,14 @@
                                 <thead>
                                     <tr>
                                         <th class="font-weight-bold text-center">#</th>
-                                        <th class="font-weight-bold">NAME</th>
-                                        <th class="font-weight-bold text-center">TYPE</th>
-                                        <th class="font-weight-bold text-center">CATID</th>
-                                        <th class="font-weight-bold text-center">DESCRIPTION</th>
-                                        <th class="font-weight-bold text-center">PRICE</th>
-                                        <th class="font-weight-bold text-center">FEATURED</th>
-                                        <th class="font-weight-bold text-center">ACTIVE</th>
-                                        <th class="font-weight-bold text-center">EDIT / DELETE</th>
+                                        <th class="font-weight-bold">NÉV</th>
+                                        <th class="font-weight-bold text-center">TÍPUS</th>
+                                        <th class="font-weight-bold text-center">KAT#</th>
+                                        <th class="font-weight-bold text-center">LEÍRÁS</th>
+                                        <th class="font-weight-bold text-center">ÁR</th>
+                                        <th class="font-weight-bold text-center">KIEMELT</th>
+                                        <th class="font-weight-bold text-center">ELÉRHETŐ</th>
+                                        <th class="font-weight-bold text-center">SZERKESZTÉS</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -48,7 +48,7 @@
                                             </div>
                                         </td>
                                     </tr>
-                                <!--   <tr class="bg-secondary">
+                                    <!--   <tr class="bg-secondary">
                                         <td class="text-light">{{ }}</td>
                                         <td class="text-light">{{ }}</td>
                                         <td class="text-light">{{ }}</td>
@@ -58,7 +58,7 @@
                                         <td class="text-light">{{ }}</td>
                                         <td class="text-light">{{ }}</td>
                                         <td class="text-light text-right">Összegzés:</td>
-                                    </tr>--> 
+                                    </tr>-->
                                 </tbody>
                             </table>
                         </div>
@@ -69,5 +69,5 @@
     </div>
 </div>
 <div *ngIf="loading" class="main-content">
-  <app-loading> </app-loading>
+    <app-loading> </app-loading>
 </div>

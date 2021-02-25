@@ -13,6 +13,7 @@ import { NgForm } from '@angular/forms';
 export class EditProductComponent implements OnInit {
 
   product: Product = new Product();
+  loading: boolean = true;
 
   constructor(
     private productsService: ProductsService,
