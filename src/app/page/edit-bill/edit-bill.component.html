@@ -1,0 +1,52 @@
+<div class="row my-5">
+  <div *ngIf="bill" class="col-6 offset-3">
+    <label> {{ bill.id }}</label>
+    <form #billForm="ngForm" (ngSubmit)="onUpdate(billForm, bill)">
+      <div class="form-group">
+        <label for="orderID">Rendelés szám</label>
+        <input
+          name="orderID"
+          [(ngModel)]="bill.orderID"
+          type="text"
+          class="form-control"
+          pattern="^[1-9][0-9]{0,10}"
+          required
+          value="0"
+        />
+        <div [hidden]="billForm.controls.orderID?.valid" class="error-message">
+          A rendelési szám csak számokat tartalmazhat, és nagyobb, mint 0.
+        </div>
+        <label for="amount">Rendelés összeg</label>
+        <input
+          name="amount"
+          [(ngModel)]="bill.amount"
+          type="text"
+          class="form-control"
+          pattern="^[1-9][0-9]{0,10}"
+          required
+          value="0"
+        />
+        <div [hidden]="billForm.controls.amount?.valid" class="error-message">
+          A rendelési összeg csak számokat tartalmazhat, és nem lehet nulla.
+        </div>
+        <label for="status">Rendelés állapota</label>
+        <select
+          class="form-control"
+          name="status"
+          [(ngModel)]="bill.status"
+          required
+        >
+          <option value="new">Új</option>
+          <option value="paid">Fizetve</option>
+        </select>
+      </div>
+      <button
+        [disabled]="billForm.invalid"
+        type="submit"
+        class="btn btn-primary btn-block btn-lg"
+      >
+        <i class="fa fa-save"></i>
+      </button>
+    </form>
+  </div>
+</div>
