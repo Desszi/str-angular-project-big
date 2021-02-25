@@ -23,7 +23,6 @@ import { OrderListComponent } from './page/order-list/order-list.component';
 import { CommonModule } from '@angular/common';
 import { ToastrModule } from 'ngx-toastr';
 import { LoadingComponent } from './page/loading/loading.component';
-import { TableListComponent } from './common/table-list/table-list.component';
 
 @NgModule({
   imports: [
@@ -37,7 +36,7 @@ import { TableListComponent } from './common/table-list/table-list.component';
     BrowserAnimationsModule,
     CommonModule,
     ToastrModule.forRoot(),
-  
+
   ],
   declarations: [
     AppComponent,
@@ -49,7 +48,6 @@ import { TableListComponent } from './common/table-list/table-list.component';
     OrderListComponent,
     CustomerListComponent,
     LoadingComponent,
-    TableListComponent
 
   ],
   providers: [],

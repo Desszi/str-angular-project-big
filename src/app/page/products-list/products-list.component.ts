@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Product } from 'app/model/product';
 import { ProductsService } from 'app/service/products.service';
 import { BehaviorSubject } from 'rxjs';
-import { finalize } from 'rxjs/internal/operators/finalize';
+import { finalize } from 'rxjs/operators';
 
 @Component({
   selector: 'app-products-list',
@@ -10,19 +10,29 @@ import { finalize } from 'rxjs/internal/operators/finalize';
   styleUrls: ['./products-list.component.css']
 })
 export class ProductsListComponent implements OnInit {
-  
-  product: Product[];
-  loading = false;
+
+  products: Product[];
+  loading: boolean;
 
   constructor(
     private productsService: ProductsService
   ) { }
 
   ngOnInit(): void {
+    this.update();
+  }
+
+  onDelete(item: Product) {
+    this.productsService.remove(item).subscribe(i => {
+      this.update();
+    });
+  }
+
+  update(): void {
     this.loading = true;
     this.productsService.getAll().pipe(
       finalize(() => this.loading = false)
-    ).subscribe(items => this.product = items)
+    ).subscribe(items => this.products = items)
   }
 
 }

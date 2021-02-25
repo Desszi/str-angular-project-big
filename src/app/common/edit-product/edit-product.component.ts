@@ -39,18 +39,22 @@ export class EditProductComponent implements OnInit {
 
     try {
       if (item.id == 0) {
-        this.productsService.create(item);
+        this.productsService.create(item).subscribe(
+          () => { }
+        );
         this.toastr.success('Sikeresn hozzáadásra került');
-        this.router.navigate(['/table-list']);
+        this.router.navigate(['/product-list']);
       }
       else {
-        this.productsService.update(item);
+        this.productsService.update(item).subscribe(
+          () => { }
+        );
         this.toastr.success('Sikeres módosítás :)');
-        this.router.navigate(['/table-list']);
+        this.router.navigate(['/product-list']);
       }
     } catch (error) {
       this.toastr.success('Probléma történt:' + error);
     }
   }
-  
+
 }
