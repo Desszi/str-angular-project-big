@@ -10,24 +10,13 @@ import { BaseService } from './base.service';
   providedIn: 'root'
 })
 export class ProductsService extends BaseService<Product> {
-  get(id: any) {
-    throw new Error('Method not implemented.');
-  }
-  create(item: Product) {
-    throw new Error('Method not implemented.');
-  }
-  update(item: Product) {
-    throw new Error('Method not implemented.');
-  }
   constructor(private httpClient: HttpClient) {
     super(new ConfigService('http://localhost:3000'), httpClient, "products");
   }
 }
-  /*
+/*
 export class ProductsService {
-
 apiUrl: string = 'http://localhost:3000/products';
-
 constructor(
   private http: HttpClient
 ) { }
@@ -36,24 +25,18 @@ getById(id: number): Observable<Product | undefined > {
  return this.getAll().pipe(map(items => {
      return items.find(item => id == item.id)}));
 }
-
 getAll(): Observable<Product[]> {
   return this.http.get<Product[]>(this.apiUrl).pipe(delay(500));
 }
-
-update(product: Product): Observable<Product> {
-  return this.http.patch<Product>(`${this.apiUrl}/${product.id}`, product).pipe(
-    tap(() => this.getAll())
-  );
+update(item: Product): void {
+  this.http.put<Product>(`${this.apiUrl}/${item.id}`, item).subscribe(i => {
+    this.getAll();
+  });
 }
-
-remove(product: Product): void {
-  this.http.delete<Product>(`${this.apiUrl}/${product.id}`).subscribe(
-    () => this.getAll()
-  );
+remove(id: number): void {
+  this.http.delete<Product>(`${this.apiUrl}/${id}`).subscribe(i => {
+    this.getAll();
+  });
 }
-
 }
 */
-
-
