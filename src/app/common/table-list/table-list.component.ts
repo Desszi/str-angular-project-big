@@ -12,20 +12,26 @@ import { finalize } from 'rxjs/operators';
 export class TableListComponent implements OnInit {
 
   products: Product[];
-  loading:boolean;
+  loading: boolean;
   constructor(
     private productsService: ProductsService
   ) { }
 
   ngOnInit(): void {
+    this.update();
+  }
+
+  onDelete(item: Product) {
+    this.productsService.remove(item).subscribe(i => {
+      this.update();
+    });
+  }
+
+  update(): void {
     this.loading = true;
     this.productsService.getAll().pipe(
       finalize(() => this.loading = false)
     ).subscribe(items => this.products = items)
-  }
-
-  onDelete(item:Product){
-    this.productsService.remove(item.id);
   }
 
 }
