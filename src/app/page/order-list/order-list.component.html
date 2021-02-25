@@ -12,15 +12,19 @@
                             <table class="table">
                                 <thead>
                                     <tr>
-                                        <th>id</th>
-                                        <th>customerID</th>
-                                        <th>productID</th>
-                                        <th>amount</th>
-                                        <th>status</th>
+                                        <th (click)="onColumnSelect('id')" class="bg-primary text-center">id</th>
+                                        <th (click)="onColumnSelect('customerID')" class="bg-info text-center">customerID</th>
+                                        <th (click)="onColumnSelect('productID')" 
+                                             class="bg-primary text-center">productID</th>
+                                        <th (click)="onColumnSelect('amount')" class="bg-info text-center"
+                                        >amount</th>
+                                        <th (click)="onColumnSelect('status')" class="bg-primary text-center"
+                                        >status</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr *ngFor="let order of orders | async">
+                                    <tr *ngFor="let order of orders | search: phraseString:'name'
+                                    | sort: columnKey:direction | async">
                                         <td>{{ order.id }}</td>
                                         <td>{{ order.customerID }}</td>
                                         <td>{{ order.productID }}</td>

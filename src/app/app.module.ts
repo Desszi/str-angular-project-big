@@ -23,6 +23,8 @@ import { OrderListComponent } from './page/order-list/order-list.component';
 import { CommonModule } from '@angular/common';
 import { ToastrModule } from 'ngx-toastr';
 import { LoadingComponent } from './page/loading/loading.component';
+import { SearchPipe } from './pipe/search.pipe';
+import { SortPipe } from './pipe/sort.pipe';
 
 @NgModule({
   imports: [
@@ -48,6 +50,8 @@ import { LoadingComponent } from './page/loading/loading.component';
     OrderListComponent,
     CustomerListComponent,
     LoadingComponent,
+    SearchPipe,
+    SortPipe,
 
   ],
   providers: [],
