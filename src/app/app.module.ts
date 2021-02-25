@@ -23,6 +23,7 @@ import { OrderListComponent } from './page/order-list/order-list.component';
 import { CommonModule } from '@angular/common';
 import { ToastrModule } from 'ngx-toastr';
 import { LoadingComponent } from './page/loading/loading.component';
+import { EditCostumerComponent } from './page/edit-costumer/edit-costumer.component';
 
 @NgModule({
   imports: [
@@ -48,6 +49,7 @@ import { LoadingComponent } from './page/loading/loading.component';
     OrderListComponent,
     CustomerListComponent,
     LoadingComponent,
+    EditCostumerComponent,
 
   ],
   providers: [],
