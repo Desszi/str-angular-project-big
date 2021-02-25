@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { BehaviorSubject, Observable, of } from 'rxjs';
 import { Product } from 'app/model/product';
-import { delay } from 'rxjs/operators';
+import { delay, map } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
@@ -17,12 +17,10 @@ export class ProductsService {
   ) { }
 
 
-  getById(id: number): Observable<Product | undefined> {
-    let retval: Product = null;
-    this.getAll().subscribe(items => {
-      retval = items.find(item => id == item.id);
-    })
-    return of(retval);
+  getById(id: number): Observable<Product | undefined > {
+  //https://angular.io/guide/rx-library
+   return this.getAll().pipe(map(items => {
+       return items.find(item => id == item.id)}));
   }
 
   getAll(): Observable<Product[]> {
