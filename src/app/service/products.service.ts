@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { BehaviorSubject, Observable, of } from 'rxjs';
 import { Product } from 'app/model/product';
+import { delay } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
@@ -9,7 +10,7 @@ import { Product } from 'app/model/product';
 export class ProductsService {
 
   apiUrl: string = 'http://localhost:3000/products';
-  list$: BehaviorSubject<Product[]> = new BehaviorSubject<Product[]>([]);
+
 
   constructor(
     private http: HttpClient
@@ -17,13 +18,15 @@ export class ProductsService {
 
 
   getById(id: number): Observable<Product | undefined> {
-    return of(this.list$.value.find(item => id == item.id));
+    let retval: Product = null;
+    this.getAll().subscribe(items => {
+      retval = items.find(item => id == item.id);
+    })
+    return of(retval);
   }
 
-  getAll(): void {
-    this.http.get<Product[]>(this.apiUrl).subscribe(
-      items => this.list$.next(items)
-    );
+  getAll(): Observable<Product[]> {
+    return this.http.get<Product[]>(this.apiUrl).pipe(delay(500));
   }
 
   update(item: Product): void {

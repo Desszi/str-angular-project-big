@@ -9,7 +9,6 @@ import { AppComponent } from './app.component';
 import { CustomerListComponent } from './common/customer-list/customer-list.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { UserProfileComponent } from './user-profile/user-profile.component';
-import { TableListComponent } from  './common/table-list/table-list.component';
 import { TypographyComponent } from './typography/typography.component';
 import { IconsComponent } from './icons/icons.component';
 import { NotificationsComponent } from './notifications/notifications.component';
@@ -23,6 +22,8 @@ import { BillListComponent } from "./page/bill-list/bill-list.component";
 import { OrderListComponent } from './page/order-list/order-list.component';
 import { CommonModule } from '@angular/common';
 import { ToastrModule } from 'ngx-toastr';
+import { LoadingComponent } from './page/loading/loading.component';
+import { TableListComponent } from './common/table-list/table-list.component';
 
 @NgModule({
   imports: [
@@ -36,6 +37,7 @@ import { ToastrModule } from 'ngx-toastr';
     BrowserAnimationsModule,
     CommonModule,
     ToastrModule.forRoot(),
+  
   ],
   declarations: [
     AppComponent,
@@ -46,6 +48,9 @@ import { ToastrModule } from 'ngx-toastr';
     BillListComponent,
     OrderListComponent,
     CustomerListComponent,
+    LoadingComponent,
+    TableListComponent
+
   ],
   providers: [],
   bootstrap: [AppComponent],
