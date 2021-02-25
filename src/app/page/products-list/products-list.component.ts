@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Product } from 'app/model/product';
 import { ProductsService } from 'app/service/products.service';
-import { BehaviorSubject } from 'rxjs';
 import { finalize } from 'rxjs/operators';
 
 @Component({

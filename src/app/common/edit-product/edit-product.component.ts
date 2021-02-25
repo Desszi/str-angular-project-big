@@ -1,10 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { NgForm } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
-import { Product } from 'app/model/product';
-import { Observable } from 'rxjs';
 import { ProductsService } from '../../service/products.service';
+import { Product } from 'app/model/product';
 import { ToastrService } from 'ngx-toastr';
+import { NgForm } from '@angular/forms';
 
 @Component({
   selector: 'app-edit-product',
@@ -28,7 +27,6 @@ export class EditProductComponent implements OnInit {
       params =>
         this.productsService.get(params.id).subscribe(
           item => {
-            console.log(item);
             this.product = item || new Product();
           }
         )
