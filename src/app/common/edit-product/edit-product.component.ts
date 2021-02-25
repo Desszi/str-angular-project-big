@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ProductsService } from '../../service/products.service';
 import { Product } from 'app/model/product';
+import { ToastrService } from 'ngx-toastr';
 import { NgForm } from '@angular/forms';
 
 @Component({
@@ -12,19 +13,19 @@ import { NgForm } from '@angular/forms';
 export class EditProductComponent implements OnInit {
 
   product: Product = new Product();
-  updating: boolean = false;
 
   constructor(
     private productsService: ProductsService,
     private activatedRoute: ActivatedRoute,
     private router: Router,
+    private toastr: ToastrService,
 
   ) { }
 
   ngOnInit(): void {
     this.activatedRoute.params.subscribe(
       params =>
-        this.productsService.getById(params.id).subscribe(
+        this.productsService.get(params.id).subscribe(
           item => {
             this.product = item || new Product();
           }
@@ -32,16 +33,25 @@ export class EditProductComponent implements OnInit {
     )
   }
 
-  onUpdate(form: NgForm, product: Product): void {
-    this.updating = true;
-    if (product.id == 0) {
-      this.productsService.create(product);
-      this.router.navigate(['/product-list']);
-    }
-    else {
-      this.productsService.update(product).subscribe(
-        () => this.router.navigate(['/product-list'])
-      );
+  onUpdate(form: NgForm, item: Product): void {
+
+    try {
+      if (item.id == 0) {
+        this.productsService.create(item).subscribe(
+          () => { }
+        );
+        this.toastr.success('Sikeresn hozzáadásra került');
+        this.router.navigate(['/product-list']);
+      }
+      else {
+        this.productsService.update(item).subscribe(
+          () => { }
+        );
+        this.toastr.success('Sikeres módosítás :)');
+        this.router.navigate(['/product-list']);
+      }
+    } catch (error) {
+      this.toastr.success('Probléma történt:' + error);
     }
   }
 

@@ -20,6 +20,9 @@ import { EditProductComponent } from './common/edit-product/edit-product.compone
 import { AddressListComponent } from './common/address-list/address-list.component';
 import { BillListComponent } from "./page/bill-list/bill-list.component";
 import { OrderListComponent } from './page/order-list/order-list.component';
+import { CommonModule } from '@angular/common';
+import { ToastrModule } from 'ngx-toastr';
+import { LoadingComponent } from './page/loading/loading.component';
 
 @NgModule({
   imports: [
@@ -30,6 +33,10 @@ import { OrderListComponent } from './page/order-list/order-list.component';
     ComponentsModule,
     RouterModule,
     AppRoutingModule,
+    BrowserAnimationsModule,
+    CommonModule,
+    ToastrModule.forRoot(),
+
   ],
   declarations: [
     AppComponent,
@@ -40,6 +47,8 @@ import { OrderListComponent } from './page/order-list/order-list.component';
     BillListComponent,
     OrderListComponent,
     CustomerListComponent,
+    LoadingComponent,
+
   ],
   providers: [],
   bootstrap: [AppComponent],

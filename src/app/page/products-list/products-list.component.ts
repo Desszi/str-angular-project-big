@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Product } from 'app/model/product';
 import { ProductsService } from 'app/service/products.service';
-import { BehaviorSubject } from 'rxjs';
 import { finalize } from 'rxjs/operators';
 
 @Component({
@@ -19,15 +18,20 @@ export class ProductsListComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.loading = true;
-    this.productsService.getAll().pipe(
-      finalize(
-        () => this.loading = false)).subscribe(
-          items => this.products = items)
+    this.update();
   }
 
-  onDelete(product: Product) {
-    this.productsService.remove(product);
+  onDelete(item: Product) {
+    this.productsService.remove(item).subscribe(i => {
+      this.update();
+    });
+  }
+
+  update(): void {
+    this.loading = true;
+    this.productsService.getAll().pipe(
+      finalize(() => this.loading = false)
+    ).subscribe(items => this.products = items)
   }
 
 }
