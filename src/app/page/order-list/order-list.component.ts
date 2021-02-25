@@ -32,7 +32,7 @@ export class OrderListComponent implements OnInit {
       console.log(params.phrase);
       this.phraseString = params.phrase;
     });
-
+     this.update();
   }
    
   onColumnSelect(key: string): void {
