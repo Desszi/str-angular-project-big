@@ -4,6 +4,7 @@ import { OrdersService } from '../../service/orders.service';
 import { BehaviorSubject } from 'rxjs';
 import { Input } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { finalize } from 'rxjs/operators';
 
 
 @Component({
@@ -12,7 +13,8 @@ import { ActivatedRoute } from '@angular/router';
   styleUrls: ['./order-list.component.css']
 })
 export class OrderListComponent implements OnInit {
-  orders: BehaviorSubject<Order[]> = this.ordersService.orderList$;
+  orders: Order[] = null;
+  loading: boolean = true;
 
   @Input() phraseString: string = '';
   direction: number = 1;
@@ -41,4 +43,19 @@ export class OrderListComponent implements OnInit {
     }
     this.columnKey = key;
   }
+
+  
+  onDelete(item: Order) {
+    this.ordersService.remove(item).subscribe(i => {
+      this.update();
+    });
+  }
+
+  update(): void {
+    this.loading = true;
+    this.ordersService.getAll().pipe(
+      finalize(() => this.loading = false)
+    ).subscribe(items => this.orders = items)
+  }
+
 }

@@ -4,6 +4,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { Customer } from 'app/model/customer';
 import { CustomerService } from 'app/service/customer.service';
 import { BehaviorSubject } from 'rxjs';
+import { finalize } from 'rxjs/operators';
 
 @Component({
   selector: 'app-customer-list',
@@ -12,7 +13,33 @@ import { BehaviorSubject } from 'rxjs';
 })
 export class CustomerListComponent implements OnInit {
 
-  customer$: BehaviorSubject<Customer[]> = this.customerService.clist$;
+  customers: Customer[];
+  loading: boolean;
+
+  constructor(
+    private customerService: CustomerService
+  ) { }
+
+  ngOnInit(): void {
+    this.update();
+  }
+
+  onDelete(item: Customer) {
+    this.customerService.remove(item).subscribe(i => {
+      this.update();
+    });
+  }
+
+  update(): void {
+    this.loading = true;
+    this.customerService.getAll().pipe(
+      finalize(() => this.loading = false)
+    ).subscribe(items => this.customers = items)
+  }
+
+}
+
+ /*  customer$: BehaviorSubject<Customer[]> = this.customerService.clist$  ;
 
   constructor(
     private customerService:CustomerService, 
@@ -24,7 +51,7 @@ export class CustomerListComponent implements OnInit {
   ngOnInit(): void {
 
     this.customerService.getAll();
-  
+   */
 
 
    /* this.activatedRoute.params.subscribe(
@@ -35,8 +62,8 @@ export class CustomerListComponent implements OnInit {
             this.customer = item || new Customer();
           }
         )
-     )*/
-    }
+     )
+    }*/
 
 
    /* onUpdate(form: NgForm, item: Customer): void {
@@ -49,5 +76,4 @@ export class CustomerListComponent implements OnInit {
         this.router.navigate(['/customer-list']);    
       }
   }*/
- 
-}
+
