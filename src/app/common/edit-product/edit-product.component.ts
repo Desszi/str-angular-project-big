@@ -26,7 +26,7 @@ export class EditProductComponent implements OnInit {
   ngOnInit(): void {
     this.activatedRoute.params.subscribe(
       params =>
-        this.productsService.getById(params.id).subscribe(
+        this.productsService.get(params.id).subscribe(
           item => {
             console.log(item);
             this.product = item || new Product();
@@ -39,7 +39,7 @@ export class EditProductComponent implements OnInit {
 
     try {
       if (item.id == 0) {
-        this.productsService.update(item);
+        this.productsService.create(item);
         this.toastr.success('Sikeresn hozzáadásra került');
         this.router.navigate(['/table-list']);
       }
@@ -49,8 +49,8 @@ export class EditProductComponent implements OnInit {
         this.router.navigate(['/table-list']);
       }
     } catch (error) {
-
       this.toastr.success('Probléma történt:' + error);
     }
   }
+  
 }
