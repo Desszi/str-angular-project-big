@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Product } from 'app/model/product';
 import { ProductsService } from 'app/service/products.service';
 import { BehaviorSubject } from 'rxjs';
+import { finalize } from 'rxjs/operators';
 
 @Component({
   selector: 'app-products-list',
@@ -10,16 +11,28 @@ import { BehaviorSubject } from 'rxjs';
 })
 export class ProductsListComponent implements OnInit {
 
-  products: BehaviorSubject<Product[]> = this.productsService.list$;
+  products: Product[];
+  loading: boolean;
 
   constructor(
     private productsService: ProductsService
   ) { }
 
   ngOnInit(): void {
+    this.update();
+  }
 
-    this.productsService.getAll();
-    this.products.subscribe(item => console.log(item));
+  onDelete(item: Product) {
+    this.productsService.remove(item).subscribe(i => {
+      this.update();
+    });
+  }
+
+  update(): void {
+    this.loading = true;
+    this.productsService.getAll().pipe(
+      finalize(() => this.loading = false)
+    ).subscribe(items => this.products = items)
   }
 
 }
