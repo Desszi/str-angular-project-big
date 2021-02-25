@@ -1,4 +1,4 @@
-<div class="main-content">
+<div *ngIf="!loading" class="main-content">
   <div class="container-fluid">
     <div class="row">
       <div class="col-md-12">
@@ -21,7 +21,7 @@
                   </tr>
                 </thead>
                 <tbody>
-                  <tr *ngFor="let address of addresses$ | async">
+                  <tr *ngFor="let address of addresses">
                     <td>{{ address.id }}</td>
                     <td>{{ address.zip }}</td>
                     <td>{{ address.country }}</td>
@@ -47,4 +47,8 @@
       </div>
     </div>
   </div>
+</div>
+
+<div *ngIf="loading" class="main-content">
+  <app-loading> </app-loading>
 </div>

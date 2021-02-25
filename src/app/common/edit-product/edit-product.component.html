@@ -1,20 +1,73 @@
-<div class="row">
-  <div *ngIf="product" class="col-6 offset-3">
-    <form #productForm="ngForm" (ngSubmit)="onUpdate(productForm, product)">
-      <div class="form-group">
-        <label for="">Name</label>
-        <input  name="name" [(ngModel)]="product.name" type="text"
-                class="form-control"
-                pattern=".{8,25}" 
-                required
-                value="Default product">
-        <div [hidden]="productForm.controls.name?.valid" class="error-message">
-          The name must be minimum 8 characters.
-        </div>
+<div class="main-content">
+  <div class="container-fluid">
+    <div class="row">
+      <div *ngIf="product" class="col-6 offset-3">
+        <form #productForm="ngForm" (ngSubmit)="onUpdate(productForm, product)">
+          <div class="form-group my-5">
+            <label for="name">NAME</label>
+            <input name="name" [(ngModel)]="product.name" type="text" class="form-control" pattern=".{5,25}" required
+              value="Default product">
+            <div [hidden]="productForm.controls.name?.valid" class="error-message">
+              The name must be minimum 5, maximum 25 characters.
+            </div>
+          </div>
+          <div class="form-group my-5">
+            <label for="type">TYPE</label>
+            <input name="type" [(ngModel)]="product.type" type="text" class="form-control" pattern=".{5,25}" required
+              value="Default product">
+            <div [hidden]="productForm.controls.type?.valid" class="error-message">
+              The type must be minimum 5, maximum 25 characters.
+            </div>
+          </div>
+          <div class="form-group my-5">
+            <label for="catid">CATID</label>
+            <select name="catid" [(ngModel)]="product.catID" class="form-control" required value="Default product">
+              <option value="1">1</option>
+              <option value="2">2</option>
+              <option value="3">3</option>
+              <option value="4">4</option>
+              <option value="5">5</option>
+              <option value="6">6</option>
+              <option value="7">7</option>
+              <option value="8">8</option>
+            </select>
+          </div>
+          <div class="form-group my-5">
+            <label for="description">DESCRIPTION</label>
+            <textarea name="description" [(ngModel)]="product.description" cols="60" rows="2" pattern=".{5,100}"
+              required value="Default product"></textarea>
+            <div [hidden]="productForm.controls.description?.valid" class="error-message">
+              The description must be minimum 5, maximum 100 characters.
+            </div>
+          </div>
+          <div class="form-group my-5">
+            <label for="price">PRICE</label>
+            <input name="price" [(ngModel)]="product.price" type="text" class="form-control" pattern="[0-9]{3,}"
+              required value="Default product">
+            <div [hidden]="productForm.controls.price?.valid" class="error-message">
+              The price must be minimum 3 number characters.
+            </div>
+          </div>
+          <div class="form-group my-5">
+            <label for="featured">FEATURED</label>
+            <select name="featured" [(ngModel)]="product.featured" class="form-control" required
+              value="Default product">
+              <option value="true">true</option>
+              <option value="false">false</option>
+            </select>
+          </div>
+          <div class="form-group my-5">
+            <label for="active">ACTIVE</label>
+            <select name="active" [(ngModel)]="product.active" class="form-control" required value="Default product">
+              <option value="true">true</option>
+              <option value="false">false</option>
+            </select>
+          </div>
+          <button [disabled]="productForm.invalid" type="submit" class="btn btn-primary btn-block btn-lg">
+            <i class="fa fa-save"></i>
+          </button>
+        </form>
       </div>
-      <button [disabled]="productForm.invalid" type="submit" class="btn btn-primary btn-block btn-lg">
-        <i class="fa fa-save"></i>
-      </button>
-    </form>
+    </div>
   </div>
 </div>
