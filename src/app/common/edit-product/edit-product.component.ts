@@ -1,10 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { NgForm } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
+import { ProductsService } from '../../service/products.service';
 import { Product } from 'app/model/product';
-import { Observable } from 'rxjs';
-import { switchMap } from 'rxjs-compat/operator/switchMap';
-import { ProductsService} from '../../service/products.service';
+import { NgForm } from '@angular/forms';
 
 @Component({
   selector: 'app-edit-product',
@@ -13,37 +11,38 @@ import { ProductsService} from '../../service/products.service';
 })
 export class EditProductComponent implements OnInit {
 
-  product:Product = new Product();
+  product: Product = new Product();
+  updating: boolean = false;
 
   constructor(
-    private productsService:ProductsService, 
-    private activatedRoute:ActivatedRoute,
+    private productsService: ProductsService,
+    private activatedRoute: ActivatedRoute,
     private router: Router,
 
   ) { }
 
   ngOnInit(): void {
     this.activatedRoute.params.subscribe(
-      params=> 
-          this.productsService.getById(params.id).subscribe(
-          item =>{
-            console.log(item);
+      params =>
+        this.productsService.getById(params.id).subscribe(
+          item => {
             this.product = item || new Product();
           }
         )
-     )
-    }
+    )
+  }
 
-
-    onUpdate(form: NgForm, item: Product): void {
-      if(item.id == 0){
-        this.productsService.update(item);
-        this.router.navigate(['/table-list']);
-      }
-      else{
-        this.productsService.update(item)
-        this.router.navigate(['/table-list']);    
-      }
+  onUpdate(form: NgForm, product: Product): void {
+    this.updating = true;
+    if (product.id == 0) {
+      this.productsService.create(product);
+      this.router.navigate(['/product-list']);
     }
+    else {
+      this.productsService.update(product).subscribe(
+        () => this.router.navigate(['/product-list'])
+      );
+    }
+  }
 
 }

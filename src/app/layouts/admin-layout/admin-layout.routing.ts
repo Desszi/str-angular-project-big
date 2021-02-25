@@ -12,11 +12,12 @@ import { EditProductComponent } from "app/common/edit-product/edit-product.compo
 import { BillListComponent } from "app/page/bill-list/bill-list.component";
 import { OrderListComponent } from '../../page/order-list/order-list.component';
 import { CustomerListComponent } from 'app/common/customer-list/customer-list.component';
+import { ProductsListComponent } from "app/page/products-list/products-list.component";
 
 export const AdminLayoutRoutes: Routes = [
   { path: "dashboard", component: DashboardComponent },
   { path: "user-profile", component: UserProfileComponent },
-  { path: "table-list", component: TableListComponent },
+  { path: "product-list", component: ProductsListComponent },
   { path: "address-list", component: AddressListComponent },
   { path: "typography", component: TypographyComponent },
   { path: "edit-product/:id", component: EditProductComponent },
@@ -25,6 +26,6 @@ export const AdminLayoutRoutes: Routes = [
   { path: "upgrade", component: UpgradeComponent },
   { path: "bill-list", component: BillListComponent },
   { path: 'order-list', component: OrderListComponent },
-  { path: 'customer-list',   component: CustomerListComponent },
+  { path: 'customer-list', component: CustomerListComponent },
 
 ];

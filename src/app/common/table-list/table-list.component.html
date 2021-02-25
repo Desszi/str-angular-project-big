@@ -3,38 +3,39 @@
     <div class="row">
       <div class="col-md-12">
         <div class="card">
-          <div class="card-header card-header-danger">
+          <div class="card-header card-header-primary">
             <h4 class="card-title ">Termékek</h4>
-            <p class="card-category"> Here is a subtitle for this table</p>
+            <p class="card-category"> List of our greate products</p>
           </div>
           <div class="card-body">
             <div class="table-responsive">
-              <table class="table">
+              <table class="table table-striped">
                 <thead>
                   <tr>
-                    <th>id</th>
-                    <th>name</th>
-                    <th>type</th>
-                    <th>catID</th>
-                    <th>description</th>
-                    <th>price</th>
-                    <th>featured</th>
-                    <th>active</th>
+                    <th class="font-weight-bold text-center">#</th>
+                    <th class="font-weight-bold">NAME</th>
+                    <th class="font-weight-bold text-center">TYPE</th>
+                    <th class="font-weight-bold text-center">CATID</th>
+                    <th class="font-weight-bold text-center">DESCRIPTION</th>
+                    <th class="font-weight-bold text-center">PRICE</th>
+                    <th class="font-weight-bold text-center">FEATURED</th>
+                    <th class="font-weight-bold text-center">ACTIVE</th>
+                    <th class="font-weight-bold text-center">EDIT / DELETE</th>
                   </tr>
                 </thead>
                 <tbody>
                   <tr *ngFor="let product of products | async">
-                    <td>{{ product.id }}</td>
-                    <td>{{ product.name }}</td>
-                    <td>{{ product.type }}</td>
-                    <td>{{ product.catID }}</td>
-                    <td>{{ product.description }}</td>
-                    <td>{{ product.price }}</td>
-                    <td>{{ product.featured }}</td>
-                    <td>{{ product.active }}</td>
+                    <td class="text-center">{{ product.id }}</td>
+                    <td class="">{{ product.name }}</td>
+                    <td class="text-center">{{ product.type }}</td>
+                    <td class="text-center">{{ product.catID }}</td>
+                    <td class="text-center">{{ product.description }}</td>
+                    <td class="text-center">{{ product.price }}</td>
+                    <td class="text-center">{{ product.featured }}</td>
+                    <td class="text-center">{{ product.active }}</td>
                     <td>
                       <div class="btn-group">
-                        <button [routerLink] = "'/edit-product/' + product.id" class="btn btn-info">
+                        <button [routerLink]="'/edit-product/' + product.id" class="btn btn-info">
                           <i class="fa fa-edit"></i>
                         </button>
                         <button (click)="onDelete(product)" class="btn btn-danger">

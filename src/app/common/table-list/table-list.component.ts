@@ -20,8 +20,8 @@ export class TableListComponent implements OnInit {
     this.productsService.getAll();
   }
 
-  onDelete(item:Product){
-    this.productsService.remove(item.id);
+  onDelete(item: Product) {
+    this.productsService.remove(item);
   }
 
 }

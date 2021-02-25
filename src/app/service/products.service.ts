@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { BehaviorSubject, Observable, of } from 'rxjs';
 import { Product } from 'app/model/product';
+import { tap } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
@@ -16,8 +17,14 @@ export class ProductsService {
   ) { }
 
 
-  getById(id: number): Observable<Product | undefined> {
-    return of(this.list$.value.find(item => id == item.id));
+  getById(id: number): Observable<Product> {
+    id = typeof id === 'string' ? parseInt(id, 10) : id;
+    const ev: Product = this.list$.value.find(
+      item => item.id === id);
+    if (ev) {
+      return of(ev);
+    }
+    return of(new Product());
   }
 
   getAll(): void {
@@ -26,17 +33,24 @@ export class ProductsService {
     );
   }
 
-  update(item: Product): void {
-    this.http.put<Product>(`${this.apiUrl}/${item.id}`, item).subscribe(i => {
-      this.getAll();
-    });
+  create(product: Product): void {
+    this.http.post<Product>(this.apiUrl, product).subscribe(
+      () => this.getAll()
+    );
   }
 
-  remove(id: number): void {
-    this.http.delete<Product>(`${this.apiUrl}/${id}`).subscribe(i => {
-      this.getAll();
-    });
+  update(product: Product): Observable<Product> {
+    return this.http.patch<Product>(`${this.apiUrl}/${product.id}`, product).pipe(
+      tap(() => this.getAll())
+    );
   }
+
+  remove(product: Product): void {
+    this.http.delete<Product>(`${this.apiUrl}/${product.id}`).subscribe(
+      () => this.getAll()
+    );
+  }
+
 }
 
 
