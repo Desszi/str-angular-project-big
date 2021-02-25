@@ -12,6 +12,7 @@ import { BillListComponent } from "app/page/bill-list/bill-list.component";
 import { OrderListComponent } from '../../page/order-list/order-list.component';
 import { CustomerListComponent } from 'app/common/customer-list/customer-list.component';
 import { ProductsListComponent } from "app/page/products-list/products-list.component";
+import { EditCostumerComponent } from "app/page/edit-costumer/edit-costumer.component";
 
 export const AdminLayoutRoutes: Routes = [
   { path: "dashboard", component: DashboardComponent },
@@ -27,4 +28,6 @@ export const AdminLayoutRoutes: Routes = [
   { path: 'order-list', component: OrderListComponent },
   { path: 'customer-list', component: CustomerListComponent },
 
+
+  {path: 'edit-customer/:id', component: EditCostumerComponent}
 ];

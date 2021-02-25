@@ -1,1 +1,42 @@
-<p>edit-costumer works!</p>
+<div class="main-content">
+    <div class="container-fluid">
+      <div class="row">
+        <div *ngIf="product" class="col-6 offset-3">
+          <form #productForm="ngForm" (ngSubmit)="onUpdate(customerForm, customer)">
+            <div class="form-group my-5">
+              <label for="lastName">Vezetéknév</label>
+              <input name="lastName" [(ngModel)]="customer.lastName" type="text" class="form-control" pattern=".{2,25}" required
+                value="Default customer">
+              <div [hidden]="customerForm.controls.lastName?.valid" class="error-message">
+                A Vezetéknév mezőnek legalább 2, legfeljebb 25 karakterből kell állnia.
+              </div>
+            </div>
+            <div class="form-group my-5">
+              <label for="firstName">Keresztnév</label>
+              <input name="firstName" [(ngModel)]="customer.firstName" type="text" class="form-control" pattern=".{2,25}" required
+                value="Default customer">
+              <div [hidden]="customerForm.controls.firstName?.valid" class="error-message">
+                A Keresztnév mezőnek legalább 2, legfeljebb 25 karakterből kell állnia.
+              </div>
+            </div>
+            <div class="form-group my-5">
+              <label for="email">E-mail cím</label>
+              <select name="email" [(ngModel)]="customer.email" class="form-control" required value="Default customer">
+              </select>
+            </div>
+            <div class="form-group my-5">
+              <label for="active">Aktív ügyfél?</label>
+              <select name="active" [(ngModel)]="customer.active" class="form-control" required
+                value="Default customer">
+                <option value="true">true</option>
+                <option value="false">false</option>
+              </select>
+            </div>
+            <button [disabled]="customerForm.invalid" type="submit" class="btn btn-primary btn-block btn-lg">
+              <i class="fa fa-save"></i>
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
