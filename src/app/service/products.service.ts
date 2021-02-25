@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { BehaviorSubject, Observable, of } from 'rxjs';
 import { Product } from 'app/model/product';
-import { tap } from 'rxjs/operators';
+import { delay, map, tap } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
@@ -19,18 +19,15 @@ export class ProductsService {
 
   getById(id: number): Observable<Product> {
     id = typeof id === 'string' ? parseInt(id, 10) : id;
-    const ev: Product = this.list$.value.find(
-      item => item.id === id);
-    if (ev) {
-      return of(ev);
-    }
-    return of(new Product());
+    return this.getAll().pipe(
+      map(items => {
+        return items.find(item => id == item.id)
+      }
+      ));
   }
 
-  getAll(): void {
-    this.http.get<Product[]>(this.apiUrl).subscribe(
-      items => this.list$.next(items)
-    );
+  getAll(): Observable<Product[]> {
+    return this.http.get<Product[]>(this.apiUrl).pipe(delay(500));
   }
 
   create(product: Product): void {
