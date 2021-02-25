@@ -37,9 +37,9 @@ export const ROUTES: RouteInfo[] = [
     class: "active-pro",
   },
 
-  { path: '/order-list', title: 'Order', icon: 'location_on', class: '' },
-  { path: '/customer-list', title: 'Vásárlók',  icon:'library_books', class: '' },
-    
+  { path: '/order-list', title: 'Rendelések', icon: 'location_on', class: '' },
+  { path: '/customer-list', title: 'Vásárlók', icon: 'library_books', class: '' },
+
 ];
 
 @Component({
