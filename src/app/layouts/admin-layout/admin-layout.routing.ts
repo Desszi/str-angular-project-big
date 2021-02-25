@@ -29,5 +29,5 @@ export const AdminLayoutRoutes: Routes = [
   { path: 'customer-list', component: CustomerListComponent },
 
 
-  {path: 'edit-customer/:id', component: EditCostumerComponent}
+  {path: "edit-costumer/:id", component: EditCostumerComponent}
 ];

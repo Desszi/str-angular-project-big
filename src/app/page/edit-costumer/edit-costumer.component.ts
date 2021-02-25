@@ -48,7 +48,7 @@ export class EditCostumerComponent implements OnInit {
           () => { }
         );
         this.toastr.success('Sikeres módosítás :)');
-        this.router.navigate(['/product-list']);
+        this.router.navigate(['/customer-list']);
       }
     } catch (error) {
       this.toastr.success('Probléma történt:' + error);
