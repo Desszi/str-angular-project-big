@@ -24,6 +24,7 @@ import { CommonModule } from '@angular/common';
 import { ToastrModule } from 'ngx-toastr';
 import { LoadingComponent } from './page/loading/loading.component';
 import { TableListComponent } from './common/table-list/table-list.component';
+import { EditBillComponent } from './page/edit-bill/edit-bill.component';
 
 @NgModule({
   imports: [
@@ -49,7 +50,8 @@ import { TableListComponent } from './common/table-list/table-list.component';
     OrderListComponent,
     CustomerListComponent,
     LoadingComponent,
-    TableListComponent
+    TableListComponent,
+    EditBillComponent
 
   ],
   providers: [],
