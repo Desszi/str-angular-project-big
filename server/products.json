@@ -1408,7 +1408,7 @@
   "orders": [
     {
       "id": 2,
-      "customerID": 45,
+      "customerID": "200",
       "productID": 6,
       "amount": 41,
       "status": "new"
