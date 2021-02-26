@@ -6,9 +6,9 @@
                     <div class="card-header card-header-danger">
                         <h4 class="card-title ">Rendelések</h4>
                         <p class="card-category"> Beszéljük meg egy sör mellett!</p>
-                        <button class="btn btn-large btn-warning">
+                        <!--                         <button class="btn btn-large btn-warning">
                             <i>Egészségedre</i>
-                        </button>
+                        </button> -->
                     </div>
                     <div class="card-body">
                         <div class="table-responsive">
@@ -16,18 +16,18 @@
                                 <thead>
                                     <tr>
                                         <th (click)="onColumnSelect('id')" class="bg-primary text-center">id</th>
-                                        <th (click)="onColumnSelect('customerID')" class="bg-info text-center">customerID</th>
-                                        <th (click)="onColumnSelect('productID')" 
-                                             class="bg-primary text-center">productID</th>
-                                        <th (click)="onColumnSelect('amount')" class="bg-info text-center"
-                                        >amount</th>
-                                        <th (click)="onColumnSelect('status')" class="bg-primary text-center"
-                                        >status</th>
+                                        <th (click)="onColumnSelect('customerID')" class="bg-info text-center">
+                                            customerID</th>
+                                        <th (click)="onColumnSelect('productID')" class="bg-primary text-center">
+                                            productID</th>
+                                        <th (click)="onColumnSelect('amount')" class="bg-info text-center">amount</th>
+                                        <th (click)="onColumnSelect('status')" class="bg-primary text-center">status
+                                        </th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     <tr *ngFor="let order of orders | search: phraseString:'name'
-                                    | sort: columnKey:direction">  
+                                    | sort: columnKey:direction">
                                         <td>{{ order.id }}</td>
                                         <td>{{ order.customerID }}</td>
                                         <td>{{ order.productID }}</td>
