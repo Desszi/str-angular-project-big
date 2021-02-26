@@ -1435,6 +1435,14 @@
       "email": "tanshell1d@artisteer.com",
       "addressId": 37,
       "active": false
+    },
+    {
+      "id": 51,
+      "firstName": "Berta",
+      "lastName": "Sakk",
+      "email": "berta@sa.hu",
+      "address": "",
+      "active": true
     }
   ],
   "orders": [
