@@ -1407,13 +1407,6 @@
   ],
   "orders": [
     {
-      "id": 1,
-      "customerID": 33,
-      "productID": 30,
-      "amount": 49,
-      "status": "paid"
-    },
-    {
       "id": 2,
       "customerID": 45,
       "productID": 6,
