@@ -12,7 +12,7 @@ import { BillListComponent } from "app/page/bill-list/bill-list.component";
 import { OrderListComponent } from "../../page/order-list/order-list.component";
 import { CustomerListComponent } from "app/common/customer-list/customer-list.component";
 import { ProductsListComponent } from "app/page/products-list/products-list.component";
-import { EditCostumerComponent } from "app/page/edit-costumer/edit-costumer.component";
+import { EditCustomerComponent } from "app/page/edit-customer/edit-customer.component";
 import { EditOrderComponent } from "app/page/edit-order/edit-order.component";
 import { EditBillComponent } from "app/page/edit-bill/edit-bill.component";
 
@@ -31,5 +31,5 @@ export const AdminLayoutRoutes: Routes = [
   { path: "edit-order/:id", component: EditOrderComponent },
   { path: 'customer-list', component: CustomerListComponent },
   { path: "edit-bill/:id", component: EditBillComponent },
-  {path: "edit-costumer/:id", component: EditCostumerComponent}
+  {path: "edit-customer/:id", component: EditCustomerComponent}
 ];
