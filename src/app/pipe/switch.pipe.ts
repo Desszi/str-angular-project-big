@@ -10,6 +10,7 @@ export class SwitchPipe implements PipeTransform {
     else if (value === 'false' || value === false) { return value = 'Nem' }
     else if (value === 'new') { return value = 'Új' }
     else if (value === 'shipped') { return value = 'Kiszállítva' }
+    else if (value === 'paid') { return value = 'Fizetve' }
     else if (value == 1) { return value = 'Ale' }
     else if (value == 2) { return value = 'APA' }
     else if (value == 3) { return value = 'Búza' }

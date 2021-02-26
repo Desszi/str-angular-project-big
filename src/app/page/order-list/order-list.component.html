@@ -32,7 +32,7 @@
                                         <td>{{ order.customerID }}</td>
                                         <td>{{ order.productID }}</td>
                                         <td>{{ order.amount}}</td>
-                                        <td>{{ order.status }}</td>
+                                        <td>{{ order.status | switch }}</td>
                                         <td>
                                             <div class="btn-group">
                                                 <button [routerLink]="'/edit-order/' + order.id" class="btn btn-info">
