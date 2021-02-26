@@ -61,10 +61,9 @@ export class DashboardComponent implements OnInit {
       let newOrdersSum = 0;
       items.filter(i => i.status == "new").forEach(item => newOrdersSum += item.amount);
       let paidOrdersSum = 0;
-      items.filter(i => i.status == "new").forEach(item => paidOrdersSum += item.amount);
+      items.filter(i => i.status == "paid").forEach(item => paidOrdersSum += item.amount);
       let shippedOrdersSum = 0;
-      items.filter(i => i.status == "new").forEach(item => shippedOrdersSum += item.amount);
-
+      items.filter(i => i.status == "shipped").forEach(item => shippedOrdersSum += item.amount);
 
       this.productsSumChart = {
         labels: ['Új', 'Fizetve', 'Leszállítva',],
@@ -72,7 +71,6 @@ export class DashboardComponent implements OnInit {
       };
 
     })
-
 
     this.loading = true;
     this.billsService.getAll().pipe(
