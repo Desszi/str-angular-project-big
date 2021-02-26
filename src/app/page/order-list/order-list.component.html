@@ -6,9 +6,9 @@
                     <div class="card-header card-header-danger">
                         <h4 class="card-title ">Rendelések</h4>
                         <p class="card-category"> Beszéljük meg egy sör mellett!</p>
-                        <!--                         <button class="btn btn-large btn-warning">
-                            <i>Egészségedre</i>
-                        </button> -->
+                        <button [routerLink]="'/edit-order/0'" class="btn btn-large btn-warning btn-block">
+                            <i class="fa fa-plus"></i>
+                        </button>
                     </div>
                     <div class="card-body">
                         <div class="table-responsive">
@@ -32,12 +32,12 @@
                                         <td>{{ order.customerID }}</td>
                                         <td>{{ order.productID }}</td>
                                         <td>{{ order.amount}}</td>
-                                        <td>{{ order.status }}</td>
+                                        <td>{{ order.status | switch }}</td>
                                         <td>
                                             <div class="btn-group">
-                                                <!--<button [routerLink]="'/edit-order/' + order.id" class="btn btn-info">
+                                                <button [routerLink]="'/edit-order/' + order.id" class="btn btn-info">
                                                     <i class="fa fa-edit"></i>
-                                                </button>-->
+                                                </button>
                                                 <button (click)="onDelete(order)" class="btn btn-danger">
                                                     <i class="fa fa-trash"></i>
                                                 </button>

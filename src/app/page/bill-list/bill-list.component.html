@@ -17,10 +17,7 @@
                   <th>status</th>
                   <th>
                     <div class="btn-group">
-                      <button
-                        [routerLink]="['/edit-bill/' + '0']"
-                        class="btn btn-info"
-                      >
+                      <button [routerLink]="['/edit-bill/' + '0']" class="btn btn-info">
                         <i class="fa fa-plus-square"></i>
                       </button>
                     </div>
@@ -31,13 +28,10 @@
                     <td>{{ bill.id }}</td>
                     <td>{{ bill.orderID }}</td>
                     <td>{{ bill.amount }}</td>
-                    <td>{{ bill.status }}</td>
+                    <td>{{ bill.status | switch }}</td>
                     <td>
                       <div class="btn-group">
-                        <button
-                          [routerLink]="['/edit-bill/' + bill.id]"
-                          class="btn btn-info"
-                        >
+                        <button [routerLink]="['/edit-bill/' + bill.id]" class="btn btn-info">
                           <i class="fa fa-edit"></i>
                         </button>
                         <button (click)="onDelete(bill)" class="btn btn-danger">
