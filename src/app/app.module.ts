@@ -29,6 +29,7 @@ import { EditCostumerComponent } from './page/edit-costumer/edit-costumer.compon
 import { EditOrderComponent } from './page/edit-order/edit-order.component';
 import { EditBillComponent } from "./page/edit-bill/edit-bill.component";
 import { InfoCardComponent } from './common/info-card/info-card.component';
+import { ChartCardComponent } from './common/chart-card/chart-card.component';
 
 @NgModule({
   imports: [
@@ -60,6 +61,7 @@ import { InfoCardComponent } from './common/info-card/info-card.component';
     EditBillComponent,
     InfoCardComponent,
     DashboardComponent,
+    ChartCardComponent,
   ],
   providers: [],
   bootstrap: [AppComponent],
