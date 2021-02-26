@@ -12,7 +12,7 @@ import { ToastrService } from 'ngx-toastr';
 })
 export class EditOrderComponent implements OnInit {
 
-  product: Order = new Order();
+  order: Order = new Order();
   loading: boolean = true;
 
   constructor(
@@ -27,7 +27,7 @@ export class EditOrderComponent implements OnInit {
       params =>
         this.ordersService.get(params.id).subscribe(
           item => {
-            this.product = item || new Order();
+            this.order = item || new Order();
           }
         )
     )
@@ -41,14 +41,14 @@ export class EditOrderComponent implements OnInit {
           () => { }
         );
         this.toastr.success('Sikeresen hozzáadásra került');
-        this.router.navigate(['/product-list']);
+        this.router.navigate(['/order-list']);
       }
       else {
         this.ordersService.update(item).subscribe(
           () => { }
         );
         this.toastr.success('Sikeres módosítás :)');
-        this.router.navigate(['/product-list']);
+        this.router.navigate(['/order-list']);
       }
     } catch (error) {
       this.toastr.success('Probléma történt:' + error);
