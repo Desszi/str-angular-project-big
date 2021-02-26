@@ -25,7 +25,7 @@ import { ToastrModule } from 'ngx-toastr';
 import { LoadingComponent } from './page/loading/loading.component';
 import { SearchPipe } from '../app/pipe/search.pipe';
 import { SortPipe } from '../app/pipe/sort.pipe';
-import { EditCostumerComponent } from './page/edit-costumer/edit-costumer.component';
+import { EditCustomerComponent } from './page/edit-customer/edit-customer.component';
 import { EditOrderComponent } from './page/edit-order/edit-order.component';
 import { EditBillComponent } from "./page/edit-bill/edit-bill.component";
 import { InfoCardComponent } from './common/info-card/info-card.component';
@@ -58,7 +58,7 @@ import { NavigationComponent } from './common/navigation/navigation.component';
     LoadingComponent,
     SearchPipe,
     SortPipe,
-    EditCostumerComponent,
+    EditCustomerComponent,
     EditOrderComponent,
     EditBillComponent,
     InfoCardComponent,
