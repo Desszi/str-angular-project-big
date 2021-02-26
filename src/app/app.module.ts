@@ -31,7 +31,7 @@ import { EditBillComponent } from "./page/edit-bill/edit-bill.component";
 import { InfoCardComponent } from './common/info-card/info-card.component';
 import { ChartCardComponent } from './common/chart-card/chart-card.component';
 import { SwitchPipe } from './pipe/switch.pipe';
-import { NavigationComponent } from './common/navigation/navigation.component';
+
 
 @NgModule({
   imports: [
@@ -65,7 +65,6 @@ import { NavigationComponent } from './common/navigation/navigation.component';
     DashboardComponent,
     ChartCardComponent,
     SwitchPipe,
-    NavigationComponent,
   ],
   providers: [],
   bootstrap: [AppComponent],
