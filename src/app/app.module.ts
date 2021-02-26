@@ -29,11 +29,8 @@ import { EditCostumerComponent } from './page/edit-costumer/edit-costumer.compon
 import { EditOrderComponent } from './page/edit-order/edit-order.component';
 import { EditBillComponent } from "./page/edit-bill/edit-bill.component";
 import { InfoCardComponent } from './common/info-card/info-card.component';
-<<<<<<< HEAD
 import { ChartCardComponent } from './common/chart-card/chart-card.component';
-=======
 import { SwitchPipe } from './pipe/switch.pipe';
->>>>>>> origin/dev
 
 @NgModule({
   imports: [
@@ -65,11 +62,8 @@ import { SwitchPipe } from './pipe/switch.pipe';
     EditBillComponent,
     InfoCardComponent,
     DashboardComponent,
-<<<<<<< HEAD
     ChartCardComponent,
-=======
     SwitchPipe,
->>>>>>> origin/dev
   ],
   providers: [],
   bootstrap: [AppComponent],
