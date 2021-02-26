@@ -1,5 +1,10 @@
 import { Component, OnInit } from '@angular/core';
+import { BillService } from 'app/service/bill.service';
+import { CustomerService } from 'app/service/customer.service';
+import { OrdersService } from 'app/service/orders.service';
+import { ProductsService } from 'app/service/products.service';
 import * as Chartist from 'chartist';
+import { finalize } from 'rxjs/operators';
 
 @Component({
   selector: 'app-dashboard',
@@ -8,7 +13,54 @@ import * as Chartist from 'chartist';
 })
 export class DashboardComponent implements OnInit {
 
-  constructor() { }
+  activeProductsCount:number = 0;
+  activeCustomerCount:number = 0;
+  pendingOrdersCount:number = 0;
+  pendingBillsSum:number = 0;
+  loading:boolean;
+
+  constructor( 
+    private productsService:ProductsService,
+    private customersService:CustomerService,
+    private ordersService:OrdersService,
+    private billsService:BillService
+    ) { }
+
+
+    
+    update(): void {
+      
+      this.loading = true;
+      this.productsService.getAll().pipe(
+        finalize(() => this.loading = false)
+      ).subscribe(items => { 
+        this.activeProductsCount = items.filter(i=>i.active).length;
+      })
+
+      this.loading = true;
+      this.customersService.getAll().pipe(
+        finalize(() => this.loading = false)
+      ).subscribe(items => { 
+        this.activeCustomerCount = items.filter(i=>i.active).length;
+      })
+
+      this.loading = true;
+      this.ordersService.getAll().pipe(
+        finalize(() => this.loading = false)
+      ).subscribe(items => { 
+        this.pendingOrdersCount = items.filter(i=>i.status == "paid").length;
+      })
+
+      this.loading = true;
+      this.billsService.getAll().pipe(
+        finalize(() => this.loading = false)
+      ).subscribe(items => { 
+        this.pendingBillsSum = 0;
+        items.filter(i=>i.status == "new").forEach(item=> this.pendingBillsSum += item.amount );
+      })
+    }
+
+
   startAnimationForLineChart(chart){
       let seq: any, delays: any, durations: any;
       seq = 0;
@@ -66,8 +118,9 @@ export class DashboardComponent implements OnInit {
       seq2 = 0;
   };
   ngOnInit() {
+    this.update();
       /* ----------==========     Daily Sales Chart initialization For Documentation    ==========---------- */
-
+    /*
       const dataDailySalesChart: any = {
           labels: ['M', 'T', 'W', 'T', 'F', 'S', 'S'],
           series: [
@@ -88,9 +141,9 @@ export class DashboardComponent implements OnInit {
 
       this.startAnimationForLineChart(dailySalesChart);
 
-
+*/
       /* ----------==========     Completed Tasks Chart initialization    ==========---------- */
-
+/*
       const dataCompletedTasksChart: any = {
           labels: ['12p', '3p', '6p', '9p', '12p', '3a', '6a', '9a'],
           series: [
@@ -111,11 +164,11 @@ export class DashboardComponent implements OnInit {
 
       // start animation for the Completed Tasks Chart - Line Chart
       this.startAnimationForLineChart(completedTasksChart);
-
+*/
 
 
       /* ----------==========     Emails Subscription Chart initialization    ==========---------- */
-
+/*
       var datawebsiteViewsChart = {
         labels: ['J', 'F', 'M', 'A', 'M', 'J', 'J', 'A', 'S', 'O', 'N', 'D'],
         series: [
@@ -145,6 +198,7 @@ export class DashboardComponent implements OnInit {
 
       //start animation for the Emails Subscription Chart
       this.startAnimationForBarChart(websiteViewsChart);
+      */
   }
 
 }
