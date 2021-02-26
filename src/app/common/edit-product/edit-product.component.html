@@ -1,4 +1,4 @@
-<div *ngIf="!loading" class="main-content">
+<div class="main-content">
   <div class="container-fluid">
     <div class="row">
       <div *ngIf="product" class="col-6 offset-3">
@@ -34,8 +34,8 @@
           </div>
           <div class="form-group my-5">
             <label for="description">LEÍRÁS</label>
-            <textarea name="description" [(ngModel)]="product.description" cols="60" rows="2" pattern=".{5,100}"
-              required value="Default product"></textarea>
+            <textarea class="form-control" name="description" [(ngModel)]="product.description" cols="60" rows="2"
+              pattern=".{5,100}" required value="Default product"></textarea>
             <div [hidden]="productForm.controls.description?.valid" class="error-message">
               A Leírás mezőnek legalább 5, legfeljebb 100 karakterből kell állnia.
             </div>
@@ -52,15 +52,15 @@
             <label for="featured">KIEMELT</label>
             <select name="featured" [(ngModel)]="product.featured" class="form-control" required
               value="Default product">
-              <option value="true">true</option>
-              <option value="false">false</option>
+              <option value="true">Igen</option>
+              <option value="false">Nem</option>
             </select>
           </div>
           <div class="form-group my-5">
             <label for="active">ELÉRHETŐ</label>
             <select name="active" [(ngModel)]="product.active" class="form-control" required value="Default product">
-              <option value="true">true</option>
-              <option value="false">false</option>
+              <option value="true">Igen</option>
+              <option value="false">Nem</option>
             </select>
           </div>
           <button [disabled]="productForm.invalid" type="submit" class="btn btn-primary btn-block btn-lg">

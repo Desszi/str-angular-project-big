@@ -3,11 +3,19 @@ import { Injectable } from '@angular/core';
 import { Customer } from 'app/model/customer';
 import { BehaviorSubject, of } from 'rxjs';
 import { Observable } from 'rxjs';
+import { BaseService } from './base.service';
+import { ConfigService } from './config.service';
 
 @Injectable({
   providedIn: 'root'
 })
-export class CustomerService {
+
+export class CustomerService extends BaseService<Customer> {
+  constructor(private httpClient: HttpClient) {
+    super(new ConfigService('http://localhost:3000'), httpClient, "customers");
+  }
+}
+/* export class CustomerService {
 
   apiUrl: string = 'http://localhost:3000/customers';
   clist$: BehaviorSubject<Customer[]> = new BehaviorSubject<Customer[]>([]);
@@ -38,4 +46,4 @@ export class CustomerService {
       this.getAll();
     });
   }
-}
+} */
