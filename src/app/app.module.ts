@@ -28,6 +28,7 @@ import { SortPipe } from '../app/pipe/sort.pipe';
 import { EditCostumerComponent } from './page/edit-costumer/edit-costumer.component';
 import { EditOrderComponent } from './page/edit-order/edit-order.component';
 import { EditBillComponent } from "./page/edit-bill/edit-bill.component";
+import { InfoCardComponent } from './common/info-card/info-card.component';
 
 @NgModule({
   imports: [
@@ -57,6 +58,8 @@ import { EditBillComponent } from "./page/edit-bill/edit-bill.component";
     EditCostumerComponent,
     EditOrderComponent,
     EditBillComponent,
+    InfoCardComponent,
+    DashboardComponent,
   ],
   providers: [],
   bootstrap: [AppComponent],
