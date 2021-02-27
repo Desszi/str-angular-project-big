@@ -11,7 +11,7 @@ export const ROUTES: RouteInfo[] = [
   { path: "/dashboard", title: "Dashboard", icon: "dashboard", class: "" },
   { path: "/product-list", title: "Termékek", icon: "content_paste", class: "" },
   { path: "/address-list", title: "Címek", icon: "library_books", class: "" },
-  { path: "/bill-list", title: "Számlák", icon: "receipt", class: "" },
+  { path: "/bill-list", title: "Pénztár", icon: "receipt", class: "" },
   { path: '/order-list', title: 'Rendelések', icon: 'location_on', class: '' },
   { path: '/customer-list', title: 'Vásárlók', icon: 'library_books', class: '' },
 
