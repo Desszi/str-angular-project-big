@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { Product } from 'app/model/product';
 import { ProductsService } from 'app/service/products.service';
 import { finalize } from 'rxjs/operators';
@@ -12,6 +12,10 @@ export class ProductsListComponent implements OnInit {
 
   products: Product[];
   loading: boolean;
+
+  @Input() phraseString: string = '';
+  direction: number = 1;
+  columnKey: string = '';
 
   constructor(
     private productsService: ProductsService
@@ -32,6 +36,15 @@ export class ProductsListComponent implements OnInit {
     this.productsService.getAll().pipe(
       finalize(() => this.loading = false)
     ).subscribe(items => this.products = items)
+  }
+
+  onColumnSelect(key: string): void {
+    if (this.columnKey === key) {
+      this.direction = this.direction * -1;
+    } else {
+      this.direction = 1;
+    }
+    this.columnKey = key;
   }
 
 }

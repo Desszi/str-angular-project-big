@@ -15,19 +15,27 @@
                             <table class="table table-striped">
                                 <thead>
                                     <tr>
-                                        <th class="bg-dark font-weight-bold text-light text-center">#</th>
-                                        <th class="bg-dark font-weight-bold text-light">NÉV</th>
-                                        <th class="bg-dark font-weight-bold text-light text-center">TÍPUS</th>
-                                        <th class="bg-dark font-weight-bold text-light text-center">KATEGÓRIA</th>
-                                        <th class="bg-dark font-weight-bold text-light text-center">LEÍRÁS</th>
-                                        <th class="bg-dark font-weight-bold text-light text-center">ÁR</th>
-                                        <th class="bg-dark font-weight-bold text-light text-center">KIEMELT</th>
-                                        <th class="bg-dark font-weight-bold text-light text-center">ELÉRHETŐ</th>
+                                        <th (click)="onColumnSelect('id')" id="columnName"
+                                            class="bg-dark font-weight-bold text-light text-center">#</th>
+                                        <th (click)="onColumnSelect('name')" id="columnName"
+                                            class="bg-dark font-weight-bold text-light">NÉV</th>
+                                        <th (click)="onColumnSelect('type')" id="columnName"
+                                            class="bg-dark font-weight-bold text-light text-center">TÍPUS</th>
+                                        <th (click)="onColumnSelect('catID')" id="columnName"
+                                            class="bg-dark font-weight-bold text-light text-center">KATEGÓRIA</th>
+                                        <th (click)="onColumnSelect('description')" id="columnName"
+                                            class="bg-dark font-weight-bold text-light text-center">LEÍRÁS</th>
+                                        <th (click)="onColumnSelect('price')" id="columnName"
+                                            class="bg-dark font-weight-bold text-light text-center">ÁR</th>
+                                        <th (click)="onColumnSelect('featured')" id="columnName"
+                                            class="bg-dark font-weight-bold text-light text-center">KIEMELT</th>
+                                        <th (click)="onColumnSelect('active')" id="columnName"
+                                            class="bg-dark font-weight-bold text-light text-center">ELÉRHETŐ</th>
                                         <th class="bg-dark font-weight-bold text-light text-center">SZERKESZTÉS</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr *ngFor="let product of products">
+                                    <tr *ngFor="let product of products | sort: columnKey:direction">
                                         <td class="text-center">{{ product.id }}</td>
                                         <td class="">{{ product.name }}</td>
                                         <td class="text-center">{{ product.type }}</td>

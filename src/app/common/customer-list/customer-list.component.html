@@ -19,7 +19,7 @@
                     <th class="font-weight-bold">Vezetéknév</th>
                     <th class="font-weight-bold">Keresztnév</th>
                     <th class="font-weight-bold">E-mail cím</th>
-                    <!-- <th class="font-weight-bold">Cím</th> -->
+                    <th class="font-weight-bold">Cím</th>
                     <th class="font-weight-bold">Aktív ügyfél?</th>
                   </tr>
                 </thead>
@@ -29,7 +29,7 @@
                     <td>{{ customer.lastName }}</td>
                     <td>{{ customer.firstName }}</td>
                     <td>{{ customer.email }}</td>
-                    <!-- <td>{{ customer.address }}</td> -->
+                    <td>{{ customer.addressId }}</td>
                     <td>{{ customer.active | switch }}</td>
                     <td>
                       <div class="btn-group">
