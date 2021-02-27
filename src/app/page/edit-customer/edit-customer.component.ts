@@ -6,11 +6,11 @@ import { CustomerService } from 'app/service/customer.service';
 import { ToastrService } from 'ngx-toastr';
 
 @Component({
-  selector: 'app-edit-costumer',
-  templateUrl: './edit-costumer.component.html',
-  styleUrls: ['./edit-costumer.component.css']
+  selector: 'app-edit-customer',
+  templateUrl: './edit-customer.component.html',
+  styleUrls: ['./edit-customer.component.css']
 })
-export class EditCostumerComponent implements OnInit {
+export class EditCustomerComponent implements OnInit {
 
   customer: Customer = new Customer();
 
