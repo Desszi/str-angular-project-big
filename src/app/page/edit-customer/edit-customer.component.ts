@@ -24,34 +24,33 @@ export class EditCustomerComponent implements OnInit {
 
   ngOnInit(): void {
     this.activatedRoute.params.subscribe(
-      params =>
-        this.customerService.get(params.id).subscribe(
-          item => {
-            this.customer = item || new Customer();
-          }
-        )
+      params =>{
+        if(params.id == 0)
+          this.customer = new Customer();
+        else
+          this.customerService.get(params.id).subscribe(
+            item => {
+              this.customer = item;
+            })
+      }
     )
   }
-
+  
   onUpdate(form: NgForm, item: Customer): void {
 
     try {
       if (item.id == 0) {
-        this.customerService.create(item).subscribe(
-          () => { }
-        );
-        this.toastr.success('Sikeresn hozzáadásra került');
+        this.customerService.create(item).subscribe(() => {});
+        this.toastr.warning('Sikeresn hozzáadásra került');
         this.router.navigate(['/customer-list']);
       }
       else {
-        this.customerService.update(item).subscribe(
-          () => { }
-        );
+        this.customerService.update(item).subscribe(() => {});
         this.toastr.success('Sikeres módosítás :)');
         this.router.navigate(['/customer-list']);
       }
     } catch (error) {
-      this.toastr.success('Probléma történt:' + error);
+      this.toastr.error('Probléma történt:' + error);
     }
   }
 
