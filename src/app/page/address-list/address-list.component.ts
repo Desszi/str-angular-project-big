@@ -28,10 +28,12 @@ export class AddressListComponent implements OnInit {
     });
   }
 
-  update(): void {
+  update(): void { 
     this.loading = true;
-    this.addressesService.getAll().pipe(
-      finalize(() => this.loading = false)
-    ).subscribe(items => this.addresses = items)
+    setTimeout(()=>{
+      this.addressesService.getAll().pipe(
+        finalize(() => this.loading = false)
+      ).subscribe(items => this.addresses = items)
+    },200);
   }
 }

@@ -32,48 +32,12 @@ export class CustomerListComponent implements OnInit {
 
   update(): void {
     this.loading = true;
-    this.customerService.getAll().pipe(
-      finalize(() => this.loading = false)
-    ).subscribe(items => this.customers = items)
+    setTimeout(()=>{
+      this.customerService.getAll().pipe(
+        finalize(() => this.loading = false)
+      ).subscribe(items => this.customers = items)
+    },200);
   }
-
 }
 
- /*  customer$: BehaviorSubject<Customer[]> = this.customerService.clist$  ;
-
-  constructor(
-    private customerService:CustomerService, 
-    private activatedRoute:ActivatedRoute,
-    private router: Router,
-
-  ) { }
-
-  ngOnInit(): void {
-
-    this.customerService.getAll();
-   */
-
-
-   /* this.activatedRoute.params.subscribe(
-      params=> 
-          this.customerService.getById(params.id).subscribe(
-          item =>{
-            console.log(item);
-            this.customer = item || new Customer();
-          }
-        )
-     )
-    }*/
-
-
-   /* onUpdate(form: NgForm, item: Customer): void {
-      if(item.id == 0){
-        this.customerService.update(item);
-        this.router.navigate(['/customer-list']);
-      }
-      else{
-        this.customerService.update(item)
-        this.router.navigate(['/customer-list']);    
-      }
-  }*/
 

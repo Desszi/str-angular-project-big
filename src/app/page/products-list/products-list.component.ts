@@ -29,9 +29,11 @@ export class ProductsListComponent implements OnInit {
 
   update(): void {
     this.loading = true;
-    this.productsService.getAll().pipe(
-      finalize(() => this.loading = false)
-    ).subscribe(items => this.products = items)
+    setTimeout(()=>{
+      this.productsService.getAll().pipe(
+        finalize(() => this.loading = false)
+      ).subscribe(items => this.products = items)
+    },200);
   }
 
 }

@@ -53,9 +53,11 @@ export class OrderListComponent implements OnInit {
 
   update(): void {
     this.loading = true;
-    this.ordersService.getAll().pipe(
-      finalize(() => this.loading = false)
-    ).subscribe(items => this.orders = items)
+    setTimeout(()=>{
+      this.ordersService.getAll().pipe(
+        finalize(() => this.loading = false)
+      ).subscribe(items => this.orders = items)
+    },200);
   }
 
 }

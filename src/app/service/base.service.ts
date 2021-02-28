@@ -19,8 +19,9 @@ export class BaseService<T extends { id: number }> {
     this.entityName = entityName;
   }
 
+
   getAll(): Observable<T[]> {
- //  return this.http.get<T[]>(`${this.config.apiUrl}/${this.entityName}`).pipe(delay(0));
+    
  console.log('Base.Service.GetAll');
  return this.http.get<T[]>(`${this.config.apiUrl}/${this.entityName}`);
   }
