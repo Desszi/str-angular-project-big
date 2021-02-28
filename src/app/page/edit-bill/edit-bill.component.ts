@@ -21,11 +21,17 @@ export class EditBillComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.activatedRoute.params.subscribe((params) =>
-      this.billService.get(params.id).subscribe((item) => {
-        this.bill = item || new Bill();
-      })
-    );
+    this.activatedRoute.params.subscribe(
+      params =>{
+        if(params.id == 0)
+          this.bill = new Bill();
+        else
+          this.billService.get(params.id).subscribe(
+            item => {
+              this.bill = item;
+            })
+      }
+    )
   }
 
   onUpdate(form: NgForm, item: Bill): void {

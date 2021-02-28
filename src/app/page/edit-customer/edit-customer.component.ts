@@ -24,15 +24,18 @@ export class EditCustomerComponent implements OnInit {
 
   ngOnInit(): void {
     this.activatedRoute.params.subscribe(
-      params =>
-        this.customerService.get(params.id).subscribe(
-          item => {
-            this.customer = item || new Customer();
-          }
-        )
+      params =>{
+        if(params.id == 0)
+          this.customer = new Customer();
+        else
+          this.customerService.get(params.id).subscribe(
+            item => {
+              this.customer = item;
+            })
+      }
     )
   }
-
+  
   onUpdate(form: NgForm, item: Customer): void {
 
     try {

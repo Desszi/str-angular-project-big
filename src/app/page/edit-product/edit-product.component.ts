@@ -24,12 +24,15 @@ export class EditProductComponent implements OnInit {
 
   ngOnInit(): void {
     this.activatedRoute.params.subscribe(
-      params =>
-        this.productsService.get(params.id).subscribe(
-          item => {
-            this.product = item || new Product();
-          }
-        )
+      params =>{
+        if(params.id == 0)
+          this.product = new Product();
+        else
+          this.productsService.get(params.id).subscribe(
+            item => {
+              this.product = item;
+            })
+      }
     )
   }
 

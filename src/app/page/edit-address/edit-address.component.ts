@@ -23,12 +23,15 @@ export class EditAddressComponent implements OnInit {
 
   ngOnInit(): void {
     this.activatedRoute.params.subscribe(
-      params =>
-        this.addressesService.get(params.id).subscribe(
-          item => {
-            this.address = item || new Address();
-          }
-        )
+      params =>{
+        if(params.id == 0)
+          this.address = new Address();
+        else
+          this.addressesService.get(params.id).subscribe(
+            item => {
+              this.address = item;
+            })
+      }
     )
   }
 

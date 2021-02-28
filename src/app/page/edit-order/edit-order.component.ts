@@ -24,12 +24,15 @@ export class EditOrderComponent implements OnInit {
 
   ngOnInit(): void {
     this.activatedRoute.params.subscribe(
-      params =>
-        this.ordersService.get(params.id).subscribe(
-          item => {
-            this.order = item || new Order();
-          }
-        )
+      params =>{
+        if(params.id == 0)
+          this.order = new Order();
+        else
+          this.ordersService.get(params.id).subscribe(
+            item => {
+              this.order = item;
+            })
+      }
     )
   }
 
