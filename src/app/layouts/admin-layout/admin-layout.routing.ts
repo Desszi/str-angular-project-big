@@ -15,12 +15,14 @@ import { ProductsListComponent } from "app/page/products-list/products-list.comp
 import { EditCustomerComponent } from "app/page/edit-customer/edit-customer.component";
 import { EditOrderComponent } from "app/page/edit-order/edit-order.component";
 import { EditBillComponent } from "app/page/edit-bill/edit-bill.component";
+import { EditAddressComponent } from "app/page/edit-address/edit-address.component";
 
 export const AdminLayoutRoutes: Routes = [
   { path: "dashboard", component: DashboardComponent },
   { path: "user-profile", component: UserProfileComponent },
   { path: "product-list", component: ProductsListComponent },
   { path: "address-list", component: AddressListComponent },
+  { path: "edit-address/:id", component: EditAddressComponent },
   { path: "typography", component: TypographyComponent },
   { path: "edit-product/:id", component: EditProductComponent },
   { path: "icons", component: IconsComponent },

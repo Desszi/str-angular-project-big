@@ -9,26 +9,7 @@ import { ConfigService } from './config.service';
   providedIn: 'root'
 })
 export class OrdersService extends BaseService<Order> {
-  constructor(private httpClient: HttpClient) {
-    super(new ConfigService('http://localhost:3000'), httpClient, "orders");
+  constructor(httpClient: HttpClient, config:ConfigService) {
+    super(config, httpClient, "orders");
   }
 }
-
-
-/*apiUrl: string = 'http://localhost:3000/orders';
-  orderList$: BehaviorSubject<Order[]> = new BehaviorSubject<Order[]>([]);
-
-
-
-  constructor(
-    private http: HttpClient
-  ) { }
-
-  getAll(): void {
-
-    this.http.get<Order[]>(this.apiUrl).subscribe(
-      orders => this.orderList$.next(orders)
-    );
-  }
-}
-*/

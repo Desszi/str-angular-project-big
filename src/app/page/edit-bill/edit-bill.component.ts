@@ -32,7 +32,7 @@ export class EditBillComponent implements OnInit {
     try {
       if (item.id == 0) {
         this.billService.create(item).subscribe(() => {});
-        this.toastr.success("Sikeresn hozzáadásra került");
+        this.toastr.warning("Sikeresn hozzáadásra került");
         this.router.navigate(["/bill-list"]);
       } else {
         this.billService.update(item).subscribe(() => {});
@@ -40,7 +40,7 @@ export class EditBillComponent implements OnInit {
         this.router.navigate(["/bill-list"]);
       }
     } catch (error) {
-      this.toastr.success("Probléma történt:" + error);
+      this.toastr.error("Probléma történt:" + error);
     }
   }
 }

@@ -37,21 +37,17 @@ export class EditCustomerComponent implements OnInit {
 
     try {
       if (item.id == 0) {
-        this.customerService.create(item).subscribe(
-          () => { }
-        );
-        this.toastr.success('Sikeresn hozzáadásra került');
+        this.customerService.create(item).subscribe(() => {});
+        this.toastr.warning('Sikeresn hozzáadásra került');
         this.router.navigate(['/customer-list']);
       }
       else {
-        this.customerService.update(item).subscribe(
-          () => { }
-        );
+        this.customerService.update(item).subscribe(() => {});
         this.toastr.success('Sikeres módosítás :)');
         this.router.navigate(['/customer-list']);
       }
     } catch (error) {
-      this.toastr.success('Probléma történt:' + error);
+      this.toastr.error('Probléma történt:' + error);
     }
   }
 

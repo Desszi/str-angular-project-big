@@ -1,0 +1,73 @@
+<div class="main-content">
+  <div class="container-fluid">
+    <div class="row">
+      <div *ngIf="address" class="col-6 offset-3">
+        <form #addressForm="ngForm" (ngSubmit)="onUpdate(addressForm, address)">
+          <div class="form-group my-5">
+            <label for="name">NÉV</label>
+            <input name="name" [(ngModel)]="address.name" type="text" class="form-control" pattern=".{5,25}" required
+              value="Default address">
+            <div [hidden]="addressForm.controls.name?.valid" class="error-message">
+              A Név mezőnek legalább 5, legfeljebb 25 karakterből kell állnia.
+            </div>
+          </div>
+          <div class="form-group my-5">
+            <label for="type">TÍPUS</label>
+            <input name="type" [(ngModel)]="address.type" type="text" class="form-control" pattern=".{5,25}" required
+              value="Default address">
+            <div [hidden]="addressForm.controls.type?.valid" class="error-message">
+              A Típus mezőnek legalább 5, legfeljebb 25 karakterből kell állnia.
+            </div>
+          </div>
+          <div class="form-group my-5">
+            <label for="catid">KATEGÓRIA</label>
+            <select name="catid" [(ngModel)]="address.catID" class="form-control" required value="Default address">
+              <option value="1">Ale</option>
+              <option value="2">APA</option>
+              <option value="3">Búza</option>
+              <option value="4">DIPA</option>
+              <option value="5">IPA</option>
+              <option value="6">Larger</option>
+              <option value="7">NEIPA</option>
+              <option value="8">Porter</option>
+            </select>
+          </div>
+          <div class="form-group my-5">
+            <label for="description">LEÍRÁS</label>
+            <textarea class="form-control" name="description" [(ngModel)]="address.description" cols="60" rows="2"
+              pattern=".{5,100}" required value="Default address"></textarea>
+            <div [hidden]="addressForm.controls.description?.valid" class="error-message">
+              A Leírás mezőnek legalább 5, legfeljebb 100 karakterből kell állnia.
+            </div>
+          </div>
+          <div class="form-group my-5">
+            <label for="price">ÁR</label>
+            <input name="price" [(ngModel)]="address.price" type="text" class="form-control" pattern="^[1-9][0-9]{2,}"
+              required value="Default address">
+            <div [hidden]="addressForm.controls.price?.valid" class="error-message">
+              Az Ár mezőnek legalább 3 számkarakterből kell állnia.
+            </div>
+          </div>
+          <div class="form-group my-5">
+            <label for="featured">KIEMELT</label>
+            <select name="featured" [(ngModel)]="address.featured" class="form-control" required
+              value="Default address">
+              <option value="true">Igen</option>
+              <option value="false">Nem</option>
+            </select>
+          </div>
+          <div class="form-group my-5">
+            <label for="active">ELÉRHETŐ</label>
+            <select name="active" [(ngModel)]="address.active" class="form-control" required value="Default address">
+              <option value="true">Igen</option>
+              <option value="false">Nem</option>
+            </select>
+          </div>
+          <button [disabled]="addressForm.invalid" type="submit" class="btn btn-primary btn-block btn-lg">
+            <i class="fa fa-save"></i>
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

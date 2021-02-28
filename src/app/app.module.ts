@@ -31,6 +31,7 @@ import { EditBillComponent } from "./page/edit-bill/edit-bill.component";
 import { InfoCardComponent } from './common/info-card/info-card.component';
 import { ChartCardComponent } from './common/chart-card/chart-card.component';
 import { SwitchPipe } from './pipe/switch.pipe';
+import { EditAddressComponent } from './page/edit-address/edit-address.component';
 
 @NgModule({
   imports: [
@@ -64,6 +65,7 @@ import { SwitchPipe } from './pipe/switch.pipe';
     DashboardComponent,
     ChartCardComponent,
     SwitchPipe,
+    EditAddressComponent,
   ],
   providers: [],
   bootstrap: [AppComponent],

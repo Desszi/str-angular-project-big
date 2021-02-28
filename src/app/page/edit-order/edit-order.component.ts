@@ -37,21 +37,17 @@ export class EditOrderComponent implements OnInit {
 
     try {
       if (item.id == 0) {
-        this.ordersService.create(item).subscribe(
-          () => { }
-        );
-        this.toastr.success('Sikeresen hozzáadásra került');
+        this.ordersService.create(item).subscribe(() => { });
+        this.toastr.warning('Sikeresen hozzáadásra került');
         this.router.navigate(['/order-list']);
       }
       else {
-        this.ordersService.update(item).subscribe(
-          () => { }
-        );
+        this.ordersService.update(item).subscribe(() => { });
         this.toastr.success('Sikeres módosítás :)');
         this.router.navigate(['/order-list']);
       }
     } catch (error) {
-      this.toastr.success('Probléma történt:' + error);
+      this.toastr.error('Probléma történt:' + error);
     }
   }
 
