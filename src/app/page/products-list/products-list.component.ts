@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Product } from 'app/model/product';
+import { Radio } from 'app/model/radio';
 import { ProductsService } from 'app/service/products.service';
 import { finalize } from 'rxjs/operators';
 
@@ -8,6 +9,7 @@ import { finalize } from 'rxjs/operators';
   templateUrl: './products-list.component.html',
   styleUrls: ['./products-list.component.css']
 })
+
 export class ProductsListComponent implements OnInit {
 
   products: Product[];
@@ -16,13 +18,43 @@ export class ProductsListComponent implements OnInit {
   @Input() phraseString: string = '';
   direction: number = 1;
   columnKey: string = '';
+  icon: string = '';
+  caret: string = 'fa fa-caret-down/up';
+
+  radioItems: Radio[] = [
+    { name: '#', value: 'id' },
+    { name: 'NÉV', value: 'name' },
+    { name: 'TÍPUS', value: 'type' },
+    { name: 'KATEGÓRIA', value: 'catID' },
+    { name: 'LEÍRÁS', value: 'description' },
+    { name: 'ÁR', value: 'price' },
+    { name: 'KIEMELT', value: 'featured' },
+    { name: 'ELÉRHETŐ', value: 'active' },
+  ];
+
+  radioSel: any;
+  radioSelected: string;
+  radioSelectedString: string;
 
   constructor(
-    private productsService: ProductsService
-  ) { }
+    private productsService: ProductsService,
+  ) {
+    this.radioItems;
+    this.radioSelected = 'name';
+    this.getSelecteditem();
+  }
 
   ngOnInit(): void {
     this.update();
+  }
+
+  getSelecteditem() {
+    this.radioSel = this.radioItems.find(Item => Item.value === this.radioSelected);
+    this.radioSelectedString = this.radioSel.value;
+  }
+
+  onItemChange(item) {
+    this.getSelecteditem();
   }
 
   onDelete(item: Product) {
@@ -45,6 +77,10 @@ export class ProductsListComponent implements OnInit {
       this.direction = 1;
     }
     this.columnKey = key;
+  }
+
+  onSearchPhrase(event: Event): void {
+    this.phraseString = (event.target as HTMLInputElement).value;
   }
 
 }

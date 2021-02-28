@@ -10,7 +10,11 @@ import { BaseService } from './base.service';
   providedIn: 'root'
 })
 export class ProductsService extends BaseService<Product> {
-  constructor(private httpClient: HttpClient) {
+
+  constructor(
+    private httpClient: HttpClient
+
+  ) {
     super(new ConfigService('http://localhost:3000'), httpClient, "products");
   }
 }
