@@ -29,11 +29,14 @@ export class BillListComponent implements OnInit {
 
   update(): void {
     this.loading = true;
-    setTimeout(()=>{
-      this.billService
-        .getAll()
-        .pipe(finalize(() => (this.loading = false)))
-        .subscribe((items) => (this.bills = items));
-      },this.config.updateDelayTimeMs);
+      this.billService.getAll().pipe(
+        finalize(() =>{ this.loading = false;})
+      ).subscribe(()=>{});
+
+    setTimeout(()=>{  
+    this.billService.getAll().subscribe(items =>{
+        this.bills = items;
+      })
+    },this.config.updateDelayTimeMs);
   }
 }

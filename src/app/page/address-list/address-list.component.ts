@@ -67,17 +67,16 @@ export class AddressListComponent implements OnInit {
 
   update(): void { 
     this.loading = true;
-    setTimeout(()=>{
       this.addressesService.getAll().pipe(
         finalize(() => this.loading = false)
-      ).subscribe(
-        items =>{ 
-          
-          
-          this.dataSource = new MatTableDataSource(items);
-          this.dataSource.sort = this.sort;
-          this.setDisplayedColumns();
-          }  )
+      ).subscribe(()=>{});
+
+    setTimeout(()=>{  
+    this.addressesService.getAll().subscribe(items =>{
+        this.dataSource = new MatTableDataSource(items);
+        this.dataSource.sort = this.sort;
+        this.setDisplayedColumns();
+      })
     },this.config.updateDelayTimeMs);
   }
 }
