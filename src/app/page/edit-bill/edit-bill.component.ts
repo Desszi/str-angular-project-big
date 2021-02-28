@@ -21,18 +21,24 @@ export class EditBillComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.activatedRoute.params.subscribe((params) =>
-      this.billService.get(params.id).subscribe((item) => {
-        this.bill = item || new Bill();
-      })
-    );
+    this.activatedRoute.params.subscribe(
+      params =>{
+        if(params.id == 0)
+          this.bill = new Bill();
+        else
+          this.billService.get(params.id).subscribe(
+            item => {
+              this.bill = item;
+            })
+      }
+    )
   }
 
   onUpdate(form: NgForm, item: Bill): void {
     try {
       if (item.id == 0) {
         this.billService.create(item).subscribe(() => {});
-        this.toastr.success("Sikeresn hozzáadásra került");
+        this.toastr.warning("Sikeresn hozzáadásra került");
         this.router.navigate(["/bill-list"]);
       } else {
         this.billService.update(item).subscribe(() => {});
@@ -40,7 +46,7 @@ export class EditBillComponent implements OnInit {
         this.router.navigate(["/bill-list"]);
       }
     } catch (error) {
-      this.toastr.success("Probléma történt:" + error);
+      this.toastr.error("Probléma történt:" + error);
     }
   }
 }

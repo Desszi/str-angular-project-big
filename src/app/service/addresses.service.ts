@@ -9,8 +9,8 @@ import { BaseService } from './base.service';
   providedIn: 'root'
 })
 export class AddressesService extends BaseService<Address> {
-  constructor(private httpClient: HttpClient) {
-    super(new ConfigService('http://localhost:3000'), httpClient, "addresses");
+  constructor(httpClient: HttpClient, config:ConfigService) {
+    super(config, httpClient, "addresses");
   }
 }
 

@@ -6,7 +6,7 @@ import { RouterModule } from "@angular/router";
 import { AppRoutingModule } from "./app.routing";
 import { ComponentsModule } from "./components/components.module";
 import { AppComponent } from "./app.component";
-import { CustomerListComponent } from "./common/customer-list/customer-list.component";
+import { CustomerListComponent } from "./page/customer-list/customer-list.component";
 import { DashboardComponent } from "./dashboard/dashboard.component";
 import { UserProfileComponent } from "./user-profile/user-profile.component";
 import { TypographyComponent } from "./typography/typography.component";
@@ -16,21 +16,21 @@ import { UpgradeComponent } from "./upgrade/upgrade.component";
 import { AgmCoreModule } from "@agm/core";
 import { AdminLayoutComponent } from "./layouts/admin-layout/admin-layout.component";
 import { ProductsListComponent } from "./page/products-list/products-list.component";
-import { EditProductComponent } from "./common/edit-product/edit-product.component";
-import { AddressListComponent } from "./common/address-list/address-list.component";
+import { EditProductComponent } from "./page/edit-product/edit-product.component";
+import { AddressListComponent } from "./page/address-list/address-list.component";
 import { BillListComponent } from "./page/bill-list/bill-list.component";
 import { OrderListComponent } from './page/order-list/order-list.component';
 import { CommonModule } from '@angular/common';
 import { ToastrModule } from 'ngx-toastr';
-import { LoadingComponent } from './page/loading/loading.component';
+import { LoadingComponent } from './common/loading/loading.component';
 import { SearchPipe } from '../app/pipe/search.pipe';
 import { SortPipe } from '../app/pipe/sort.pipe';
 import { EditCustomerComponent } from './page/edit-customer/edit-customer.component';
 import { EditOrderComponent } from './page/edit-order/edit-order.component';
 import { EditBillComponent } from "./page/edit-bill/edit-bill.component";
 import { InfoCardComponent } from './common/info-card/info-card.component';
-import { ChartCardComponent } from './common/chart-card/chart-card.component';
 import { SwitchPipe } from './pipe/switch.pipe';
+import { EditAddressComponent } from './page/edit-address/edit-address.component';
 
 @NgModule({
   imports: [
@@ -62,8 +62,8 @@ import { SwitchPipe } from './pipe/switch.pipe';
     EditBillComponent,
     InfoCardComponent,
     DashboardComponent,
-    ChartCardComponent,
     SwitchPipe,
+    EditAddressComponent,
   ],
   providers: [],
   bootstrap: [AppComponent],

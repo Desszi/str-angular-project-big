@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { BehaviorSubject, Observable, of } from 'rxjs';
 import { Category } from 'app/model/category';
 import { BaseService } from './base.service';
 import { ConfigService } from './config.service';
@@ -9,11 +8,7 @@ import { ConfigService } from './config.service';
   providedIn: 'root'
 })
 export class CategoryService extends BaseService<Category> {
-
-  constructor(private httpClient: HttpClient) {
-    super(new ConfigService('http://localhost:3000'), httpClient, "categories");
+  constructor(httpClient: HttpClient, config: ConfigService) {
+    super(config, httpClient, "categories");
   }
 }
-
-
-

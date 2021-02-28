@@ -24,12 +24,15 @@ export class EditProductComponent implements OnInit {
 
   ngOnInit(): void {
     this.activatedRoute.params.subscribe(
-      params =>
-        this.productsService.get(params.id).subscribe(
-          item => {
-            this.product = item || new Product();
-          }
-        )
+      params =>{
+        if(params.id == 0)
+          this.product = new Product();
+        else
+          this.productsService.get(params.id).subscribe(
+            item => {
+              this.product = item;
+            })
+      }
     )
   }
 
@@ -37,21 +40,17 @@ export class EditProductComponent implements OnInit {
 
     try {
       if (item.id == 0) {
-        this.productsService.create(item).subscribe(
-          () => { }
-        );
-        this.toastr.success('Sikeresn hozzáadásra került');
+        this.productsService.create(item).subscribe(() => { } );
+        this.toastr.warning('Sikeresn hozzáadásra került');
         this.router.navigate(['/product-list']);
       }
       else {
-        this.productsService.update(item).subscribe(
-          () => { }
-        );
+        this.productsService.update(item).subscribe(() => { });
         this.toastr.success('Sikeres módosítás :)');
         this.router.navigate(['/product-list']);
       }
     } catch (error) {
-      this.toastr.success('Probléma történt:' + error);
+      this.toastr.error('Probléma történt:' + error);
     }
   }
 
