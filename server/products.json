@@ -1435,7 +1435,6 @@
       "email": "tanshell1d@artisteer.com",
       "addressId": 37,
       "active": false
-<<<<<<< HEAD
     },
     {
       "id": 51,
@@ -1452,8 +1451,6 @@
       "email": "09dporkolbm@gmail.com",
       "address": "",
       "active": true
-=======
->>>>>>> e6c50acd9f43aa82e807b64d6d9e12a0bc289d13
     }
   ],
   "orders": [
