@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Product } from 'app/model/product';
+import { ConfigService } from 'app/service/config.service';
 import { ProductsService } from 'app/service/products.service';
 import { finalize } from 'rxjs/operators';
 
@@ -14,7 +15,8 @@ export class ProductsListComponent implements OnInit {
   loading: boolean;
 
   constructor(
-    private productsService: ProductsService
+    private productsService: ProductsService,
+    private config:ConfigService
   ) { }
 
   ngOnInit(): void {
@@ -33,7 +35,7 @@ export class ProductsListComponent implements OnInit {
       this.productsService.getAll().pipe(
         finalize(() => this.loading = false)
       ).subscribe(items => this.products = items)
-    },200);
+    },this.config.updateDelayTimeMs);
   }
 
 }

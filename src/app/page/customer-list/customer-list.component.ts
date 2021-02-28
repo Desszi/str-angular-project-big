@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Customer } from 'app/model/customer';
+import { ConfigService } from 'app/service/config.service';
 import { CustomerService } from 'app/service/customer.service';
 import { BehaviorSubject } from 'rxjs';
 import { finalize } from 'rxjs/operators';
@@ -17,7 +18,8 @@ export class CustomerListComponent implements OnInit {
   loading: boolean;
 
   constructor(
-    private customerService: CustomerService
+    private customerService: CustomerService,
+    private config:ConfigService
   ) { }
 
   ngOnInit(): void {
@@ -36,7 +38,7 @@ export class CustomerListComponent implements OnInit {
       this.customerService.getAll().pipe(
         finalize(() => this.loading = false)
       ).subscribe(items => this.customers = items)
-    },200);
+    },this.config.updateDelayTimeMs);
   }
 }
 
