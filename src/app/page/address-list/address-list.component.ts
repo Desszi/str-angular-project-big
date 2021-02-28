@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
 import { Address } from 'app/model/address';
 import { Column } from 'app/model/column';
 import { ConfigService } from 'app/service/config.service';
@@ -8,6 +8,7 @@ import { CdkDragDrop, CdkDragStart, CdkDropList, moveItemInArray } from '@angula
 import { DataSource } from '@angular/cdk/table';
 import { Router } from '@angular/router';
 import { MatSort } from '@angular/material/sort';
+import { MatTableDataSource } from '@angular/material/table';
 
 
 
@@ -16,9 +17,9 @@ import { MatSort } from '@angular/material/sort';
   templateUrl: './address-list.component.html',
   styleUrls: ['./address-list.component.css']
 })
-export class AddressListComponent implements OnInit {
+export class AddressListComponent implements OnInit, AfterViewInit   {
 
-  dataSource: Address[] = null;
+  dataSource: MatTableDataSource<Address> = new MatTableDataSource([]);
   loading: boolean = true;
   columns:Column[] = this.addressesService.columns;
   displayedColumns: string[] = [];
@@ -32,10 +33,10 @@ export class AddressListComponent implements OnInit {
 
   @ViewChild(MatSort) sort: MatSort;
 
-  /*
+  
   ngAfterViewInit() {
-    this.dataSource.sort = this.sort;
-  }*/
+    //this.dataSource.sort = this.sort;
+  }
 
   ngOnInit(): void {
     this.update();
@@ -72,7 +73,8 @@ export class AddressListComponent implements OnInit {
         finalize(() => this.loading = false)
       ).subscribe(
         items =>{ 
-          this.dataSource = items;
+          this.dataSource = new MatTableDataSource(items);
+          this.dataSource.sort = this.sort;
           this.setDisplayedColumns();
           }  )
     },this.config.updateDelayTimeMs);

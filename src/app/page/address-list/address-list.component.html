@@ -21,18 +21,16 @@
               <mat-header-cell cdkDrag *matHeaderCellDef mat-sort-header> {{ column.title }}
               
                 <mat-cell  *matCellDef="let row">
-                <tr *ngIf="column.type == 'text'">  
-                  {{ row[column.name] }} 
-                </tr>
-                <tr *ngIf="column.type == 'btn-edit'">  
-                  <button mat-button (click)="onEdit(row)" class="btn btn-info" > <i class="fa fa-edit"></i> </button>
-                </tr>
-                <tr *ngIf="column.type == 'btn-trash'">  
-                  <button mat-button (click)="onDelete(row)"class="btn btn-danger" ><i class="fa fa-trash"></i> </button>
-                </tr>
-                </mat-cell> 
-              
-                
+                  <tr *ngIf="column.type == 'text'">
+                    {{ row[column.name] }} 
+                  </tr>
+                  <tr *ngIf="column.type == 'btn-edit'">
+                    <button mat-button (click)="onEdit(row)" class="btn btn-info" > <i class="fa fa-edit"></i> </button>
+                  </tr>
+                  <tr *ngIf="column.type == 'btn-trash'">  
+                    <button mat-button (click)="onDelete(row)"class="btn btn-danger" ><i class="fa fa-trash"></i> </button>
+                  </tr>
+                  </mat-cell> 
               </mat-header-cell >
             </ng-container>
 

@@ -31,10 +31,12 @@ import { EditBillComponent } from "./page/edit-bill/edit-bill.component";
 import { InfoCardComponent } from './common/info-card/info-card.component';
 import { SwitchPipe } from './pipe/switch.pipe';
 import { EditAddressComponent } from './page/edit-address/edit-address.component';
-import {MatTableModule} from '@angular/material/table';
-import {DragDropModule} from '@angular/cdk/drag-drop';
-import {CdkTableModule} from '@angular/cdk/table';
-import {CdkTreeModule} from '@angular/cdk/tree';
+import { MatTableModule} from '@angular/material/table';
+import { DragDropModule} from '@angular/cdk/drag-drop';
+import { CdkTableModule} from '@angular/cdk/table';
+import { CdkTreeModule} from '@angular/cdk/tree';
+import { MatSortModule } from "@angular/material/sort";
+
 
 @NgModule({
   imports: [
@@ -49,6 +51,7 @@ import {CdkTreeModule} from '@angular/cdk/tree';
     CommonModule,
     ToastrModule.forRoot(),
     MatTableModule,
+    MatSortModule,
     DragDropModule,
     CdkTableModule,
     CdkTreeModule
