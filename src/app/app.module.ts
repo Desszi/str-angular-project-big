@@ -31,6 +31,10 @@ import { EditBillComponent } from "./page/edit-bill/edit-bill.component";
 import { InfoCardComponent } from './common/info-card/info-card.component';
 import { SwitchPipe } from './pipe/switch.pipe';
 import { EditAddressComponent } from './page/edit-address/edit-address.component';
+import {MatTableModule} from '@angular/material/table';
+import {DragDropModule} from '@angular/cdk/drag-drop';
+import {CdkTableModule} from '@angular/cdk/table';
+import {CdkTreeModule} from '@angular/cdk/tree';
 
 @NgModule({
   imports: [
@@ -44,6 +48,10 @@ import { EditAddressComponent } from './page/edit-address/edit-address.component
     BrowserAnimationsModule,
     CommonModule,
     ToastrModule.forRoot(),
+    MatTableModule,
+    DragDropModule,
+    CdkTableModule,
+    CdkTreeModule
   ],
   declarations: [
     AppComponent,
