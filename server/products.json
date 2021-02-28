@@ -636,11 +636,11 @@
   "addresses": [
     {
       "id": 1,
-      "zip": 8,
-      "country": "Greece",
+      "zip": "9",
+      "country": "dadffasdf",
       "city": "Stírion",
-      "street": "2 Burning Wood Plaza",
-      "notes": "Multi-lateral"
+      "street": "ydgsdfg",
+      "notes": "fgsgdf"
     },
     {
       "id": 2,
@@ -1033,6 +1033,14 @@
       "city": "San Fernando del Valle de Catamarca",
       "street": "45 Lerdahl Lane",
       "notes": "Expanded"
+    },
+    {
+      "id": 51,
+      "zip": 0,
+      "country": "2323",
+      "city": "123",
+      "street": "123",
+      "notes": "12321"
     }
   ],
   "customers": [

@@ -9,7 +9,7 @@ import { EditProductComponent } from './common/edit-product/edit-product.compone
 const routes: Routes = [
   {
     path: '',
-    redirectTo: 'app-dashboard',
+    redirectTo: 'dashboard',
     pathMatch: 'full',
   },
   {
