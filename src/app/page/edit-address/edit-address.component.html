@@ -1,0 +1,53 @@
+<div class="main-content">
+  <div class="container-fluid">
+    <div class="row">
+      <div *ngIf="address" class="col-6 offset-3">
+        <form #addressForm="ngForm" (ngSubmit)="onUpdate(addressForm, address)">
+          <div class="form-group my-5">
+            <label for="zip">IRÁNYÍTÓSZÁM</label>
+            <input name="zip" [(ngModel)]="address.zip" type="text" class="form-control" pattern="^[0-9]+$" required value="">
+            <div [hidden]="addressForm.controls.zip?.valid" class="error-message">
+              Csak szám lehet...
+            </div>
+          </div>
+
+          <div class="form-group my-5">
+            <label for="country">MEGYE</label>
+            <input name="country" [(ngModel)]="address.country" type="text" class="form-control" pattern=".{3,}" required value="">
+            <div [hidden]="addressForm.controls.country?.valid" class="error-message">
+              Legalább három karakter kell...
+            </div>
+          </div>
+
+          <div class="form-group my-5">
+            <label for="city">VÁROS</label>
+            <input name="city" [(ngModel)]="address.city" type="text" class="form-control" required value="">
+            <div [hidden]="addressForm.controls.city?.valid" class="error-message">
+              Kötelező...
+            </div>
+          </div>
+
+          <div class="form-group my-5">
+            <label for="street">UTCA</label>
+            <input name="street" [(ngModel)]="address.street" type="text" class="form-control" required value="">
+            <div [hidden]="addressForm.controls.street?.valid" class="error-message">
+              Kötelező...
+            </div>
+          </div>
+
+          <div class="form-group my-5">
+            <label for="notes">MEGJEGYZÉS</label>
+            <input name="notes" [(ngModel)]="address.notes" type="text" class="form-control" required value="">
+            <div [hidden]="addressForm.controls.notes?.valid" class="error-message">
+              Kötelező...
+            </div>
+          </div>
+
+          <button [disabled]="addressForm.invalid" type="submit" class="btn btn-primary btn-block btn-lg">
+            <i class="fa fa-save"></i>
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
