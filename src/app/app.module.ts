@@ -36,7 +36,9 @@ import { DragDropModule} from '@angular/cdk/drag-drop';
 import { CdkTableModule} from '@angular/cdk/table';
 import { CdkTreeModule} from '@angular/cdk/tree';
 import { MatSortModule } from "@angular/material/sort";
-
+import { MatTableFilterModule } from 'mat-table-filter';
+import { MatFormFieldModule } from "@angular/material/form-field";
+import { MatInputModule } from "@angular/material/input";
 
 @NgModule({
   imports: [
@@ -54,7 +56,11 @@ import { MatSortModule } from "@angular/material/sort";
     MatSortModule,
     DragDropModule,
     CdkTableModule,
-    CdkTreeModule
+    CdkTreeModule,
+    MatTableFilterModule,
+    MatFormFieldModule,
+    MatInputModule 
+
   ],
   declarations: [
     AppComponent,

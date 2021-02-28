@@ -11,15 +11,23 @@
             </button>
           </div>
           <mat-table  [dataSource]="dataSource" 
-                      class="mat-elevation-z8"
                       matSort 
                       cdkDropList 
                       cdkDropListOrientation="horizontal"
-                      (cdkDropListDropped)="drop($event)">
+                      (cdkDropListDropped)="drop($event)"
+                      matTableFilter
+                      [filterType]="filterType"
+                      [exampleEntity]="filterEntity"
+                      
+                      class="mat-elevation-z8">
 
             <ng-container *ngFor="let column of columns; let i = index" [matColumnDef]="column.name">
-              <mat-header-cell cdkDrag *matHeaderCellDef mat-sort-header> {{ column.title }}
+              <mat-header-cell cdkDrag *matHeaderCellDef mat-sort-header> 
               
+                <mat-form-field >
+                  {{ column.title }} <input matInput [(ngModel)]="filterEntity[column.name]">
+                </mat-form-field>
+
                 <mat-cell  *matCellDef="let row">
                   <tr *ngIf="column.type == 'text'">
                     {{ row[column.name] }} 
@@ -30,17 +38,12 @@
                   <tr *ngIf="column.type == 'btn-trash'">  
                     <button mat-button (click)="onDelete(row)"class="btn btn-danger" ><i class="fa fa-trash"></i> </button>
                   </tr>
-                  </mat-cell> 
+                </mat-cell>
               </mat-header-cell >
             </ng-container>
 
-                        
-            <ng-container matColumnDef="edit2">
-              <mat-header-cell *matHeaderCellDef>Edit
-                <mat-cell *matCellDef="let row" >
-                  <button mat-button >Edit</button>
-                </mat-cell>
-              </mat-header-cell >
+            <ng-container matColumnDef="item-description">
+              <th mat-header-cell *matHeaderCellDef> Name of the item purchased </th>
             </ng-container>
 
 

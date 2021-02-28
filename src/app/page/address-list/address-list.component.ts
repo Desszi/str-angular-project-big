@@ -9,6 +9,7 @@ import { DataSource } from '@angular/cdk/table';
 import { Router } from '@angular/router';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
+import { MatTableFilter } from 'mat-table-filter';
 
 
 
@@ -17,13 +18,16 @@ import { MatTableDataSource } from '@angular/material/table';
   templateUrl: './address-list.component.html',
   styleUrls: ['./address-list.component.css']
 })
-export class AddressListComponent implements OnInit, AfterViewInit   {
+export class AddressListComponent implements OnInit {
 
   dataSource: MatTableDataSource<Address> = new MatTableDataSource([]);
   loading: boolean = true;
   columns:Column[] = this.addressesService.columns;
   displayedColumns: string[] = [];
   previousIndex: number;
+  filterType: MatTableFilter;
+  filterEntity: Address;
+
 
   constructor(
     private addressesService: AddressesService,
@@ -32,17 +36,12 @@ export class AddressListComponent implements OnInit, AfterViewInit   {
   ) { }
 
   @ViewChild(MatSort) sort: MatSort;
-
   
-  ngAfterViewInit() {
-    //this.dataSource.sort = this.sort;
-  }
-
   ngOnInit(): void {
     this.update();
-   this.setDisplayedColumns();
-
-  
+    this.setDisplayedColumns();
+    this.filterEntity = new Address();
+    this.filterType = MatTableFilter.ANYWHERE;
   }
 
   drop(event: CdkDragDrop<string[]>) {
@@ -73,6 +72,8 @@ export class AddressListComponent implements OnInit, AfterViewInit   {
         finalize(() => this.loading = false)
       ).subscribe(
         items =>{ 
+          
+          
           this.dataSource = new MatTableDataSource(items);
           this.dataSource.sort = this.sort;
           this.setDisplayedColumns();
