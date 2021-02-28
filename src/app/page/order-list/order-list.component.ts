@@ -5,6 +5,7 @@ import { BehaviorSubject } from 'rxjs';
 import { Input } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { finalize } from 'rxjs/operators';
+import { ConfigService } from 'app/service/config.service';
 
 
 @Component({
@@ -24,17 +25,18 @@ export class OrderListComponent implements OnInit {
 
   constructor(
     private ordersService: OrdersService,
-    private activatedRoute: ActivatedRoute
+    private activatedRoute: ActivatedRoute,
+    private config:ConfigService
+
   ) { }
 
   ngOnInit(): void {
     this.activatedRoute.params.subscribe((params) => {
-      console.log(params.phrase);
       this.phraseString = params.phrase;
     });
-     this.update();
+    this.update();
   }
-   
+
   onColumnSelect(key: string): void {
     if (this.columnKey === key) {
       this.direction = this.direction * -1;
@@ -44,7 +46,7 @@ export class OrderListComponent implements OnInit {
     this.columnKey = key;
   }
 
-  
+
   onDelete(item: Order) {
     this.ordersService.remove(item).subscribe(i => {
       this.update();
@@ -53,9 +55,11 @@ export class OrderListComponent implements OnInit {
 
   update(): void {
     this.loading = true;
-    this.ordersService.getAll().pipe(
-      finalize(() => this.loading = false)
-    ).subscribe(items => this.orders = items)
+    setTimeout(()=>{
+      this.ordersService.getAll().pipe(
+        finalize(() => this.loading = false)
+      ).subscribe(items => this.orders = items)
+    },this.config.updateDelayTimeMs);
   }
 
 }

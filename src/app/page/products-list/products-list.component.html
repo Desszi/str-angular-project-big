@@ -11,23 +11,62 @@
                         </button>
                     </div>
                     <div class="card-body">
+                        <div class="form-group mx-auto my-0 border border-dark">
+                            <input (keyup)="onSearchPhrase($event)" type="text"
+                                class="form-control text-center mx-auto mt-1 w-75"
+                                placeholder="Keresés az alábbi kategóriákban:">
+
+                            <ul class="d-flex flex-wrap align-items-center justify-content-center m-0 p-0">
+                                <li class="list-group-item" *ngFor="let item of radioItems">
+                                    <input type="radio" [(ngModel)]="radioSelected" name="list_name"
+                                        value="{{item.value}}" (change)="onItemChange(item)" />
+                                    {{item.name}}
+                                </li>
+                            </ul>
+
+                        </div>
                         <div class="table-responsive">
                             <table class="table table-striped">
                                 <thead>
                                     <tr>
-                                        <th class="font-weight-bold text-center">#</th>
-                                        <th class="font-weight-bold">NÉV</th>
-                                        <th class="font-weight-bold text-center">TÍPUS</th>
-                                        <th class="font-weight-bold text-center">KATEGÓRIA</th>
-                                        <th class="font-weight-bold text-center">LEÍRÁS</th>
-                                        <th class="font-weight-bold text-center">ÁR</th>
-                                        <th class="font-weight-bold text-center">KIEMELT</th>
-                                        <th class="font-weight-bold text-center">ELÉRHETŐ</th>
-                                        <th class="font-weight-bold text-center">SZERKESZTÉS</th>
+                                        <th (click)="onColumnSelect('id')" id="columnName"
+                                            class="bg-dark font-weight-bold text-light text-center">#
+                                            <i [class]="icon"></i>
+                                        </th>
+                                        <th (click)="onColumnSelect('name')" id="columnName"
+                                            class="bg-dark font-weight-bold text-light">NÉV
+                                            <i [class]="icon"></i>
+                                        </th>
+                                        <th (click)="onColumnSelect('type')" id="columnName"
+                                            class="bg-dark font-weight-bold text-light text-center">TÍPUS
+                                            <i [class]="icon"></i>
+                                        </th>
+                                        <th (click)="onColumnSelect('catID')" id="columnName"
+                                            class="bg-dark font-weight-bold text-light text-center">KATEGÓRIA
+                                            <i [class]="icon"></i>
+                                        </th>
+                                        <th (click)="onColumnSelect('description')" id="columnName"
+                                            class="bg-dark font-weight-bold text-light text-center">LEÍRÁS
+                                            <i [class]="icon"></i>
+                                        </th>
+                                        <th (click)="onColumnSelect('price')" id="columnName"
+                                            class="bg-dark font-weight-bold text-light text-center">ÁR
+                                            <i [class]="icon"></i>
+                                        </th>
+                                        <th (click)="onColumnSelect('featured')" id="columnName"
+                                            class="bg-dark font-weight-bold text-light text-center">KIEMELT
+                                            <i [class]="icon"></i>
+                                        </th>
+                                        <th (click)="onColumnSelect('active')" id="columnName"
+                                            class="bg-dark font-weight-bold text-light text-center">ELÉRHETŐ
+                                            <i [class]="icon"></i>
+                                        </th>
+                                        <th class="bg-dark font-weight-bold text-light text-center">SZERKESZTÉS</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr *ngFor="let product of products">
+                                    <tr
+                                        *ngFor="let product of products | sort: columnKey:direction  | search: phraseString: radioSelectedString">
                                         <td class="text-center">{{ product.id }}</td>
                                         <td class="">{{ product.name }}</td>
                                         <td class="text-center">{{ product.type }}</td>

@@ -6,7 +6,7 @@
           <div class="card-header card-header-danger">
             <h4 class="card-title ">Címek</h4>
             <p class="card-category">Ügyfeleink címlistája</p>
-            <button [routerLink]="'/edit-product/0'" class="btn btn-large btn-success btn-block">
+            <button [routerLink]="'/edit-address/0'" class="btn btn-large btn-success btn-block">
               <i class="fa fa-plus"></i>
             </button>
           </div>
@@ -33,9 +33,9 @@
                     <td>{{ address.notes }}</td>
                     <td>
                       <div class="btn-group">
-                        <!--  <button [routerLink] = "'/edit-product/' + product.id" class="btn btn-info">
+                        <button [routerLink] = "'/edit-address/' + address.id" class="btn btn-info">
                           <i class="fa fa-edit"></i>
-                        </button>-->
+                        </button>
                         <button (click)="onDelete(address)" class="btn btn-danger">
                           <i class="fa fa-trash"></i>
                         </button>
