@@ -6,11 +6,11 @@ import { TypographyComponent } from "../../typography/typography.component";
 import { IconsComponent } from "../../icons/icons.component";
 import { NotificationsComponent } from "../../notifications/notifications.component";
 import { UpgradeComponent } from "../../upgrade/upgrade.component";
-import { AddressListComponent } from "app/common/address-list/address-list.component";
-import { EditProductComponent } from "app/common/edit-product/edit-product.component";
+import { AddressListComponent } from "app/page/address-list/address-list.component";
+import { EditProductComponent } from "app/page/edit-product/edit-product.component";
 import { BillListComponent } from "app/page/bill-list/bill-list.component";
 import { OrderListComponent } from "../../page/order-list/order-list.component";
-import { CustomerListComponent } from "app/common/customer-list/customer-list.component";
+import { CustomerListComponent } from "app/page/customer-list/customer-list.component";
 import { ProductsListComponent } from "app/page/products-list/products-list.component";
 import { EditCustomerComponent } from "app/page/edit-customer/edit-customer.component";
 import { EditOrderComponent } from "app/page/edit-order/edit-order.component";
@@ -33,5 +33,5 @@ export const AdminLayoutRoutes: Routes = [
   { path: "edit-order/:id", component: EditOrderComponent },
   { path: 'customer-list', component: CustomerListComponent },
   { path: "edit-bill/:id", component: EditBillComponent },
-  {path: "edit-customer/:id", component: EditCustomerComponent}
+  { path: "edit-customer/:id", component: EditCustomerComponent}
 ];

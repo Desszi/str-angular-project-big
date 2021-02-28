@@ -2,9 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule, } from '@angular/common';
 import { BrowserModule } from '@angular/platform-browser';
 import { Routes, RouterModule } from '@angular/router';
-
 import { AdminLayoutComponent } from './layouts/admin-layout/admin-layout.component';
-import { EditProductComponent } from './common/edit-product/edit-product.component';
 
 const routes: Routes = [
   {
