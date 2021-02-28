@@ -67,11 +67,15 @@ export class ProductsListComponent implements OnInit {
 
   update(): void {
     this.loading = true;
-    setTimeout(() => {
       this.productsService.getAll().pipe(
-        finalize(() => this.loading = false)
-      ).subscribe(items => this.products = items)
-    }, this.config.updateDelayTimeMs);
+        finalize(() =>{ this.loading = false;})
+      ).subscribe(()=>{});
+
+    setTimeout(()=>{  
+    this.productsService.getAll().subscribe(items =>{
+        this.products = items;
+      })
+    },this.config.updateDelayTimeMs);
   }
 
   onColumnSelect(key: string): void {

@@ -30,12 +30,17 @@ export class AddressListComponent implements OnInit {
     });
   }
 
-  update(): void { 
+  update(): void {
     this.loading = true;
-    setTimeout(()=>{
       this.addressesService.getAll().pipe(
-        finalize(() => this.loading = false)
-      ).subscribe(items => this.addresses = items)
+        finalize(() =>{ this.loading = false;})
+      ).subscribe(()=>{});
+
+  
+    setTimeout(()=>{  
+    this.addressesService.getAll().subscribe(items =>{
+        this.addresses = items;
+      })
     },this.config.updateDelayTimeMs);
   }
 }
