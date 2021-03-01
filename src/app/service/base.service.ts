@@ -21,11 +21,10 @@ export class BaseService<T extends { id: number }> {
 
 
   getAll(): Observable<T[]> {
-    
- console.log('Base.Service.GetAll');
- return this.http.get<T[]>(`${this.config.apiUrl}/${this.entityName}`);
+
+    return this.http.get<T[]>(`${this.config.apiUrl}/${this.entityName}`);
   }
-  
+
 
   get(id: number): Observable<T> {
     return this.http.get<T>(`${this.config.apiUrl}/${this.entityName}/${id}`);
