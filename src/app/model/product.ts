@@ -6,7 +6,7 @@ export class Product {
     description: string = '';
     price: number = 0;
     featured: boolean = false;
-    active: boolean = true;
+    active: boolean = false;
 
     constructor() { }
 }
