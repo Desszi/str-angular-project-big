@@ -55,10 +55,14 @@ export class OrderListComponent implements OnInit {
 
   update(): void {
     this.loading = true;
-    setTimeout(()=>{
       this.ordersService.getAll().pipe(
-        finalize(() => this.loading = false)
-      ).subscribe(items => this.orders = items)
+        finalize(() =>{ this.loading = false;})
+      ).subscribe(()=>{});
+
+    setTimeout(()=>{  
+    this.ordersService.getAll().subscribe(items =>{
+        this.orders = items;
+      })
     },this.config.updateDelayTimeMs);
   }
 

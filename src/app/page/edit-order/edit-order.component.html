@@ -2,15 +2,8 @@
     <div class="container-fluid">
         <div class="row">
             <div *ngIf="order" class="col-6 offset-3">
+              <label class="mt-3">{{'#'+ order.id}}</label>
                 <form #orderForm="ngForm" (ngSubmit)="onUpdate(orderForm, order)">
-                    <div class="form-group my-5">
-                        <label for="id">ID</label>
-                        <input name="id" [(ngModel)]="order.id" type="text" class="form-control"
-                            pattern="^[1-9][0-9]{0,10}" required value="0">
-                        <div [hidden]="orderForm.controls.id?.valid" class="error-message">
-                            A rendelési szám csak számokat tartalmazhat.
-                        </div>
-                    </div>
                     <div class="form-group my-5">
                         <label for="customerID">CustomerID</label>
                         <input name="customerID" [(ngModel)]="order.customerID" type="text" class="form-control"
