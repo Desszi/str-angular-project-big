@@ -1,0 +1,8 @@
+#columnName {
+  transition: 0.5s;
+}
+
+#columnName:hover {
+  background-color: #667 !important;
+  cursor: pointer;
+}
