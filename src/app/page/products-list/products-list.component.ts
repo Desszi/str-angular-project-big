@@ -20,6 +20,8 @@ export class ProductsListComponent implements OnInit {
   direction: number = 1;
   columnKey: string = '';
 
+  length: number;
+
   constructor(
     private productsService: ProductsService,
     private config: ConfigService
@@ -37,15 +39,15 @@ export class ProductsListComponent implements OnInit {
 
   update(): void {
     this.loading = true;
-      this.productsService.getAll().pipe(
-        finalize(() =>{ this.loading = false;})
-      ).subscribe(()=>{});
+    this.productsService.getAll().pipe(
+      finalize(() => { this.loading = false; })
+    ).subscribe(() => { });
 
-    setTimeout(()=>{  
-    this.productsService.getAll().subscribe(items =>{
+    setTimeout(() => {
+      this.productsService.getAll().subscribe(items => {
         this.products = items;
       })
-    },this.config.updateDelayTimeMs);
+    }, this.config.updateDelayTimeMs);
   }
 
   onColumnSelect(key: string): void {
@@ -59,6 +61,10 @@ export class ProductsListComponent implements OnInit {
 
   onSearchPhrase(event: Event): void {
     this.phraseString = (event.target as HTMLInputElement).value;
+  }
+
+  getLength(): void {
+    this.length = this.products.length;
   }
 
 }

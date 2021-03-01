@@ -2,6 +2,7 @@
   <div class="container-fluid">
     <div class="row">
       <div *ngIf="product" class="col-6 offset-3 bg-light border border-dark">
+        <h1 class="h2 text-center text-primary pt-3">{{ title }}</h1>
         <label class="mt-3">{{'#'+ product.id}}</label>
         <form #productForm="ngForm" (ngSubmit)="onUpdate(productForm, product)">
           <div class="form-group my-5">
