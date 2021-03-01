@@ -6,32 +6,51 @@
           <div class="card-header card-header-danger">
             <h4 class="card-title">Pénztár</h4>
             <p class="card-category">Itt megtekintheti számláit.</p>
-            <button [routerLink]="['/edit-bill/' + '0']" class="btn btn-large btn-success btn-block">
+            <button
+              [routerLink]="['/bill-list/edit-bill/' + '0']"
+              class="btn btn-large btn-success btn-block"
+            >
               <i class="fa fa-plus"></i>
             </button>
           </div>
           <div class="card-body">
             <div class="form-group bg-dark mx-auto py-1">
-              <input (keyup)="onSearchPhrase($event)" type="text"
-                class="form-control text-center text-white mx-auto my-1 w-75" placeholder="Keresés a táblázatban..." />
+              <input
+                (keyup)="onSearchPhrase($event)"
+                type="text"
+                class="form-control text-center text-white mx-auto my-1 w-75"
+                placeholder="Keresés a táblázatban..."
+              />
             </div>
             <div class="table-responsive">
               <table class="table table-striped">
                 <thead class="">
-                  <th (click)="onColumnSelect('id')" id="columnName"
-                    class="bg-dark font-weight-bold text-light text-center">
+                  <th
+                    (click)="onColumnSelect('id')"
+                    id="columnName"
+                    class="bg-dark font-weight-bold text-light text-center"
+                  >
                     #
                   </th>
-                  <th (click)="onColumnSelect('orderID')" id="columnName"
-                    class="bg-dark font-weight-bold text-light text-center">
+                  <th
+                    (click)="onColumnSelect('orderID')"
+                    id="columnName"
+                    class="bg-dark font-weight-bold text-light text-center"
+                  >
                     RENDELÉSI AZONOSÍTÓ
                   </th>
-                  <th (click)="onColumnSelect('amount')" id="columnName"
-                    class="bg-dark font-weight-bold text-light text-center">
-                    MENNYISÉG
+                  <th
+                    (click)="onColumnSelect('amount')"
+                    id="columnName"
+                    class="bg-dark font-weight-bold text-light text-center"
+                  >
+                    ÖSSZEG
                   </th>
-                  <th (click)="onColumnSelect('status')" id="columnName"
-                    class="bg-dark font-weight-bold text-light text-center">
+                  <th
+                    (click)="onColumnSelect('status')"
+                    id="columnName"
+                    class="bg-dark font-weight-bold text-light text-center"
+                  >
                     RENDELÉS ÁLLAPOTA
                   </th>
                   <th class="bg-dark font-weight-bold text-light text-center">
@@ -39,18 +58,23 @@
                   </th>
                 </thead>
                 <tbody>
-                  <tr *ngFor="
+                  <tr
+                    *ngFor="
                       let bill of bills
                         | sort: columnKey:direction
                         | search: phraseString
-                    ">
+                    "
+                  >
                     <td class="text-center">{{ bill.id }}</td>
                     <td class="text-center">{{ bill.orderID }}</td>
                     <td class="text-center">{{ bill.amount }}</td>
                     <td class="text-center">{{ bill.status | switch }}</td>
                     <td class="d-flex justify-content-center">
                       <div class="btn-group text-center">
-                        <button [routerLink]="['/edit-bill/' + bill.id]" class="btn btn-info">
+                        <button
+                          [routerLink]="['/bill-list/edit-bill/' + bill.id]"
+                          class="btn btn-info"
+                        >
                           <i class="fa fa-edit"></i>
                         </button>
                         <button (click)="onDelete(bill)" class="btn btn-danger">
