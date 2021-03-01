@@ -6,7 +6,8 @@
                     <div class="card-header card-header-primary">
                         <h4 class="card-title ">Termékek</h4>
                         <p class="card-category"> Válogasson gazdag terméklistánkból!</p>
-                        <button [routerLink]="'/edit-product/0'" class="btn btn-large btn-success btn-block">
+                        <button [routerLink]="'/product-list/edit-product/0'"
+                            class="btn btn-large btn-success btn-block">
                             <i class="fa fa-plus"></i>
                         </button>
                     </div>
@@ -61,7 +62,7 @@
                                         <td class="text-center">{{ product.active | switch }}</td>
                                         <td>
                                             <div class="btn-group">
-                                                <button [routerLink]="'/edit-product/' + product.id"
+                                                <button [routerLink]="'/product-list/edit-product/' + product.id"
                                                     class="btn btn-info">
                                                     <i class="fa fa-edit"></i>
                                                 </button>

@@ -33,6 +33,7 @@ import { SwitchPipe } from './pipe/switch.pipe';
 import { EditAddressComponent } from './page/edit-address/edit-address.component';
 import { FilterPipe } from './pipe/filter.pipe';
 
+import { AboutComponent } from './page/about/about.component';
 
 @NgModule({
   imports: [
@@ -67,6 +68,7 @@ import { FilterPipe } from './pipe/filter.pipe';
     SwitchPipe,
     EditAddressComponent,
     FilterPipe,
+    AboutComponent,
   ],
   providers: [],
   bootstrap: [AppComponent],
