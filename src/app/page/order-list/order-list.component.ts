@@ -32,12 +32,11 @@ export class OrderListComponent implements OnInit {
 
   ngOnInit(): void {
     this.activatedRoute.params.subscribe((params) => {
-      console.log(params.phrase);
       this.phraseString = params.phrase;
     });
-     this.update();
+    this.update();
   }
-   
+
   onColumnSelect(key: string): void {
     if (this.columnKey === key) {
       this.direction = this.direction * -1;
@@ -47,7 +46,7 @@ export class OrderListComponent implements OnInit {
     this.columnKey = key;
   }
 
-  
+
   onDelete(item: Order) {
     this.ordersService.remove(item).subscribe(i => {
       this.update();
@@ -56,10 +55,14 @@ export class OrderListComponent implements OnInit {
 
   update(): void {
     this.loading = true;
-    setTimeout(()=>{
       this.ordersService.getAll().pipe(
-        finalize(() => this.loading = false)
-      ).subscribe(items => this.orders = items)
+        finalize(() =>{ this.loading = false;})
+      ).subscribe(()=>{});
+
+    setTimeout(()=>{  
+    this.ordersService.getAll().subscribe(items =>{
+        this.orders = items;
+      })
     },this.config.updateDelayTimeMs);
   }
 
