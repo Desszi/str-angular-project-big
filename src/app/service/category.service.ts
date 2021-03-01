@@ -8,7 +8,7 @@ import { ConfigService } from './config.service';
   providedIn: 'root'
 })
 export class CategoryService extends BaseService<Category> {
-  constructor(httpClient: HttpClient, config:ConfigService) {
+  constructor(httpClient: HttpClient, config: ConfigService) {
     super(config, httpClient, "categories");
   }
 }

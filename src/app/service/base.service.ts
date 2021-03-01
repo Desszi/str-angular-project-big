@@ -34,9 +34,7 @@ export class BaseService<T extends { id: number }> {
   create(entity: T): Observable<T> {
     return this.http.post<T>(
       `${this.config.apiUrl}/${this.entityName}`,
-      entity).pipe(
-        tap(e => this.getAll())
-      );
+      entity) /*.pipe(tap(e => this.getAll())); */
   }
 
   update(entity: T): Observable<T> {

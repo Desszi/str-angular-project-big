@@ -9,14 +9,20 @@ import { finalize } from 'rxjs/operators';
   templateUrl: './products-list.component.html',
   styleUrls: ['./products-list.component.css']
 })
+
 export class ProductsListComponent implements OnInit {
 
   products: Product[];
   loading: boolean;
 
+  phraseString: string = '';
+
+  direction: number = 1;
+  columnKey: string = '';
+
   constructor(
     private productsService: ProductsService,
-    private config:ConfigService
+    private config: ConfigService
   ) { }
 
   ngOnInit(): void {
@@ -31,11 +37,28 @@ export class ProductsListComponent implements OnInit {
 
   update(): void {
     this.loading = true;
-    setTimeout(()=>{
       this.productsService.getAll().pipe(
-        finalize(() => this.loading = false)
-      ).subscribe(items => this.products = items)
+        finalize(() =>{ this.loading = false;})
+      ).subscribe(()=>{});
+
+    setTimeout(()=>{  
+    this.productsService.getAll().subscribe(items =>{
+        this.products = items;
+      })
     },this.config.updateDelayTimeMs);
+  }
+
+  onColumnSelect(key: string): void {
+    if (this.columnKey === key) {
+      this.direction = this.direction * -1;
+    } else {
+      this.direction = 1;
+    }
+    this.columnKey = key;
+  }
+
+  onSearchPhrase(event: Event): void {
+    this.phraseString = (event.target as HTMLInputElement).value;
   }
 
 }

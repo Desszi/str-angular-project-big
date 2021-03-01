@@ -13,6 +13,7 @@ export const ROUTES: RouteInfo[] = [
   { path: "/address-list", title: "Címek", icon: "library_books", class: "" },
   { path: "/bill-list", title: "Számlák", icon: "receipt", class: "" },
   { path: '/order-list', title: 'Rendelések', icon: "receipt", class: '' },
+  { path: "/bill-list", title: "Pénztár", icon: "receipt", class: "" },
   { path: '/customer-list', title: 'Vásárlók', icon: 'library_books', class: '' },
 
 ];

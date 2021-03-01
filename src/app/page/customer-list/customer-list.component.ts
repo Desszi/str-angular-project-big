@@ -34,10 +34,14 @@ export class CustomerListComponent implements OnInit {
 
   update(): void {
     this.loading = true;
-    setTimeout(()=>{
       this.customerService.getAll().pipe(
-        finalize(() => this.loading = false)
-      ).subscribe(items => this.customers = items)
+        finalize(() =>{ this.loading = false;})
+      ).subscribe(()=>{});
+
+    setTimeout(()=>{  
+    this.customerService.getAll().subscribe(items =>{
+        this.customers = items;
+      })
     },this.config.updateDelayTimeMs);
   }
 }
