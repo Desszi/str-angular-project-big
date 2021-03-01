@@ -1,11 +1,10 @@
-import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { Address } from 'app/model/address';
 import { Column } from 'app/model/column';
 import { ConfigService } from 'app/service/config.service';
 import { finalize } from 'rxjs/operators';
 import { AddressesService } from '../../service/addresses.service';
-import { CdkDragDrop, CdkDragStart, CdkDropList, moveItemInArray } from '@angular/cdk/drag-drop';
-import { DataSource } from '@angular/cdk/table';
+import { CdkDragDrop, moveItemInArray } from '@angular/cdk/drag-drop';
 import { Router } from '@angular/router';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
@@ -24,7 +23,6 @@ export class AddressListComponent implements OnInit {
   loading: boolean = true;
   columns:Column[] = this.addressesService.columns;
   displayedColumns: string[] = [];
-  previousIndex: number;
   filterType: MatTableFilter;
   filterEntity: Address;
 

@@ -18,7 +18,6 @@
                       matTableFilter
                       [filterType]="filterType"
                       [exampleEntity]="filterEntity"
-                      
                       class="mat-elevation-z8">
 
             <ng-container *ngFor="let column of columns; let i = index" [matColumnDef]="column.name">
@@ -41,11 +40,6 @@
                 </mat-cell>
               </mat-header-cell >
             </ng-container>
-
-            <ng-container matColumnDef="item-description">
-              <th mat-header-cell *matHeaderCellDef> Name of the item purchased </th>
-            </ng-container>
-
 
             <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
             <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
