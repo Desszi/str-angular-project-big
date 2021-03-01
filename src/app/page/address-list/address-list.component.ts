@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Address } from 'app/model/address';
+import { ConfigService } from 'app/service/config.service';
 import { BehaviorSubject } from 'rxjs';
 import { finalize } from 'rxjs/operators';
 import { AddressesService } from '../../service/addresses.service';
@@ -15,7 +16,8 @@ export class AddressListComponent implements OnInit {
   loading: boolean = true;
 
   constructor(
-    private addressesService: AddressesService
+    private addressesService: AddressesService,
+    private config:ConfigService
   ) { }
 
   ngOnInit(): void {
@@ -30,8 +32,15 @@ export class AddressListComponent implements OnInit {
 
   update(): void {
     this.loading = true;
-    this.addressesService.getAll().pipe(
-      finalize(() => this.loading = false)
-    ).subscribe(items => this.addresses = items)
+      this.addressesService.getAll().pipe(
+        finalize(() =>{ this.loading = false;})
+      ).subscribe(()=>{});
+
+  
+    setTimeout(()=>{  
+    this.addressesService.getAll().subscribe(items =>{
+        this.addresses = items;
+      })
+    },this.config.updateDelayTimeMs);
   }
 }

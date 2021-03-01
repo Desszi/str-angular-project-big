@@ -12,7 +12,7 @@ import { ToastrService } from 'ngx-toastr';
 })
 export class EditOrderComponent implements OnInit {
 
-  product: Order = new Order();
+  order: Order = new Order();
   loading: boolean = true;
 
   constructor(
@@ -24,12 +24,15 @@ export class EditOrderComponent implements OnInit {
 
   ngOnInit(): void {
     this.activatedRoute.params.subscribe(
-      params =>
-        this.ordersService.get(params.id).subscribe(
-          item => {
-            this.product = item || new Order();
-          }
-        )
+      params =>{
+        if(params.id == 0)
+          this.order = new Order();
+        else
+          this.ordersService.get(params.id).subscribe(
+            item => {
+              this.order = item;
+            })
+      }
     )
   }
 
@@ -37,21 +40,17 @@ export class EditOrderComponent implements OnInit {
 
     try {
       if (item.id == 0) {
-        this.ordersService.create(item).subscribe(
-          () => { }
-        );
-        this.toastr.success('Sikeresen hozzáadásra került');
-        this.router.navigate(['/product-list']);
+        this.ordersService.create(item).subscribe(() => { });
+        this.toastr.warning('Sikeresen hozzáadásra került');
+        this.router.navigate(['/order-list']);
       }
       else {
-        this.ordersService.update(item).subscribe(
-          () => { }
-        );
+        this.ordersService.update(item).subscribe(() => { });
         this.toastr.success('Sikeres módosítás :)');
-        this.router.navigate(['/product-list']);
+        this.router.navigate(['/order-list']);
       }
     } catch (error) {
-      this.toastr.success('Probléma történt:' + error);
+      this.toastr.error('Probléma történt:' + error);
     }
   }
 

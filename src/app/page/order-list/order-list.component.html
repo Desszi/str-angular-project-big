@@ -1,4 +1,4 @@
-<div class="main-content">
+<div *ngIf="!loading" class="main-content">
     <div class="container-fluid">
         <div class="row">
             <div class="col-md-12">
@@ -6,27 +6,55 @@
                     <div class="card-header card-header-danger">
                         <h4 class="card-title ">Rendelések</h4>
                         <p class="card-category"> Beszéljük meg egy sör mellett!</p>
-                        <button [routerLink]="'/edit-order/0'" class="btn btn-large btn-warning btn-block">
+                        <button [routerLink]="'/order-list/edit-order/0'" class="btn btn-large btn-warning btn-block">
                             <i class="fa fa-plus"></i>
                         </button>
                     </div>
                     <div class="card-body">
+                        <div class="form-group bg-dark mx-auto py-1">
+                            <input (keyup)="onSearchPhrase($event)" type="text"
+                                class="form-control text-center text-white mx-auto my-1 w-75"
+                                placeholder="Keresés a táblázatban...">
+
+                        </div>
                         <div class="table-responsive">
                             <table class="table">
                                 <thead>
                                     <tr>
-                                        <th (click)="onColumnSelect('id')" class="bg-primary text-center">id</th>
+                                        <th  class="bg-light text-center border">
+                                            <input (keyup)="onSearchPhrase($event)" type="text" class="form-control"
+                                              placeholder="filter">
+                                        </th>
+                                        <th  class="bg-light text-center border">
+                                            <input type="text" class="form-control"
+                                              placeholder="filter">
+                                        </th>
+                                        <th  class="bg-light text-center border">
+                                            <input type="text" class="form-control"
+                                              placeholder="filter">
+                                        </th>
+                                        <th  class="bg-light text-center border">
+                                            <input type="text" class="form-control"
+                                              placeholder="filter">
+                                        </th>
+                                        <th  class="bg-light text-center border">
+                                            <input type="text" class="form-control"
+                                              placeholder="filter">
+                                        </th>
+                                    </tr>
+                                    <tr>
+                                        <th (click)="onColumnSelect('id')" class="bg-primary text-center">#</th>
                                         <th (click)="onColumnSelect('customerID')" class="bg-info text-center">
-                                            customerID</th>
+                                            Vásárló az.</th>
                                         <th (click)="onColumnSelect('productID')" class="bg-primary text-center">
-                                            productID</th>
-                                        <th (click)="onColumnSelect('amount')" class="bg-info text-center">amount</th>
-                                        <th (click)="onColumnSelect('status')" class="bg-primary text-center">status
+                                            Termék az.</th>
+                                        <th (click)="onColumnSelect('amount')" class="bg-info text-center">Összeg</th>
+                                        <th (click)="onColumnSelect('status')" class="bg-primary text-center">Állapot
                                         </th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr *ngFor="let order of orders | search: phraseString:'name'
+                                    <tr *ngFor="let order of orders | search: phraseString
                                     | sort: columnKey:direction">
                                         <td>{{ order.id }}</td>
                                         <td>{{ order.customerID }}</td>
@@ -35,7 +63,7 @@
                                         <td>{{ order.status | switch }}</td>
                                         <td>
                                             <div class="btn-group">
-                                                <button [routerLink]="'/edit-order/' + order.id" class="btn btn-info">
+                                                <button [routerLink]="'/order-list/edit-order/' + order.id" class="btn btn-info">
                                                     <i class="fa fa-edit"></i>
                                                 </button>
                                                 <button (click)="onDelete(order)" class="btn btn-danger">
@@ -50,3 +78,10 @@
                     </div>
                 </div>
             </div>
+        </div>
+    </div>
+</div>
+
+<div *ngIf="loading" class="main-content">
+  <app-loading> </app-loading>
+</div>

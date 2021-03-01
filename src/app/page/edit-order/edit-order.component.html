@@ -1,49 +1,42 @@
 <div class="main-content">
     <div class="container-fluid">
         <div class="row">
-            <div *ngIf="product" class="col-6 offset-3">
-                <form #productForm="ngForm" (ngSubmit)="onUpdate(productForm, product)">
+            <div *ngIf="order" class="col-6 offset-3">
+              <label class="mt-3">{{'#'+ order.id}}</label>
+                <form #orderForm="ngForm" (ngSubmit)="onUpdate(orderForm, order)">
                     <div class="form-group my-5">
-                        <label for="name">ID</label>
-                        <input name="name" [(ngModel)]="product.customerID" type="text" class="form-control"
+                        <label for="customerID">Vásárló az.</label>
+                        <input name="customerID" [(ngModel)]="order.customerID" type="text" class="form-control"
                             pattern="^[1-9][0-9]{0,10}" required value="0">
-                        <div [hidden]="productForm.controls.name?.valid" class="error-message">
-                            A rendelési szám csak számokat tartalmazhat.
+                        <div [hidden]="orderForm.controls.customerID?.valid" class="error-message">
+                            Csak számokat tartalmazhat.
                         </div>
                     </div>
                     <div class="form-group my-5">
-                        <label for="name">CustomerID</label>
-                        <input name="name" [(ngModel)]="product.customerID" type="text" class="form-control"
+                        <label for="productID">Termék az.</label>
+                        <input name="productID" [(ngModel)]="order.productID" type="text" class="form-control"
                             pattern="^[1-9][0-9]{0,10}" required value="0">
-                        <div [hidden]="productForm.controls.name?.valid" class="error-message">
-                            A rendelési szám csak számokat tartalmazhat.
+                        <div [hidden]="orderForm.controls.productID?.valid" class="error-message">
+                            Csak számokat tartalmazhat.
                         </div>
                     </div>
                     <div class="form-group my-5">
-                        <label for="name">ProductID</label>
-                        <input name="name" [(ngModel)]="product.customerID" type="text" class="form-control"
+                        <label for="amount">Összeg</label>
+                        <input name="amount" [(ngModel)]="order.amount" type="text" class="form-control"
                             pattern="^[1-9][0-9]{0,10}" required value="0">
-                        <div [hidden]="productForm.controls.name?.valid" class="error-message">
-                            A rendelési szám csak számokat tartalmazhat.
+                        <div [hidden]="orderForm.controls.amount?.valid" class="error-message">
+                            Csak számokat tartalmazhat.
                         </div>
                     </div>
-                    <div class="form-group my-5">
-                        <label for="name">Amount</label>
-                        <input name="name" [(ngModel)]="product.customerID" type="text" class="form-control"
-                            pattern="^[1-9][0-9]{0,10}" required value="0">
-                        <div [hidden]="productForm.controls.name?.valid" class="error-message">
-                            A rendelési szám csak számokat tartalmazhat.
-                        </div>
-                    </div>
-                    <label for="status">Status</label>
-                    <select class="form-control" name="status" [(ngModel)]="product.status" required>
-                        <option value="new">new</option>
-                        <option value="paid">paid</option>
+                    <label for="status">Állapot</label>
+                    <select class="form-control" name="status" [(ngModel)]="order.status" required>
+                        <option value="new">új</option>
+                        <option value="paid">fizetve</option>
                     </select>
 
 
 
-                    <button [disabled]="productForm.invalid" type="submit" class="btn btn-primary btn-block btn-lg">
+                    <button [disabled]="orderForm.invalid" type="submit" class="btn btn-primary btn-block btn-lg">
                         <i class="fa fa-save"></i>
                     </button>
                 </form>

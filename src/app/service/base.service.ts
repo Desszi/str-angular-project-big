@@ -19,9 +19,12 @@ export class BaseService<T extends { id: number }> {
     this.entityName = entityName;
   }
 
+
   getAll(): Observable<T[]> {
-    return this.http.get<T[]>(`${this.config.apiUrl}/${this.entityName}`).pipe(delay(100));
+
+    return this.http.get<T[]>(`${this.config.apiUrl}/${this.entityName}`);
   }
+
 
   get(id: number): Observable<T> {
     return this.http.get<T>(`${this.config.apiUrl}/${this.entityName}/${id}`);
@@ -30,9 +33,7 @@ export class BaseService<T extends { id: number }> {
   create(entity: T): Observable<T> {
     return this.http.post<T>(
       `${this.config.apiUrl}/${this.entityName}`,
-      entity).pipe(
-        tap(e => this.getAll())
-      );
+      entity) /*.pipe(tap(e => this.getAll())); */
   }
 
   update(entity: T): Observable<T> {

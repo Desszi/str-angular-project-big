@@ -130,7 +130,7 @@
       "description": "Világos",
       "price": 890,
       "featured": false,
-      "active": true
+      "active": false
     },
     {
       "id": 11,
@@ -140,7 +140,7 @@
       "description": "Felsőerjesztés,Világos",
       "price": 790,
       "featured": false,
-      "active": true
+      "active": false
     },
     {
       "id": 12,
@@ -150,7 +150,7 @@
       "description": "Felsőerjesztés,Világos",
       "price": 1290,
       "featured": false,
-      "active": true
+      "active": false
     },
     {
       "id": 13,
@@ -160,7 +160,7 @@
       "description": "Felsőerjesztés,Világos",
       "price": 790,
       "featured": false,
-      "active": true
+      "active": false
     },
     {
       "id": 14,
@@ -230,7 +230,7 @@
       "description": "Felsőerjesztés,Világos",
       "price": 1590,
       "featured": true,
-      "active": true
+      "active": false
     },
     {
       "id": 21,
@@ -240,7 +240,7 @@
       "description": "Felsőerjesztés,Világos",
       "price": 1190,
       "featured": false,
-      "active": true
+      "active": false
     },
     {
       "id": 22,
@@ -250,7 +250,7 @@
       "description": "Felsőerjesztés,Világos",
       "price": 990,
       "featured": false,
-      "active": true
+      "active": false
     },
     {
       "id": 23,
@@ -260,7 +260,7 @@
       "description": "Felsőerjesztés,Világos",
       "price": 890,
       "featured": false,
-      "active": true
+      "active": false
     },
     {
       "id": 24,
@@ -270,7 +270,7 @@
       "description": "Felsőerjesztés,Világos",
       "price": 990,
       "featured": false,
-      "active": true
+      "active": false
     },
     {
       "id": 25,
@@ -280,7 +280,7 @@
       "description": "Felsőerjesztés,Sötét",
       "price": 990,
       "featured": false,
-      "active": true
+      "active": false
     },
     {
       "id": 26,
@@ -370,7 +370,7 @@
       "description": "Felsőerjesztés,Világos",
       "price": 990,
       "featured": true,
-      "active": true
+      "active": false
     },
     {
       "id": 35,
@@ -380,7 +380,7 @@
       "description": "Felsőerjesztés,Világos",
       "price": 990,
       "featured": false,
-      "active": true
+      "active": false
     },
     {
       "id": 36,
@@ -390,7 +390,7 @@
       "description": "Felsőerjesztés,Világos",
       "price": 1290,
       "featured": false,
-      "active": true
+      "active": false
     },
     {
       "id": 37,
@@ -1435,14 +1435,6 @@
       "email": "tanshell1d@artisteer.com",
       "addressId": 37,
       "active": false
-    },
-    {
-      "id": 51,
-      "firstName": "Berta",
-      "lastName": "Sakk",
-      "email": "berta@sa.hu",
-      "address": "",
-      "active": true
     }
   ],
   "orders": [

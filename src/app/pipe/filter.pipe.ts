@@ -1,9 +1,10 @@
 import { Pipe, PipeTransform } from '@angular/core';
 
 @Pipe({
-  name: 'search'
+  name: 'filter'
 })
-export class SearchPipe implements PipeTransform {
+export class FilterPipe implements PipeTransform {
+
   transform(value: any[] | null, phrase: string): any[] | null {
     if (!Array.isArray(value) || !phrase) {
       return value;
@@ -15,4 +16,5 @@ export class SearchPipe implements PipeTransform {
     );
 
   }
+
 }
