@@ -14,60 +14,8 @@ import { ConfigService } from 'app/service/config.service';
   styleUrls: ['./order-list.component.css']
 })
 export class OrderListComponent implements OnInit {
-  orders: Order[] = null;
-  loading: boolean = true;
-
-  @Input() phraseString: string = '';
-  direction: number = 1;
-  columnKey: string = '';
-
-  orderList = this.ordersService.getAll();
-
-  constructor(
-    private ordersService: OrdersService,
-    private activatedRoute: ActivatedRoute,
-    private config:ConfigService
-
-  ) { }
 
   ngOnInit(): void {
-    this.activatedRoute.params.subscribe((params) => {
-      this.phraseString = params.phrase;
-    });
-    this.update();
+   
   }
-
-  onColumnSelect(key: string): void {
-    if (this.columnKey === key) {
-      this.direction = this.direction * -1;
-    } else {
-      this.direction = 1;
-    }
-    this.columnKey = key;
-  }
-
-
-  onDelete(item: Order) {
-    this.ordersService.remove(item).subscribe(i => {
-      this.update();
-    });
-  }
-
-  update(): void {
-    this.loading = true;
-      this.ordersService.getAll().pipe(
-        finalize(() =>{ this.loading = false;})
-      ).subscribe(()=>{});
-
-    setTimeout(()=>{  
-    this.ordersService.getAll().subscribe(items =>{
-        this.orders = items;
-      })
-    },this.config.updateDelayTimeMs);
-  }
-
-  onSearchPhrase(event: Event): void {
-    this.phraseString = (event.target as HTMLInputElement).value;
-  }
-
 }
