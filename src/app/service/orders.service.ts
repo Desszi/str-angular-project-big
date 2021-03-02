@@ -16,14 +16,9 @@ export class OrdersService extends BaseService<Order> {
 
   columns:Column[] = [
     {index:0, name:'id', title:'#', type:'text', sortDir:''},
-    {index:1, name:'customerID', title:'Vásárló az.', type:'text', sortDir:''},
-    {index:2, name:'productID', title:'Termék az.', type:'text', sortDir:''},
-    {index:3, name:'amount', title:'Összeg', type:'text', sortDir:''},
-    {index:4, name:'status', title:'Állapot', type:'text', sortDir:''},
+    {index:1, name:'customerID', title:'VÁSÁRLÓ az.', type:'text', sortDir:''},
+    {index:2, name:'productID', title:'TERMÉK az.', type:'text', sortDir:''},
+    {index:3, name:'amount', title:'ÖSSZEG', type:'text', sortDir:''},
+    {index:4, name:'status', title:'ÁLLAPOT', type:'text', sortDir:''},
   ]
 }
-//"id": 1,
-//"customerID": 33,
-//  "productID": 30,
-//    "amount": 49,
-//      "status": "paid"

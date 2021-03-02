@@ -40,7 +40,7 @@
                 <tbody>
                   <tr
                     *ngFor="let customer of customers | search:phraseString:lastSelectedColumn | sort:lastSelectedColumn:sortDir">
-                    <td *ngFor="let col of displayedColumns"> {{customer[col]}} </td>
+                    <td *ngFor="let col of displayedColumns" class="text-center"> {{customer[col]}} </td>
                     <td>
                       <div class="btn-group">
                         <button [routerLink]="'/customer-list/edit-customer/' + customer.id" class="btn btn-info">
