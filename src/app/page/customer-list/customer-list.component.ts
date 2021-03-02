@@ -61,9 +61,10 @@ export class CustomerListComponent implements OnInit {
   onColumnSelect(colName: string): void {
     if (this.lastSelectedColumn != colName)
       this.columns.forEach(i => i.sortDir = '');
+
     this.lastSelectedColumn = colName;
 
-    const state = this.addressesService.columns.find(i => i.name == colName);
+    const state = this.customerService.columns.find(i => i.name == colName);
     if (state.sortDir == '')
       state.sortDir = 'up';
     if (state.sortDir == 'none')
