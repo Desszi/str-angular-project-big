@@ -4,7 +4,7 @@ export class Product {
     type: string = '';
     catID: number = 0;
     description: string = '';
-    price: number = 0;
+    price: number;
     featured: boolean = false;
     active: boolean = false;
 

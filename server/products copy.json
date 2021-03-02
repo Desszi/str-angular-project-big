@@ -133,6 +133,16 @@
       "active": false
     },
     {
+      "id": 10,
+      "name": "REKETYE KWANZAA",
+      "type": "0,33l dobozos",
+      "catID": 8,
+      "description": "Felsőerjesztés,Sötét",
+      "price": 1190,
+      "featured": false,
+      "active": true
+    },
+    {
       "id": 11,
       "name": "HORIZONT EASY A",
       "type": "0,33l dobozos",
@@ -620,16 +630,6 @@
       "description": "Felsőerjesztés,Sötét",
       "price": 2190,
       "featured": true,
-      "active": true
-    },
-    {
-      "id": 60,
-      "name": "REKETYE KWANZAA",
-      "type": "0,33l dobozos",
-      "catID": 8,
-      "description": "Felsőerjesztés,Sötét",
-      "price": 1190,
-      "featured": false,
       "active": true
     }
   ],
