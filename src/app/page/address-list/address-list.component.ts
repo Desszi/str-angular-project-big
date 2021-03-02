@@ -17,9 +17,8 @@ export class AddressListComponent implements OnInit {
   loading: boolean = true;
   columns: Column[] = this.addressesService.columns;
   phraseString: string = '';
-  direction: number = 1;
   lastSelectedColumn :string = '';
-  sortDir: string = 'none'
+  sortDir: string = ''
 
   constructor(
     private addressesService: AddressesService,
