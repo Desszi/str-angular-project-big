@@ -52,8 +52,9 @@ export class ProductsListComponent implements OnInit {
 
   onDelete(item: Product) {
     this.productsService.remove(item).subscribe(i => {
-      this.update();
+      
     });
+    this.update();
   }
 
   update(): void {
@@ -114,6 +115,7 @@ export class ProductsListComponent implements OnInit {
   }
 
   reset():void{
+    this.products = [];
     this.columns.forEach(i => i.sortDir = '');
     this.phraseString = '';
     this.lastSelectedColumn = '';
