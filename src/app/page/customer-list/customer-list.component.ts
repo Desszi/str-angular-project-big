@@ -52,10 +52,8 @@ export class CustomerListComponent implements OnInit {
   }
 
   onDelete(item: Customer) {
-    this.customerService.remove(item).subscribe(i => {
-      this.update();
-    });   
-    
+    this.customerService.remove(item).subscribe(i => {});   
+    this.update();
   }
 
   onColumnSelect(colName: string): void {
@@ -82,6 +80,7 @@ export class CustomerListComponent implements OnInit {
   }
 
   update(): void {
+    this.reset();
     this.loading = true;
     this.customerService.getAll().pipe(
       finalize(() => { this.loading = false; })
@@ -91,7 +90,6 @@ export class CustomerListComponent implements OnInit {
     this.addressesService.getAll().subscribe(adds => {
       addresses = adds;
     });
-
     const x = setTimeout(() => {
       clearTimeout(x);
       this.customerService.getAll().subscribe(items => {

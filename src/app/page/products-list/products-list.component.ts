@@ -73,7 +73,6 @@ export class ProductsListComponent implements OnInit {
     });
 
     const x = setTimeout(() => {
-     
       clearTimeout(x);
       this.productsService.getAll().subscribe(items => {
         items.forEach(item => {

@@ -73,6 +73,7 @@ export class OrderListComponent implements OnInit {
   }
 
   update(): void {
+    this.reset();
     this.loading = true;
     this.ordersService.getAll().pipe(
       finalize(() => { this.loading = false; })

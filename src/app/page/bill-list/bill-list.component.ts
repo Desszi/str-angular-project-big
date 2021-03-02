@@ -27,7 +27,7 @@ export class BillListComponent implements OnInit {
   constructor(
     private billService: BillService,
     private config: ConfigService
-  ) {}
+  ) { }
 
   ngOnInit(): void {
     this.update();
@@ -45,15 +45,11 @@ export class BillListComponent implements OnInit {
   }
 
   update(): void {
+    this.update();
     this.loading = true;
-    this.billService
-      .getAll()
-      .pipe(
-        finalize(() => {
-          this.loading = false;
-        })
-      )
-      .subscribe(() => {});
+    this.billService.getAll().pipe(
+        finalize(() => { this.loading = false; })
+         ).subscribe(() => { });
 
     setTimeout(() => {
       this.billService.getAll().subscribe((items) => {
@@ -81,10 +77,6 @@ export class BillListComponent implements OnInit {
   }
 
   drop(event: CdkDragDrop<string[]>) {
-    moveItemInArray(
-      this.displayedColumns,
-      event.previousIndex,
-      event.currentIndex
-    );
+    moveItemInArray(this.displayedColumns,event.previousIndex,event.currentIndex);
   }
 }
