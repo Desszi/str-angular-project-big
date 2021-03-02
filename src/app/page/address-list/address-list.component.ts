@@ -1,3 +1,4 @@
+import { CdkDragDrop, moveItemInArray } from '@angular/cdk/drag-drop';
 import { Component, OnInit } from '@angular/core';
 import { Address } from 'app/model/address';
 import { Column } from 'app/model/column';
@@ -19,6 +20,7 @@ export class AddressListComponent implements OnInit {
   phraseString: string = '';
   lastSelectedColumn: string = '';
   sortDir: string = ''
+  displayedColumns: string[] = [];
 
   constructor(
     private addressesService: AddressesService,
@@ -27,6 +29,13 @@ export class AddressListComponent implements OnInit {
 
   ngOnInit(): void {
     this.update();
+
+    this.columns.forEach((colunm, index) => {
+      colunm.index = index;
+      this.displayedColumns[index] = colunm.name;
+    });
+
+    console.log('displayedColumns',this.displayedColumns);
   }
 
   onDelete(item: Address) {
@@ -77,5 +86,11 @@ export class AddressListComponent implements OnInit {
     this.phraseString = '';
     this.lastSelectedColumn = '';
     this.sortDir = ''
+  }
+
+
+  drop(event: /*CdkDragDrop<string[]>*/ Event) {
+    console.log(event);
+    //moveItemInArray(this.displayedColumns, event.previousIndex, event.currentIndex);
   }
 }

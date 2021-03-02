@@ -6,31 +6,33 @@
           <div class="card-header card-header-danger">
             <h4 class="card-title ">Címek</h4>
             <p class="card-category">Ügyfeleink címlistája</p>
-            <button [routerLink]="'/address-list/edit-address/0'" class="btn btn-large btn-success btn-block">
+            <button [routerLink]="'/address-list/edit-address/0'" 
+                    class="btn btn-large btn-success btn-block">
               <i class="fa fa-plus"></i>
             </button>
           </div>
           <div class="card-body">
             <div class="table-responsive">
               <table class="table">
-                <thead>
+                <thead cdkDropList cdkDropListOrientation="horizontal">
                   <tr class="bg-dark text-light ">
-                    <th *ngFor="let col of columns">
-                      <div (click)="onColumnSelect(col.name)" class="columnName text-center font-weight-bold">
-                        <i *ngIf="col.sortDir" 
-                            [ngClass]="{ up:  'fa fa-arrow-circle-up',
-                                        down: 'fa fa-arrow-circle-down',
-                                        none: ''
-                                      }[col.sortDir]" aria-hidden="true"></i>
-                        {{col.title}}
-                      </div>
-                      <input type="text" class="form-control text-center text-white" placeholder="Keresés itt..."
-                        (keyup)="onSearchPhrase($event, col.name)">
-                    </th>
-                    <th class="bg-dark font-weight-bold text-light text-left">SZERKESZTÉS</th>
-
+                    <th *ngFor="let col of columns" (cdkDropListDropped)="drop($event)">
+                        <div cdkDrag (click)="onColumnSelect(col.name)" class="columnName text-center font-weight-bold">
+                          <i *ngIf="col.sortDir" 
+                              [ngClass]="{ up:  'fa fa-arrow-circle-up',
+                                          down: 'fa fa-arrow-circle-down',
+                                          none: ''
+                                        }[col.sortDir]" aria-hidden="true"></i>
+                          {{col.title}}
+                          <input  type="text" 
+                                  class="form-control text-center text-white" 
+                                  placeholder="Keresés itt..."
+                                  (keyup)="onSearchPhrase($event, col.name)">
+                        </div>
+                     </th>
+                     <th class="bg-dark font-weight-bold text-light text-left">SZERKESZTÉS</th>
                   </tr>
-                </thead>
+                </thead> 
                 <tbody>
                   <tr
                     *ngFor="let address of addresses | search:phraseString:lastSelectedColumn | sort:lastSelectedColumn:sortDir">
