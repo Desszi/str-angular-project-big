@@ -3,4 +3,5 @@ export class Column {
   name:string = '';
   title:string = '';
   type:string='';
+  sortDir:string='none';
 }
