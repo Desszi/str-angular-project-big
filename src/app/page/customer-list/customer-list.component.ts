@@ -1,7 +1,9 @@
+import { CdkDragDrop, moveItemInArray } from '@angular/cdk/drag-drop';
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Address } from 'app/model/address';
+import { Column } from 'app/model/column';
 import { Customer } from 'app/model/customer';
 import { AddressesService } from 'app/service/addresses.service';
 import { ConfigService } from 'app/service/config.service';
@@ -28,9 +30,12 @@ export class CustomerView {
 export class CustomerListComponent implements OnInit {
 
   customers: CustomerView[] = [];
-
-  /* customers: Customer[]; */
-  loading: boolean;
+  loading: boolean = true;
+  columns: Column[] = this.customerService.columns;
+  phraseString: string = '';
+  lastSelectedColumn: string = '';
+  sortDir: string = ''
+  displayedColumns: string[] = [];
 
   constructor(
     private customerService: CustomerService,
@@ -40,12 +45,38 @@ export class CustomerListComponent implements OnInit {
 
   ngOnInit(): void {
     this.update();
+    this.columns.forEach((colunm, index) => {
+      colunm.index = index;
+      this.displayedColumns[index] = colunm.name;
+    });
   }
 
   onDelete(item: Customer) {
     this.customerService.remove(item).subscribe(i => {
-      this.update();
-    });
+    });   
+    this.update();
+  }
+
+  onColumnSelect(colName: string): void {
+    if (this.lastSelectedColumn != colName)
+      this.columns.forEach(i => i.sortDir = '');
+    this.lastSelectedColumn = colName;
+
+    const state = this.addressesService.columns.find(i => i.name == colName);
+    if (state.sortDir == '')
+      state.sortDir = 'up';
+    if (state.sortDir == 'none')
+      state.sortDir = 'up'
+    else if (state.sortDir == 'up')
+      state.sortDir = 'down';
+    else if (state.sortDir == 'down')
+      state.sortDir = 'up'
+    this.sortDir = state.sortDir;
+  }
+
+  onSearchPhrase(event: Event, colName: string): void {
+    this.phraseString = (event.target as HTMLInputElement).value;
+    this.lastSelectedColumn = colName;
   }
 
   update(): void {
@@ -69,7 +100,6 @@ export class CustomerListComponent implements OnInit {
           customer.firstName = item.firstName;
           customer.lastName = item.lastName;
           customer.fullAddress = `${addressClass.country}, ${addressClass.city}, ${addressClass.street}`;
-          console.log(customer.fullAddress);
           customer.email = item.email;
           customer.active = item.active;
           (customer.active == true) ? customer.active = 'Igen' : customer.active = 'Nem';
@@ -77,17 +107,18 @@ export class CustomerListComponent implements OnInit {
         })
       })
     }, this.config.updateDelayTimeMs);
+  }
 
-    /* this.loading = true;
-    this.customerService.getAll().pipe(
-      finalize(() => { this.loading = false; })
-    ).subscribe(() => { });
+  reset():void{
+    this.customers = [];
+    this.columns.forEach(i => i.sortDir = '');
+    this.phraseString = '';
+    this.lastSelectedColumn = '';
+    this.sortDir = ''
+  }
 
-    setTimeout(() => {
-      this.customerService.getAll().subscribe(items => {
-        this.customers = items;
-      })
-    }, this.config.updateDelayTimeMs); */
+  drop(event: CdkDragDrop<string[]>) {
+    moveItemInArray(this.displayedColumns, event.previousIndex, event.currentIndex);
   }
 }
 
