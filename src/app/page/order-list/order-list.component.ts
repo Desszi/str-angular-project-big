@@ -7,6 +7,7 @@ import { ActivatedRoute } from '@angular/router';
 import { finalize } from 'rxjs/operators';
 import { ConfigService } from 'app/service/config.service';
 import { Column } from 'app/model/column';
+import { CdkDragDrop, moveItemInArray } from '@angular/cdk/drag-drop';
 
 
 @Component({
@@ -87,6 +88,18 @@ export class OrderListComponent implements OnInit {
   onSearchPhrase(event: Event, colName: string): void {
     this.phraseString = (event.target as HTMLInputElement).value;
     this.lastSelectedColumn = colName;
+  }
+
+  reset():void{
+    this.orders = [];
+    this.columns.forEach(i => i.sortDir = '');
+    this.phraseString = '';
+    this.lastSelectedColumn = '';
+    this.sortDir = ''
+  }
+
+  drop(event: CdkDragDrop<string[]>) {
+    moveItemInArray(this.displayedColumns, event.previousIndex, event.currentIndex);
   }
 
 }
