@@ -3,7 +3,7 @@
     <div class="row">
       <div class="col-md-12">
         <div class="card">
-          <div class="card-header card-header-danger">
+          <div class="card-header card-header-warning">
             <h4 class="card-title">Pénztár</h4>
             <p class="card-category">Itt megtekintheti számláit.</p>
             <button
@@ -14,55 +14,54 @@
             </button>
           </div>
           <div class="card-body">
-            <div class="form-group bg-dark mx-auto py-1">
-              <input
-                (keyup)="onSearchPhrase($event)"
-                type="text"
-                class="form-control text-center text-white mx-auto my-1 w-75"
-                placeholder="Keresés a táblázatban..."
-              />
-            </div>
             <div class="table-responsive">
               <table class="table table-striped">
                 <thead class="">
-                  <th
-                    (click)="onColumnSelect('id')"
-                    id="columnName"
-                    class="bg-dark font-weight-bold text-light text-center"
+                  <tr
+                    class="bg-dark text-light"
+                    cdkDropList
+                    cdkDropListOrientation="horizontal"
+                    class="example-list"
+                    (cdkDropListDropped)="drop($event)"
                   >
-                    #
-                  </th>
-                  <th
-                    (click)="onColumnSelect('orderID')"
-                    id="columnName"
-                    class="bg-dark font-weight-bold text-light text-center"
-                  >
-                    RENDELÉSI AZONOSÍTÓ
-                  </th>
-                  <th
-                    (click)="onColumnSelect('amount')"
-                    id="columnName"
-                    class="bg-dark font-weight-bold text-light text-center"
-                  >
-                    ÖSSZEG
-                  </th>
-                  <th
-                    (click)="onColumnSelect('status')"
-                    id="columnName"
-                    class="bg-dark font-weight-bold text-light text-center"
-                  >
-                    RENDELÉS ÁLLAPOTA
-                  </th>
-                  <th class="bg-dark font-weight-bold text-light text-center">
-                    SZERKESZTÉS
-                  </th>
+                    <th *ngFor="let col of columns" class="p-1" cdkDrag>
+                      <div
+                        (click)="onColumnSelect(col.name)"
+                        id="columnName"
+                        class="d-flex no-wrap justify-content-center align-items-center text-center p-1"
+                      >
+                        <i
+                          *ngIf="col.sortDir"
+                          class="pr-1"
+                          [ngClass]="
+                            {
+                              up: 'fa fa-arrow-circle-up',
+                              down: 'fa fa-arrow-circle-down',
+                              none: ''
+                            }[col.sortDir]
+                          "
+                          aria-hidden="true"
+                        ></i>
+                        {{ col.title }}
+                      </div>
+                      <input
+                        type="text"
+                        class="form-control text-center text-white"
+                        placeholder="Keresés..."
+                        (keyup)="onSearchPhrase($event, col.name)"
+                      />
+                    </th>
+                    <th class="bg-dark font-weight-bold text-light text-center">
+                      SZERKESZTÉS
+                    </th>
+                  </tr>
                 </thead>
                 <tbody>
                   <tr
                     *ngFor="
                       let bill of bills
-                        | sort: columnKey:direction
-                        | search: phraseString
+                        | search: phraseString:lastSelectedColumn
+                        | sort: lastSelectedColumn:sortDir
                     "
                   >
                     <td class="text-center">{{ bill.id }}</td>
