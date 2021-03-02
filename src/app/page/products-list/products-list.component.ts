@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Category } from 'app/model/category';
+import { Column } from 'app/model/column';
 import { Product } from 'app/model/product';
 import { CategoryService } from 'app/service/category.service';
 import { ConfigService } from 'app/service/config.service';
@@ -34,6 +35,10 @@ export class ProductsListComponent implements OnInit {
 
   direction: number = 1;
   columnKey: string = '';
+
+  columns: Column[] = this.productsService.columns;
+  lastSelectedColumn: string = '';
+  sortDir: string = ''
 
   constructor(
     private productsService: ProductsService,
@@ -83,17 +88,28 @@ export class ProductsListComponent implements OnInit {
     }, this.config.updateDelayTimeMs);
   }
 
-  onColumnSelect(key: string): void {
-    if (this.columnKey === key) {
-      this.direction = this.direction * -1;
-    } else {
-      this.direction = 1;
-    }
-    this.columnKey = key;
+  onColumnSelect(colName: string): void {
+
+    if (this.lastSelectedColumn != colName)
+      this.columns.forEach(col => col.sortDir = '');
+
+    this.lastSelectedColumn = colName;
+
+    const state = this.productsService.columns.find(col => col.name == colName);
+    if (state.sortDir == '' || state.sortDir == 'none')
+      state.sortDir = 'up';
+    else if (state.sortDir == 'up')
+      state.sortDir = 'down';
+    else if (state.sortDir == 'down')
+      state.sortDir = 'up'
+
+    this.sortDir = state.sortDir;
   }
 
-  onSearchPhrase(event: Event): void {
+
+  onSearchPhrase(event: Event, colName: string): void {
     this.phraseString = (event.target as HTMLInputElement).value;
+    this.lastSelectedColumn = colName;
   }
 
 }
