@@ -79,6 +79,7 @@ export class AddressListComponent implements OnInit {
   }
 
   reset():void{
+    this.addresses = [];
     this.columns.forEach(i => i.sortDir = '');
     this.phraseString = '';
     this.lastSelectedColumn = '';
