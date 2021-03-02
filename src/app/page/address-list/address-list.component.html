@@ -6,7 +6,7 @@
           <div class="card-header card-header-danger">
             <h4 class="card-title ">Címek</h4>
             <p class="card-category">Ügyfeleink címlistája</p>
-            <button [routerLink]="'/edit-address/0'" class="btn btn-large btn-success btn-block">
+            <button [routerLink]="'/address-list/edit-address/0'" class="btn btn-large btn-success btn-block">
               <i class="fa fa-plus"></i>
             </button>
           </div>
@@ -14,26 +14,23 @@
             <div class="table-responsive">
               <table class="table">
                 <thead>
-                  <tr class="font-weight-bold text-center">
-                    <th class="font-weight-bold text-left">#</th>
-                    <th class="font-weight-bold text-left">IRÁNYÍTÓSZÁM</th>
-                    <th class="font-weight-bold text-left">MEGYE</th>
-                    <th class="font-weight-bold text-left">VÁROS</th>
-                    <th class="font-weight-bold text-left">UTCA</th>
-                    <th class="font-weight-bold text-left">MEGJEGYZÉS</th>
-                  </tr>
+                <tr>
+                  <th *ngFor = "let col of columns"> 
+                    <div (click)="onColumnSelect(col.name)" class="bg-primary text-center"> {{col.title}}</div>
+                    <input  type="text" 
+                            class="form-control text-center bg-light border" 
+                            placeholder="Keresés itt..."
+                            (keyup)="onSearchPhrase($event, col.name)">
+
+                  </th>
+                </tr>
                 </thead>
                 <tbody>
-                  <tr *ngFor="let address of addresses">
-                    <td>{{ address.id }}</td>
-                    <td>{{ address.zip }}</td>
-                    <td>{{ address.country }}</td>
-                    <td>{{ address.city }}</td>
-                    <td>{{ address.street }}</td>
-                    <td>{{ address.notes }}</td>
+                  <tr *ngFor="let address of addresses | search:phraseString:colName | sort:colName:direction">
+                    <td *ngFor="let col of columns" > {{address[col.name]}} </td>
                     <td>
                       <div class="btn-group">
-                        <button [routerLink] = "'/edit-address/' + address.id" class="btn btn-info">
+                        <button [routerLink] = "'/address-list/edit-address/' + address.id" class="btn btn-info">
                           <i class="fa fa-edit"></i>
                         </button>
                         <button (click)="onDelete(address)" class="btn btn-danger">

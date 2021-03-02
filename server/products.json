@@ -49,8 +49,8 @@
       "catID": 1,
       "description": "Felsőerjesztés, Fél Barna ",
       "price": 2290,
-      "featured": "false",
-      "active": "true"
+      "featured": false,
+      "active": true
     },
     {
       "id": 2,
@@ -59,8 +59,8 @@
       "catID": 1,
       "description": "Felsőerjesztés, Világos",
       "price": 1190,
-      "featured": "true",
-      "active": "true"
+      "featured": true,
+      "active": true
     },
     {
       "id": 3,
@@ -69,8 +69,8 @@
       "catID": 1,
       "description": "Felsőerjesztés, Világos",
       "price": 790,
-      "featured": "true",
-      "active": "true"
+      "featured": true,
+      "active": true
     },
     {
       "id": 4,
@@ -79,8 +79,8 @@
       "catID": 1,
       "description": "Felsőerjesztés, Fél Barna",
       "price": 890,
-      "featured": "true",
-      "active": "true"
+      "featured": true,
+      "active": true
     },
     {
       "id": 5,
@@ -89,8 +89,8 @@
       "catID": 1,
       "description": "Felsőerjesztés, Világos",
       "price": 1390,
-      "featured": "true",
-      "active": "true"
+      "featured": true,
+      "active": true
     },
     {
       "id": 6,
@@ -99,8 +99,8 @@
       "catID": 1,
       "description": "Világos",
       "price": 890,
-      "featured": "false",
-      "active": "true"
+      "featured": false,
+      "active": true
     },
     {
       "id": 7,
@@ -109,8 +109,8 @@
       "catID": 1,
       "description": "Felsőerjesztés,Világos",
       "price": 990,
-      "featured": "false",
-      "active": "true"
+      "featured": false,
+      "active": true
     },
     {
       "id": 8,
@@ -119,8 +119,8 @@
       "catID": 1,
       "description": "Vörös",
       "price": 990,
-      "featured": "false",
-      "active": "true"
+      "featured": false,
+      "active": true
     },
     {
       "id": 9,
@@ -129,8 +129,8 @@
       "catID": 2,
       "description": "Világos",
       "price": 890,
-      "featured": "false",
-      "active": "true"
+      "featured": false,
+      "active": false
     },
     {
       "id": 11,
@@ -139,8 +139,8 @@
       "catID": 2,
       "description": "Felsőerjesztés,Világos",
       "price": 790,
-      "featured": "false",
-      "active": "true"
+      "featured": false,
+      "active": false
     },
     {
       "id": 12,
@@ -149,8 +149,8 @@
       "catID": 3,
       "description": "Felsőerjesztés,Világos",
       "price": 1290,
-      "featured": "false",
-      "active": "true"
+      "featured": false,
+      "active": false
     },
     {
       "id": 13,
@@ -159,8 +159,8 @@
       "catID": 3,
       "description": "Felsőerjesztés,Világos",
       "price": 790,
-      "featured": "false",
-      "active": "true"
+      "featured": false,
+      "active": false
     },
     {
       "id": 14,
@@ -169,8 +169,8 @@
       "catID": 3,
       "description": "Felsőerjesztés,Világos",
       "price": 990,
-      "featured": "false",
-      "active": "true"
+      "featured": false,
+      "active": true
     },
     {
       "id": 15,
@@ -179,8 +179,8 @@
       "catID": 3,
       "description": "Felsőerjesztés,Világos",
       "price": 1290,
-      "featured": "false",
-      "active": "true"
+      "featured": false,
+      "active": true
     },
     {
       "id": 16,
@@ -189,8 +189,8 @@
       "catID": 3,
       "description": "Felsőerjesztés,Világos",
       "price": 1390,
-      "featured": "false",
-      "active": "true"
+      "featured": false,
+      "active": true
     },
     {
       "id": 17,
@@ -199,8 +199,8 @@
       "catID": 3,
       "description": "Felsőerjesztés,Világos",
       "price": 1190,
-      "featured": "true",
-      "active": "true"
+      "featured": true,
+      "active": true
     },
     {
       "id": 18,
@@ -209,8 +209,8 @@
       "catID": 3,
       "description": "Felsőerjesztés,Világos",
       "price": 990,
-      "featured": "false",
-      "active": "true"
+      "featured": false,
+      "active": true
     },
     {
       "id": 19,
@@ -219,8 +219,8 @@
       "catID": 4,
       "description": "Felsőerjesztés,Világos",
       "price": 890,
-      "featured": "false",
-      "active": "true"
+      "featured": false,
+      "active": true
     },
     {
       "id": 20,
@@ -229,8 +229,8 @@
       "catID": 3,
       "description": "Felsőerjesztés,Világos",
       "price": 1590,
-      "featured": "true",
-      "active": "true"
+      "featured": true,
+      "active": false
     },
     {
       "id": 21,
@@ -239,8 +239,8 @@
       "catID": 3,
       "description": "Felsőerjesztés,Világos",
       "price": 1190,
-      "featured": "false",
-      "active": "true"
+      "featured": false,
+      "active": false
     },
     {
       "id": 22,
@@ -249,8 +249,8 @@
       "catID": 3,
       "description": "Felsőerjesztés,Világos",
       "price": 990,
-      "featured": "false",
-      "active": "true"
+      "featured": false,
+      "active": false
     },
     {
       "id": 23,
@@ -259,8 +259,8 @@
       "catID": 3,
       "description": "Felsőerjesztés,Világos",
       "price": 890,
-      "featured": "false",
-      "active": "true"
+      "featured": false,
+      "active": false
     },
     {
       "id": 24,
@@ -269,8 +269,8 @@
       "catID": 3,
       "description": "Felsőerjesztés,Világos",
       "price": 990,
-      "featured": "false",
-      "active": "true"
+      "featured": false,
+      "active": false
     },
     {
       "id": 25,
@@ -279,8 +279,8 @@
       "catID": 5,
       "description": "Felsőerjesztés,Sötét",
       "price": 990,
-      "featured": "false",
-      "active": "true"
+      "featured": false,
+      "active": false
     },
     {
       "id": 26,
@@ -289,8 +289,8 @@
       "catID": 5,
       "description": "Felsőerjesztés,Világos",
       "price": 990,
-      "featured": "false",
-      "active": "true"
+      "featured": false,
+      "active": true
     },
     {
       "id": 27,
@@ -299,8 +299,8 @@
       "catID": 5,
       "description": "Felsőerjesztés,Világos",
       "price": 1090,
-      "featured": "true",
-      "active": "true"
+      "featured": true,
+      "active": true
     },
     {
       "id": 28,
@@ -309,8 +309,8 @@
       "catID": 5,
       "description": "Felsőerjesztés,Világos",
       "price": 990,
-      "featured": "false",
-      "active": "true"
+      "featured": false,
+      "active": true
     },
     {
       "id": 29,
@@ -319,8 +319,8 @@
       "catID": 5,
       "description": "Felsőerjesztés,Világos",
       "price": 1300,
-      "featured": "false",
-      "active": "true"
+      "featured": false,
+      "active": true
     },
     {
       "id": 30,
@@ -329,8 +329,8 @@
       "catID": 5,
       "description": "Felsőerjesztés,Világos",
       "price": 990,
-      "featured": "false",
-      "active": "true"
+      "featured": false,
+      "active": true
     },
     {
       "id": 31,
@@ -339,8 +339,8 @@
       "catID": 5,
       "description": "Felsőerjesztés,Fél Barna",
       "price": 2190,
-      "featured": "true",
-      "active": "true"
+      "featured": true,
+      "active": true
     },
     {
       "id": 32,
@@ -349,8 +349,8 @@
       "catID": 5,
       "description": "Felsőerjesztés,Fél Barna",
       "price": 2190,
-      "featured": "false",
-      "active": "true"
+      "featured": false,
+      "active": true
     },
     {
       "id": 33,
@@ -359,8 +359,8 @@
       "catID": 5,
       "description": "Felsőerjesztés, Fél Barna",
       "price": 2190,
-      "featured": "true",
-      "active": "true"
+      "featured": true,
+      "active": true
     },
     {
       "id": 34,
@@ -369,8 +369,8 @@
       "catID": 5,
       "description": "Felsőerjesztés,Világos",
       "price": 990,
-      "featured": "true",
-      "active": "true"
+      "featured": true,
+      "active": false
     },
     {
       "id": 35,
@@ -379,8 +379,8 @@
       "catID": 5,
       "description": "Felsőerjesztés,Világos",
       "price": 990,
-      "featured": "false",
-      "active": "true"
+      "featured": false,
+      "active": false
     },
     {
       "id": 36,
@@ -389,8 +389,8 @@
       "catID": 5,
       "description": "Felsőerjesztés,Világos",
       "price": 1290,
-      "featured": "false",
-      "active": "true"
+      "featured": false,
+      "active": false
     },
     {
       "id": 37,
@@ -399,8 +399,8 @@
       "catID": 4,
       "description": "Felsőerjesztés,Világos",
       "price": 1290,
-      "featured": "false",
-      "active": "true"
+      "featured": false,
+      "active": true
     },
     {
       "id": 38,
@@ -409,8 +409,8 @@
       "catID": 5,
       "description": "Felsőerjesztés,Világos",
       "price": 890,
-      "featured": "false",
-      "active": "true"
+      "featured": false,
+      "active": true
     },
     {
       "id": 39,
@@ -419,8 +419,8 @@
       "catID": 5,
       "description": "Felsőerjesztés,Világos",
       "price": 890,
-      "featured": "false",
-      "active": "true"
+      "featured": false,
+      "active": true
     },
     {
       "id": 40,
@@ -429,8 +429,8 @@
       "catID": 4,
       "description": "Felsőerjesztés,Világos",
       "price": 1990,
-      "featured": "true",
-      "active": "true"
+      "featured": true,
+      "active": true
     },
     {
       "id": 41,
@@ -439,8 +439,8 @@
       "catID": 6,
       "description": "Felsőerjesztés,Világos",
       "price": 790,
-      "featured": "false",
-      "active": "true"
+      "featured": false,
+      "active": true
     },
     {
       "id": 42,
@@ -449,8 +449,8 @@
       "catID": 6,
       "description": "Felsőerjesztés,Világos",
       "price": 990,
-      "featured": "false",
-      "active": "true"
+      "featured": false,
+      "active": true
     },
     {
       "id": 43,
@@ -459,8 +459,8 @@
       "catID": 6,
       "description": "Felsőerjesztés,Világos",
       "price": 890,
-      "featured": "false",
-      "active": "true"
+      "featured": false,
+      "active": true
     },
     {
       "id": 44,
@@ -469,8 +469,8 @@
       "catID": 6,
       "description": "Felsőerjesztés,Világos",
       "price": 790,
-      "featured": "true",
-      "active": "true"
+      "featured": true,
+      "active": true
     },
     {
       "id": 45,
@@ -479,8 +479,8 @@
       "catID": 6,
       "description": "Felsőerjesztés,Vörös",
       "price": 790,
-      "featured": "false",
-      "active": "true"
+      "featured": false,
+      "active": true
     },
     {
       "id": 46,
@@ -489,8 +489,8 @@
       "catID": 6,
       "description": "Felsőerjesztés,Fél Barana",
       "price": 1990,
-      "featured": "false",
-      "active": "true"
+      "featured": false,
+      "active": true
     },
     {
       "id": 47,
@@ -499,8 +499,8 @@
       "catID": 6,
       "description": "Felsőerjesztés,Világos",
       "price": 1090,
-      "featured": "false",
-      "active": "true"
+      "featured": false,
+      "active": true
     },
     {
       "id": 48,
@@ -509,8 +509,8 @@
       "catID": 6,
       "description": "Felsőerjesztés,Világos",
       "price": 990,
-      "featured": "false",
-      "active": "true"
+      "featured": false,
+      "active": true
     },
     {
       "id": 49,
@@ -519,8 +519,8 @@
       "catID": 6,
       "description": "Felsőerjesztés,Világos",
       "price": 990,
-      "featured": "false",
-      "active": "true"
+      "featured": false,
+      "active": true
     },
     {
       "id": 50,
@@ -529,8 +529,8 @@
       "catID": 6,
       "description": "Felsőerjesztés,Világos",
       "price": 1290,
-      "featured": "false",
-      "active": "true"
+      "featured": false,
+      "active": true
     },
     {
       "id": 51,
@@ -539,8 +539,8 @@
       "catID": 6,
       "description": "Felsőerjesztés,Világos",
       "price": 1390,
-      "featured": "false",
-      "active": "true"
+      "featured": false,
+      "active": true
     },
     {
       "id": 52,
@@ -549,8 +549,8 @@
       "catID": 6,
       "description": "Felsőerjesztés,Világos",
       "price": 990,
-      "featured": "false",
-      "active": "true"
+      "featured": false,
+      "active": true
     },
     {
       "id": 53,
@@ -559,8 +559,8 @@
       "catID": 6,
       "description": "Felsőerjesztés,Világos",
       "price": 990,
-      "featured": "true",
-      "active": "true"
+      "featured": true,
+      "active": true
     },
     {
       "id": 54,
@@ -569,8 +569,8 @@
       "catID": 6,
       "description": "Felsőerjesztés,Világos",
       "price": 990,
-      "featured": "false",
-      "active": "true"
+      "featured": false,
+      "active": true
     },
     {
       "id": 55,
@@ -579,8 +579,8 @@
       "catID": 6,
       "description": "Felsőerjesztés,Világos",
       "price": 990,
-      "featured": "true",
-      "active": "true"
+      "featured": true,
+      "active": true
     },
     {
       "id": 56,
@@ -589,8 +589,8 @@
       "catID": 8,
       "description": "Felsőerjesztés,Világos",
       "price": 990,
-      "featured": "false",
-      "active": "true"
+      "featured": false,
+      "active": true
     },
     {
       "id": 57,
@@ -599,8 +599,8 @@
       "catID": 8,
       "description": "Felsőerjesztés,Világos",
       "price": 1190,
-      "featured": "false",
-      "active": "true"
+      "featured": false,
+      "active": true
     },
     {
       "id": 58,
@@ -609,8 +609,8 @@
       "catID": 8,
       "description": "Felsőerjesztés,Világos",
       "price": 990,
-      "featured": "false",
-      "active": "true"
+      "featured": false,
+      "active": true
     },
     {
       "id": 59,
@@ -619,8 +619,8 @@
       "catID": 8,
       "description": "Felsőerjesztés,Sötét",
       "price": 2190,
-      "featured": "true",
-      "active": "true"
+      "featured": true,
+      "active": true
     },
     {
       "id": 60,
@@ -629,8 +629,8 @@
       "catID": 8,
       "description": "Felsőerjesztés,Sötét",
       "price": 1190,
-      "featured": "false",
-      "active": "true"
+      "featured": false,
+      "active": true
     }
   ],
   "addresses": [

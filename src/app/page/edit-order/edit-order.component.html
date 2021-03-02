@@ -5,30 +5,30 @@
               <label class="mt-3">{{'#'+ order.id}}</label>
                 <form #orderForm="ngForm" (ngSubmit)="onUpdate(orderForm, order)">
                     <div class="form-group my-5">
-                        <label for="customerID">CustomerID</label>
+                        <label for="customerID">Vásárló az.</label>
                         <input name="customerID" [(ngModel)]="order.customerID" type="text" class="form-control"
                             pattern="^[1-9][0-9]{0,10}" required value="0">
                         <div [hidden]="orderForm.controls.customerID?.valid" class="error-message">
-                            A rendelési szám csak számokat tartalmazhat.
+                            Csak számokat tartalmazhat.
                         </div>
                     </div>
                     <div class="form-group my-5">
-                        <label for="productID">productID</label>
+                        <label for="productID">Termék az.</label>
                         <input name="productID" [(ngModel)]="order.productID" type="text" class="form-control"
                             pattern="^[1-9][0-9]{0,10}" required value="0">
                         <div [hidden]="orderForm.controls.productID?.valid" class="error-message">
-                            A rendelési szám csak számokat tartalmazhat.
+                            Csak számokat tartalmazhat.
                         </div>
                     </div>
                     <div class="form-group my-5">
-                        <label for="amount">Amount</label>
+                        <label for="amount">Összeg</label>
                         <input name="amount" [(ngModel)]="order.amount" type="text" class="form-control"
                             pattern="^[1-9][0-9]{0,10}" required value="0">
                         <div [hidden]="orderForm.controls.amount?.valid" class="error-message">
-                            A rendelési szám csak számokat tartalmazhat.
+                            Csak számokat tartalmazhat.
                         </div>
                     </div>
-                    <label for="status">Status</label>
+                    <label for="status">Állapot</label>
                     <select class="form-control" name="status" [(ngModel)]="order.status" required>
                         <option value="new">új</option>
                         <option value="paid">fizetve</option>
