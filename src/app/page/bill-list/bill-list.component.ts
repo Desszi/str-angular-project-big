@@ -45,7 +45,6 @@ export class BillListComponent implements OnInit {
   }
 
   update(): void {
-    this.update();
     this.loading = true;
     this.billService.getAll().pipe(
         finalize(() => { this.loading = false; })
@@ -77,6 +76,6 @@ export class BillListComponent implements OnInit {
   }
 
   drop(event: CdkDragDrop<string[]>) {
-    moveItemInArray(this.displayedColumns,event.previousIndex,event.currentIndex);
+    moveItemInArray<Column>(this.displayedColumns,event.previousIndex,event.currentIndex);
   }
 }
