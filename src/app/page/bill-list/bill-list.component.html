@@ -23,7 +23,7 @@
                     cdkDropListOrientation="horizontal"
                     (cdkDropListDropped)="drop($event)"
                   >
-                    <th *ngFor="let col of columns">
+                    <th *ngFor="let col of displayedColumns">
                       <div
                         cdkDrag
                         (click)="onColumnSelect(col.name)"
@@ -68,7 +68,7 @@
                       *ngFor="let col of displayedColumns"
                       class="text-center"
                     >
-                      {{ bill[col] }}
+                      {{ bill[col.name] }}
                     </td>
                     <td class="d-flex justify-content-center">
                       <div class="btn-group text-center">

@@ -22,7 +22,7 @@ export class BillListComponent implements OnInit {
   columns: Column[] = this.billService.columns;
   lastSelectedColumn: string = "";
   sortDir: string = "";
-  displayedColumns: string[] = [];
+  displayedColumns: Column[] = [];
 
   constructor(
     private billService: BillService,
@@ -31,10 +31,10 @@ export class BillListComponent implements OnInit {
 
   ngOnInit(): void {
     this.update();
-
-    this.columns.forEach((colunm, index) => {
-      colunm.index = index;
-      this.displayedColumns[index] = colunm.name;
+    this.displayedColumns = [];
+    this.columns.forEach((column, index) => {
+      column.index = index;
+      this.displayedColumns.push(column);
     });
   }
 
