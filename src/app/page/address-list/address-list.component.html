@@ -14,11 +14,19 @@
             <div class="table-responsive">
               <table class="table">
                 <thead>
-                <tr>
+                <tr class="bg-dark text-light ">
                   <th *ngFor = "let col of columns"> 
-                    <div (click)="onColumnSelect(col.name)" class="bg-primary text-center"> {{col.title}}</div>
+                    <div (click)="onColumnSelect(col.name)" class="columnName text-center font-weight-bold"> 
+                      <i *ngIf="col.sortDir" 
+                          [ngClass]= "{ up:  'fa fa-arrow-circle-up',
+                                        down:'fa fa-arrow-circle-down',
+                                        none:'fa fa-minus-circle'
+                                      }[col.sortDir]" 
+                        aria-hidden="true"></i>
+                      {{col.title}} 
+                    </div>
                     <input  type="text" 
-                            class="form-control text-center bg-light border" 
+                            class="form-control text-center text-white" 
                             placeholder="Keresés itt..."
                             (keyup)="onSearchPhrase($event, col.name)">
 
@@ -26,7 +34,7 @@
                 </tr>
                 </thead>
                 <tbody>
-                  <tr *ngFor="let address of addresses | search:phraseString:colName | sort:colName:direction">
+                  <tr *ngFor="let address of addresses | search:phraseString:lastSelectedColumn | sort:lastSelectedColumn:sortDir">
                     <td *ngFor="let col of columns" > {{address[col.name]}} </td>
                     <td>
                       <div class="btn-group">

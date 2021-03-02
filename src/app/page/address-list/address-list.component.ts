@@ -15,15 +15,14 @@ export class AddressListComponent implements OnInit {
 
   addresses: Address[] = null;
   loading: boolean = true;
-  columns:Column[] = this.addressesService.columns;
+  columns: Column[] = this.addressesService.columns;
   phraseString: string = '';
-  direction: number = 1;
-  colName: string = '';
-  sortDir: string = 'none'
+  lastSelectedColumn :string = '';
+  sortDir: string = ''
 
   constructor(
     private addressesService: AddressesService,
-    private config:ConfigService
+    private config: ConfigService
   ) { }
 
   ngOnInit(): void {
@@ -37,42 +36,42 @@ export class AddressListComponent implements OnInit {
   }
 
   onColumnSelect(colName: string): void {
-    if (this.colName == colName) {
-      this.direction = this.direction * -1;
-    } else {
-      this.direction = 1;
-    }
-    this.colName = colName;
+
+    if(this.lastSelectedColumn != colName)
+      this.columns.forEach(i=>i.sortDir ='');
+      
+    this.lastSelectedColumn = colName;
+
+    const state = this.addressesService.columns.find(i => i.name == colName);
+    if (state.sortDir == '')
+      state.sortDir = 'up';
+    if (state.sortDir == 'none')
+      state.sortDir = 'up'
+    else if (state.sortDir == 'up')
+      state.sortDir = 'down';
+    else if (state.sortDir == 'down')
+      state.sortDir = 'none'
+
+      this.sortDir = state.sortDir;
   }
 
-  onColumnSelectX(colName: string):void {
-    if(this.sortDir == 'none')
-      this.sortDir = 'up'
-    else if(this.sortDir == 'up')
-      this.sortDir = 'down';
-    else if(this.sortDir == 'down')
-      this.sortDir = 'none'
-
-    this.colName = colName;
-  }
-
-  onSearchPhrase(event: Event, colName:string ): void {
+  onSearchPhrase(event: Event, colName: string): void {
     this.phraseString = (event.target as HTMLInputElement).value;
-    this.colName = colName;
+    this.lastSelectedColumn = colName;
   }
 
   update(): void {
     this.loading = true;
-      this.addressesService.getAll().pipe(
-        finalize(() =>{ this.loading = false;})
-      ).subscribe(()=>{});
+    this.addressesService.getAll().pipe(
+      finalize(() => { this.loading = false; })
+    ).subscribe(() => { });
 
-    const x = setTimeout(()=>{  
-    clearTimeout(x);
-    this.addressesService.getAll().subscribe(items =>{
+    const x = setTimeout(() => {
+      clearTimeout(x);
+      this.addressesService.getAll().subscribe(items => {
         this.addresses = items;
 
       })
-    },this.config.updateDelayTimeMs);
+    }, this.config.updateDelayTimeMs);
   }
 }
