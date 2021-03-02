@@ -14,9 +14,9 @@
           <div class="card-body">
             <div class="table-responsive">
               <table class="table">
-                <thead cdkDropList cdkDropListOrientation="horizontal">
-                  <tr class="bg-dark text-light ">
-                    <th *ngFor="let col of columns" (cdkDropListDropped)="drop($event)">
+                <thead >
+                  <tr class="bg-dark text-light" cdkDropList cdkDropListOrientation="horizontal" (cdkDropListDropped)="drop($event)">
+                    <th *ngFor="let col of columns" >
                         <div cdkDrag (click)="onColumnSelect(col.name)" class="columnName text-center font-weight-bold">
                           <i *ngIf="col.sortDir" 
                               [ngClass]="{ up:  'fa fa-arrow-circle-up',
@@ -36,7 +36,7 @@
                 <tbody>
                   <tr
                     *ngFor="let address of addresses | search:phraseString:lastSelectedColumn | sort:lastSelectedColumn:sortDir">
-                    <td *ngFor="let col of columns"> {{address[col.name]}} </td>
+                    <td *ngFor="let col of displayedColumns"> {{address[col]}} </td>
                     <td>
                       <div class="btn-group">
                         <button [routerLink]="'/address-list/edit-address/' + address.id" class="btn btn-info">
