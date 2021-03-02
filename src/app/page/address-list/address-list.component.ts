@@ -34,10 +34,7 @@ export class AddressListComponent implements OnInit {
       colunm.index = index;
       this.displayedColumns[index] = colunm.name;
     });
-
-    console.log('displayedColumns',this.displayedColumns);
   }
-
   onDelete(item: Address) {
     this.addressesService.remove(item).subscribe(i => {
       this.update();
@@ -87,7 +84,6 @@ export class AddressListComponent implements OnInit {
     this.lastSelectedColumn = '';
     this.sortDir = ''
   }
-
 
   drop(event: CdkDragDrop<string[]>) {
     moveItemInArray(this.displayedColumns, event.previousIndex, event.currentIndex);

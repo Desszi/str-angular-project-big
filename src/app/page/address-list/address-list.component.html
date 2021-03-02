@@ -27,11 +27,12 @@
                                           none: ''
                                         }[col.sortDir]" aria-hidden="true"></i>
                           {{col.title}}
-                          <input  type="text" 
-                                  class="form-control text-center text-white" 
-                                  placeholder="Keresés itt..."
-                                  (keyup)="onSearchPhrase($event, col.name)"> 
-                          </div>
+                        </div>
+                        <input  type="text" 
+                                class="form-control text-center text-white" 
+                                placeholder="Keresés itt..."
+                                (keyup)="onSearchPhrase($event, col.name)"> 
+                          
                      </th>
                      <th class="bg-dark text-light text-center p-1">SZERKESZTÉS</th>
                   </tr>
