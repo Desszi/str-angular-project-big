@@ -15,12 +15,12 @@ export class AddressesService extends BaseService<Address> {
   }
 
   columns:Column[] = [
-    {index:0, name:'id', title:'#', type:'text'},
-    {index:1, name:'zip', title:'IRÁNYÍTÓSZÁM', type:'text'},
-    {index:2, name:'country', title:'MEGYE', type:'text'},
-    {index:3, name:'city', title:'VÁROS', type:'text'},
-    {index:4, name:'street', title:'UTCA', type:'text'},
-    {index:5, name:'notes', title:'MEGJEGYZÉS', type:'text'},
+    {index:0, name:'id', title:'#', type:'text', sortDir:''},
+    {index:1, name:'zip', title:'IRÁNYÍTÓSZÁM', type:'text', sortDir:''},
+    {index:2, name:'country', title:'MEGYE', type:'text', sortDir:''},
+    {index:3, name:'city', title:'VÁROS', type:'text', sortDir:''},
+    {index:4, name:'street', title:'UTCA', type:'text', sortDir:''},
+    {index:5, name:'notes', title:'MEGJEGYZÉS', type:'text', sortDir:''},
   ]
 }
 
