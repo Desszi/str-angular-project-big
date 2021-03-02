@@ -18,7 +18,7 @@
                             <table class="table table-striped">
                                 <thead>
                                     <tr class="bg-dark text-light" cdkDropList cdkDropListOrientation="horizontal" (cdkDropListDropped)="drop($event)">
-                                        <th *ngFor="let col of columns" class="p-1">
+                                        <th *ngFor="let col of displayedColumns" class="p-1">
                                             <div cdkDrag
                                                 (click)="onColumnSelect(col.name)" 
                                                 class="columnName d-flex no-wrap justify-content-center align-items-center text-center p-1">
@@ -40,7 +40,7 @@
                                 <tbody>
                                     <tr
                                         *ngFor="let product of products | search:phraseString:lastSelectedColumn | sort:lastSelectedColumn:sortDir">
-                                        <td *ngFor="let col of displayedColumns" class="text-center"> {{ product[col] }}
+                                        <td *ngFor="let col of displayedColumns" class="text-center"> {{ product[col.name] }}
                                         </td>
                                         <td>
                                             <div class="btn-group">
