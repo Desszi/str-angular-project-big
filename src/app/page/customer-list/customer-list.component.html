@@ -18,8 +18,8 @@
                     <th class="font-weight-bold">#</th>
                     <th class="font-weight-bold">Vezetéknév</th>
                     <th class="font-weight-bold">Keresztnév</th>
-                    <th class="font-weight-bold">E-mail cím</th>
                     <th class="font-weight-bold">Cím</th>
+                    <th class="font-weight-bold">E-mail cím</th>
                     <th class="font-weight-bold">Aktív ügyfél?</th>
                   </tr>
                 </thead>
@@ -28,10 +28,11 @@
                     <td>{{ customer.id }}</td>
                     <td>{{ customer.lastName }}</td>
                     <td>{{ customer.firstName }}</td>
+                    <td>{{ customer.fullAddress }}</td>
                     <td>{{ customer.email }}</td>
-                    <td> <button [routerLink]="'/address-list/' + customer.id" class="btn btn-info">
-                      <i> Ügyfél címe</i>
-                    </button> </td>
+                    <!-- <td> <button [routerLink]="'/address-list/' + customer.id" class="btn btn-info">
+                        <i> Ügyfél címe</i>
+                      </button> </td> -->
                     <td>{{ customer.active | switch }}</td>
                     <td>
                       <div class="btn-group">

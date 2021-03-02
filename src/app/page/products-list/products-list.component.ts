@@ -1,26 +1,24 @@
 import { Component, OnInit } from '@angular/core';
 import { Category } from 'app/model/category';
+import { Column } from 'app/model/column';
 import { Product } from 'app/model/product';
 import { CategoryService } from 'app/service/category.service';
 import { ConfigService } from 'app/service/config.service';
 import { ProductsService } from 'app/service/products.service';
 import { finalize } from 'rxjs/operators';
 
-
 export class ProductView {
   id: number = 0;
   name: string = '';
   type: string = '';
-  cat: string = '';
+  catID: string = '';
   description: string = '';
   price: number = 0;
-  featured: boolean = false;
-  active: boolean = false;
+  featured: boolean | string = false;
+  active: boolean | string = false;
 
   constructor() { }
 }
-
-
 
 @Component({
   selector: 'app-products-list',
@@ -30,7 +28,6 @@ export class ProductView {
 
 export class ProductsListComponent implements OnInit {
 
-  //products: Product[];
   products: ProductView[] = [];
   loading: boolean;
 
@@ -39,7 +36,9 @@ export class ProductsListComponent implements OnInit {
   direction: number = 1;
   columnKey: string = '';
 
-  length: number;
+  columns: Column[] = this.productsService.columns;
+  lastSelectedColumn: string = '';
+  sortDir: string = ''
 
   constructor(
     private productsService: ProductsService,
@@ -63,40 +62,54 @@ export class ProductsListComponent implements OnInit {
       finalize(() => { this.loading = false; })
     ).subscribe(() => { });
 
-    let categories:Category[];
-    this.categotyService.getAll().subscribe(cats=>{
+    let categories: Category[];
+    this.categotyService.getAll().subscribe(cats => {
       categories = cats;
     });
 
-    setTimeout(() => {
+    const x = setTimeout(() => {
+      clearTimeout(x);
       this.productsService.getAll().subscribe(items => {
-        items.forEach(item=>{
-          let prd : ProductView = new ProductView();
-          prd.id = item.id;
-          prd.type = item.type;
-          prd.name = item.name;
-          prd.cat = categories.find(y=>y.id == item.catID).name;
-          this.products.push(prd);
+        items.forEach(item => {
+          const product: ProductView = new ProductView();
+          product.id = item.id;
+          product.type = item.type;
+          product.name = item.name;
+          product.catID = categories.find(elem => elem.id == item.catID).name;
+          product.description = item.description;
+          product.price = item.price;
+          product.featured = item.featured;
+          (product.featured == true) ? product.featured = 'Igen' : product.featured = 'Nem';
+          product.active = item.active;
+          (product.active == true) ? product.active = 'Igen' : product.active = 'Nem';
+          this.products.push(product);
         })
       })
     }, this.config.updateDelayTimeMs);
   }
 
-  onColumnSelect(key: string): void {
-    if (this.columnKey === key) {
-      this.direction = this.direction * -1;
-    } else {
-      this.direction = 1;
-    }
-    this.columnKey = key;
+  onColumnSelect(colName: string): void {
+
+    if (this.lastSelectedColumn != colName)
+      this.columns.forEach(col => col.sortDir = '');
+
+    this.lastSelectedColumn = colName;
+
+    const state = this.productsService.columns.find(col => col.name == colName);
+    if (state.sortDir == '' || state.sortDir == 'none')
+      state.sortDir = 'up';
+    else if (state.sortDir == 'up')
+      state.sortDir = 'down';
+    else if (state.sortDir == 'down')
+      state.sortDir = 'up'
+
+    this.sortDir = state.sortDir;
   }
 
-  onSearchPhrase(event: Event): void {
+
+  onSearchPhrase(event: Event, colName: string): void {
     this.phraseString = (event.target as HTMLInputElement).value;
-  }
-
-  getLength(): void {
-    this.length = this.products.length;
+    this.lastSelectedColumn = colName;
   }
 
 }
