@@ -22,7 +22,7 @@ export class OrderListComponent implements OnInit {
   phraseString: string = '';
   lastSelectedColumn: string = '';
   sortDir: string = ''
-  displayedColumns: string[] = [];
+  displayedColumns: Column[] = [];
 
   direction: number = 1;
   columnKey: string = '';
@@ -32,16 +32,16 @@ export class OrderListComponent implements OnInit {
   constructor(
     private ordersService: OrdersService,
     private activatedRoute: ActivatedRoute,
-    private config:ConfigService
+    private config: ConfigService
 
   ) { }
 
   ngOnInit(): void {
     this.update();
-
+    this.displayedColumns = [];
     this.columns.forEach((colunm, index) => {
       colunm.index = index;
-      this.displayedColumns[index] = colunm.name;
+      this.displayedColumns.push(colunm);
     });
   }
 
@@ -74,15 +74,15 @@ export class OrderListComponent implements OnInit {
 
   update(): void {
     this.loading = true;
-      this.ordersService.getAll().pipe(
-        finalize(() =>{ this.loading = false;})
-      ).subscribe(()=>{});
+    this.ordersService.getAll().pipe(
+      finalize(() => { this.loading = false; })
+    ).subscribe(() => { });
 
-    setTimeout(()=>{  
-    this.ordersService.getAll().subscribe(items =>{
+    setTimeout(() => {
+      this.ordersService.getAll().subscribe(items => {
         this.orders = items;
       })
-    },this.config.updateDelayTimeMs);
+    }, this.config.updateDelayTimeMs);
   }
 
   onSearchPhrase(event: Event, colName: string): void {
@@ -90,7 +90,7 @@ export class OrderListComponent implements OnInit {
     this.lastSelectedColumn = colName;
   }
 
-  reset():void{
+  reset(): void {
     this.orders = [];
     this.columns.forEach(i => i.sortDir = '');
     this.phraseString = '';
@@ -99,7 +99,7 @@ export class OrderListComponent implements OnInit {
   }
 
   drop(event: CdkDragDrop<string[]>) {
-    moveItemInArray(this.displayedColumns, event.previousIndex, event.currentIndex);
+    moveItemInArray<Column>(this.displayedColumns, event.previousIndex, event.currentIndex);
   }
 
 }
