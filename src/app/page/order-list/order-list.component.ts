@@ -21,6 +21,7 @@ export class OrderListComponent implements OnInit {
   phraseString: string = '';
   lastSelectedColumn: string = '';
   sortDir: string = ''
+  displayedColumns: string[] = [];
 
   direction: number = 1;
   columnKey: string = '';
@@ -35,10 +36,12 @@ export class OrderListComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.activatedRoute.params.subscribe((params) => {
-      this.phraseString = params.phrase;
-    });
     this.update();
+
+    this.columns.forEach((colunm, index) => {
+      colunm.index = index;
+      this.displayedColumns[index] = colunm.name;
+    });
   }
 
   onColumnSelect(colName: string): void {

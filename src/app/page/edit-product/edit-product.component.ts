@@ -28,13 +28,13 @@ export class EditProductComponent implements OnInit {
       params => {
         if (params.id == 0) {
           this.product = new Product();
-          this.title = 'Új termék felvétele'
+          this.title = 'Új elem felvétele';
         }
         else
           this.productsService.get(params.id).subscribe(
             item => {
               this.product = item;
-              this.title = 'Termék szerkesztése';
+              this.title = 'Szerkesztés';
             })
       }
     )
