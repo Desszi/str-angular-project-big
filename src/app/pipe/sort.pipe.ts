@@ -11,7 +11,7 @@ export class SortPipe implements PipeTransform {
     }
     return value.sort((a, b) => {
       if (typeof a[key] === 'number' && typeof b[key] === 'number') {
-          (direction == 'up') ? (a[key] - b[key]): (b[key] - a[key]);
+         return (direction == 'up') ? (a[key] - b[key]): (b[key] - a[key]);
       }
       const aString: string = ('' + a[key]).toLowerCase();
       const bString: string = ('' + b[key]).toLowerCase();
