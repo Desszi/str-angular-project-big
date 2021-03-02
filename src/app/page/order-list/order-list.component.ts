@@ -66,4 +66,8 @@ export class OrderListComponent implements OnInit {
     },this.config.updateDelayTimeMs);
   }
 
+  onSearchPhrase(event: Event): void {
+    this.phraseString = (event.target as HTMLInputElement).value;
+  }
+
 }
