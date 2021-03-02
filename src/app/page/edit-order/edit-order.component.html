@@ -2,7 +2,7 @@
     <div class="container-fluid">
         <div class="row">
             <div *ngIf="order" class="col-6 offset-3">
-              <label class="mt-3">{{'#'+ order.id}}</label>
+                <label class="mt-3">{{'#'+ order.id}}</label>
                 <form #orderForm="ngForm" (ngSubmit)="onUpdate(orderForm, order)">
                     <div class="form-group my-5">
                         <label for="customerID">Vásárló az.</label>
@@ -28,14 +28,13 @@
                             Csak számokat tartalmazhat.
                         </div>
                     </div>
-                    <label for="status">Állapot</label>
-                    <select class="form-control" name="status" [(ngModel)]="order.status" required>
-                        <option value="new">új</option>
-                        <option value="paid">fizetve</option>
-                    </select>
-
-
-
+                    <div class="form-group my-5">
+                        <div class="custom-control custom-checkbox">
+                            <input type="checkbox" name="featured" [(ngModel)]="order.status"
+                                class="custom-control-input" id="featured">
+                            <label class="custom-control-label" for="featured">Új</label>
+                        </div>
+                    </div>
                     <button [disabled]="orderForm.invalid" type="submit" class="btn btn-primary btn-block btn-lg">
                         <i class="fa fa-save"></i>
                     </button>

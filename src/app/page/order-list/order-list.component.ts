@@ -26,7 +26,7 @@ export class OrderListComponent implements OnInit {
   constructor(
     private ordersService: OrdersService,
     private activatedRoute: ActivatedRoute,
-    private config:ConfigService
+    private config: ConfigService
 
   ) { }
 
@@ -55,15 +55,15 @@ export class OrderListComponent implements OnInit {
 
   update(): void {
     this.loading = true;
-      this.ordersService.getAll().pipe(
-        finalize(() =>{ this.loading = false;})
-      ).subscribe(()=>{});
+    this.ordersService.getAll().pipe(
+      finalize(() => { this.loading = false; })
+    ).subscribe(() => { });
 
-    setTimeout(()=>{  
-    this.ordersService.getAll().subscribe(items =>{
+    setTimeout(() => {
+      this.ordersService.getAll().subscribe(items => {
         this.orders = items;
       })
-    },this.config.updateDelayTimeMs);
+    }, this.config.updateDelayTimeMs);
   }
 
   onSearchPhrase(event: Event): void {
