@@ -16,7 +16,9 @@ export class ProductsListComponent implements OnInit {
   loading: boolean;
 
   phraseString: string = '';
-
+  /*   searchKey: string = ''
+    searchCategories: string[] = Object.keys(new Product());
+   */
   direction: number = 1;
   columnKey: string = '';
 

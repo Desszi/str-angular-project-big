@@ -12,8 +12,23 @@
                     </div>
                     <div class="card-body">
                         <div class="form-group bg-dark mx-auto py-1">
+
+                            <!--                             <div>
+                                <select [(ngModel)]="searchKey" class="custom-select">
+                                    <option value="id">#</option>
+                                    <option value="name">NÉV</option>
+                                    <option value="type">TÍPUS</option>
+                                    <option value="catID">KATEGÓRIA</option>
+                                    <option value="description">LEÍRÁS</option>
+                                    <option value="price">ÁR</option>
+                                    <option value="featured">KIEMELT</option>
+                                    <option value="active">ELÉRHETŐ</option>
+                                </select>
+                            </div>
+                            <input [(ngModel)]="phraseString" type="text"> -->
+
                             <input (keyup)="onSearchPhrase($event)" type="text"
-                                class="form-control text-center mx-auto my-1 w-75"
+                                class="form-control text-center text-white mx-auto my-1 w-75"
                                 placeholder="Keresés a táblázatban...">
 
                         </div>
