@@ -36,10 +36,8 @@ export class AddressListComponent implements OnInit {
   }
 
   onColumnSelect(colName: string): void {
-
     if (this.lastSelectedColumn != colName)
       this.columns.forEach(i => i.sortDir = '');
-
     this.lastSelectedColumn = colName;
 
     const state = this.addressesService.columns.find(i => i.name == colName);
@@ -51,7 +49,6 @@ export class AddressListComponent implements OnInit {
       state.sortDir = 'down';
     else if (state.sortDir == 'down')
       state.sortDir = 'up'
-
     this.sortDir = state.sortDir;
   }
 
@@ -61,6 +58,7 @@ export class AddressListComponent implements OnInit {
   }
 
   update(): void {
+    this.reset();
     this.loading = true;
     this.addressesService.getAll().pipe(
       finalize(() => { this.loading = false; })
@@ -70,8 +68,14 @@ export class AddressListComponent implements OnInit {
       clearTimeout(x);
       this.addressesService.getAll().subscribe(items => {
         this.addresses = items;
-
       })
     }, this.config.updateDelayTimeMs);
+  }
+
+  reset():void{
+    this.columns.forEach(i => i.sortDir = '');
+    this.phraseString = '';
+    this.lastSelectedColumn = '';
+    this.sortDir = ''
   }
 }
