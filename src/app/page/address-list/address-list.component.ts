@@ -17,7 +17,7 @@ export class AddressListComponent implements OnInit {
   loading: boolean = true;
   columns: Column[] = this.addressesService.columns;
   phraseString: string = '';
-  lastSelectedColumn :string = '';
+  lastSelectedColumn: string = '';
   sortDir: string = ''
 
   constructor(
@@ -37,9 +37,9 @@ export class AddressListComponent implements OnInit {
 
   onColumnSelect(colName: string): void {
 
-    if(this.lastSelectedColumn != colName)
-      this.columns.forEach(i=>i.sortDir ='');
-      
+    if (this.lastSelectedColumn != colName)
+      this.columns.forEach(i => i.sortDir = '');
+
     this.lastSelectedColumn = colName;
 
     const state = this.addressesService.columns.find(i => i.name == colName);
@@ -50,9 +50,9 @@ export class AddressListComponent implements OnInit {
     else if (state.sortDir == 'up')
       state.sortDir = 'down';
     else if (state.sortDir == 'down')
-      state.sortDir = 'none'
+      state.sortDir = 'up'
 
-      this.sortDir = state.sortDir;
+    this.sortDir = state.sortDir;
   }
 
   onSearchPhrase(event: Event, colName: string): void {

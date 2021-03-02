@@ -14,31 +14,28 @@
             <div class="table-responsive">
               <table class="table">
                 <thead>
-                <tr class="bg-dark text-light ">
-                  <th *ngFor = "let col of columns"> 
-                    <div (click)="onColumnSelect(col.name)" class="columnName text-center font-weight-bold"> 
-                      <i *ngIf="col.sortDir" 
-                          [ngClass]= "{ up:  'fa fa-arrow-circle-up',
+                  <tr class="bg-dark text-light ">
+                    <th *ngFor="let col of columns">
+                      <div (click)="onColumnSelect(col.name)" class="columnName text-center font-weight-bold">
+                        <i *ngIf="col.sortDir" [ngClass]="{ up:  'fa fa-arrow-circle-up',
                                         down:'fa fa-arrow-circle-down',
-                                        none:'fa fa-minus-circle'
-                                      }[col.sortDir]" 
-                        aria-hidden="true"></i>
-                      {{col.title}} 
-                    </div>
-                    <input  type="text" 
-                            class="form-control text-center text-white" 
-                            placeholder="Keresés itt..."
-                            (keyup)="onSearchPhrase($event, col.name)">
+                                        none:''
+                                      }[col.sortDir]" aria-hidden="true"></i>
+                        {{col.title}}
+                      </div>
+                      <input type="text" class="form-control text-center text-white" placeholder="Keresés itt..."
+                        (keyup)="onSearchPhrase($event, col.name)">
 
-                  </th>
-                </tr>
+                    </th>
+                  </tr>
                 </thead>
                 <tbody>
-                  <tr *ngFor="let address of addresses | search:phraseString:lastSelectedColumn | sort:lastSelectedColumn:sortDir">
-                    <td *ngFor="let col of columns" > {{address[col.name]}} </td>
+                  <tr
+                    *ngFor="let address of addresses | search:phraseString:lastSelectedColumn | sort:lastSelectedColumn:sortDir">
+                    <td *ngFor="let col of columns"> {{address[col.name]}} </td>
                     <td>
                       <div class="btn-group">
-                        <button [routerLink] = "'/address-list/edit-address/' + address.id" class="btn btn-info">
+                        <button [routerLink]="'/address-list/edit-address/' + address.id" class="btn btn-info">
                           <i class="fa fa-edit"></i>
                         </button>
                         <button (click)="onDelete(address)" class="btn btn-danger">
