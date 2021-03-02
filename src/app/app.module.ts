@@ -31,9 +31,8 @@ import { EditBillComponent } from "./page/edit-bill/edit-bill.component";
 import { InfoCardComponent } from './common/info-card/info-card.component';
 import { SwitchPipe } from './pipe/switch.pipe';
 import { EditAddressComponent } from './page/edit-address/edit-address.component';
-import { FilterPipe } from './pipe/filter.pipe';
-
 import { AboutComponent } from './page/about/about.component';
+import {DragDropModule} from '@angular/cdk/drag-drop';
 
 @NgModule({
   imports: [
@@ -47,6 +46,7 @@ import { AboutComponent } from './page/about/about.component';
     BrowserAnimationsModule,
     CommonModule,
     ToastrModule.forRoot(),
+    DragDropModule
   ],
   declarations: [
     AppComponent,
@@ -67,7 +67,6 @@ import { AboutComponent } from './page/about/about.component';
     DashboardComponent,
     SwitchPipe,
     EditAddressComponent,
-    FilterPipe,
     AboutComponent,
   ],
   providers: [],

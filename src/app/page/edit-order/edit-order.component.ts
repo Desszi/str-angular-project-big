@@ -14,6 +14,7 @@ export class EditOrderComponent implements OnInit {
 
   order: Order = new Order();
   loading: boolean = true;
+  title: string = '';
 
   constructor(
     private ordersService: OrdersService,
@@ -25,12 +26,15 @@ export class EditOrderComponent implements OnInit {
   ngOnInit(): void {
     this.activatedRoute.params.subscribe(
       params =>{
-        if(params.id == 0)
+        if(params.id == 0){
           this.order = new Order();
+          this.title = 'Új elem felvétele';
+        }
         else
           this.ordersService.get(params.id).subscribe(
             item => {
               this.order = item;
+              this.title = 'Szerkesztés';
             })
       }
     )

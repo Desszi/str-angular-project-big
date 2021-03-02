@@ -90,7 +90,7 @@
       "description": "Felsőerjesztés, Világos",
       "price": 1390,
       "featured": true,
-      "active": true
+      "active": false
     },
     {
       "id": 6,
@@ -100,7 +100,7 @@
       "description": "Világos",
       "price": 890,
       "featured": false,
-      "active": true
+      "active": false
     },
     {
       "id": 7,
@@ -110,7 +110,7 @@
       "description": "Felsőerjesztés,Világos",
       "price": 990,
       "featured": false,
-      "active": true
+      "active": false
     },
     {
       "id": 8,
@@ -120,7 +120,7 @@
       "description": "Vörös",
       "price": 990,
       "featured": false,
-      "active": true
+      "active": false
     },
     {
       "id": 9,
@@ -133,6 +133,16 @@
       "active": false
     },
     {
+      "id": 10,
+      "name": "REKETYE KWANZAA",
+      "type": "0,33l dobozos",
+      "catID": 8,
+      "description": "Felsőerjesztés,Sötét",
+      "price": 1190,
+      "featured": false,
+      "active": true
+    },
+    {
       "id": 11,
       "name": "HORIZONT EASY A",
       "type": "0,33l dobozos",
@@ -140,7 +150,7 @@
       "description": "Felsőerjesztés,Világos",
       "price": 790,
       "featured": false,
-      "active": false
+      "active": true
     },
     {
       "id": 12,
@@ -150,7 +160,7 @@
       "description": "Felsőerjesztés,Világos",
       "price": 1290,
       "featured": false,
-      "active": false
+      "active": true
     },
     {
       "id": 13,
@@ -160,7 +170,7 @@
       "description": "Felsőerjesztés,Világos",
       "price": 790,
       "featured": false,
-      "active": false
+      "active": true
     },
     {
       "id": 14,
@@ -230,7 +240,7 @@
       "description": "Felsőerjesztés,Világos",
       "price": 1590,
       "featured": true,
-      "active": false
+      "active": true
     },
     {
       "id": 21,
@@ -240,7 +250,7 @@
       "description": "Felsőerjesztés,Világos",
       "price": 1190,
       "featured": false,
-      "active": false
+      "active": true
     },
     {
       "id": 22,
@@ -250,7 +260,7 @@
       "description": "Felsőerjesztés,Világos",
       "price": 990,
       "featured": false,
-      "active": false
+      "active": true
     },
     {
       "id": 23,
@@ -260,7 +270,7 @@
       "description": "Felsőerjesztés,Világos",
       "price": 890,
       "featured": false,
-      "active": false
+      "active": true
     },
     {
       "id": 24,
@@ -270,7 +280,7 @@
       "description": "Felsőerjesztés,Világos",
       "price": 990,
       "featured": false,
-      "active": false
+      "active": true
     },
     {
       "id": 25,
@@ -280,7 +290,7 @@
       "description": "Felsőerjesztés,Sötét",
       "price": 990,
       "featured": false,
-      "active": false
+      "active": true
     },
     {
       "id": 26,
@@ -310,7 +320,7 @@
       "description": "Felsőerjesztés,Világos",
       "price": 990,
       "featured": false,
-      "active": true
+      "active": false
     },
     {
       "id": 29,
@@ -320,7 +330,7 @@
       "description": "Felsőerjesztés,Világos",
       "price": 1300,
       "featured": false,
-      "active": true
+      "active": false
     },
     {
       "id": 30,
@@ -330,7 +340,7 @@
       "description": "Felsőerjesztés,Világos",
       "price": 990,
       "featured": false,
-      "active": true
+      "active": false
     },
     {
       "id": 31,
@@ -339,8 +349,8 @@
       "catID": 5,
       "description": "Felsőerjesztés,Fél Barna",
       "price": 2190,
-      "featured": true,
-      "active": true
+      "featured": false,
+      "active": false
     },
     {
       "id": 32,
@@ -350,7 +360,7 @@
       "description": "Felsőerjesztés,Fél Barna",
       "price": 2190,
       "featured": false,
-      "active": true
+      "active": false
     },
     {
       "id": 33,
@@ -359,8 +369,8 @@
       "catID": 5,
       "description": "Felsőerjesztés, Fél Barna",
       "price": 2190,
-      "featured": true,
-      "active": true
+      "featured": false,
+      "active": false
     },
     {
       "id": 34,
@@ -369,7 +379,7 @@
       "catID": 5,
       "description": "Felsőerjesztés,Világos",
       "price": 990,
-      "featured": true,
+      "featured": false,
       "active": false
     },
     {
@@ -620,16 +630,6 @@
       "description": "Felsőerjesztés,Sötét",
       "price": 2190,
       "featured": true,
-      "active": true
-    },
-    {
-      "id": 60,
-      "name": "REKETYE KWANZAA",
-      "type": "0,33l dobozos",
-      "catID": 8,
-      "description": "Felsőerjesztés,Sötét",
-      "price": 1190,
-      "featured": false,
       "active": true
     }
   ],

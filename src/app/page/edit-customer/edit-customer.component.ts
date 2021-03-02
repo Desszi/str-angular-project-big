@@ -13,6 +13,7 @@ import { ToastrService } from 'ngx-toastr';
 export class EditCustomerComponent implements OnInit {
 
   customer: Customer = new Customer();
+  title: string = '';
 
   constructor(
     private customerService: CustomerService,
@@ -25,12 +26,15 @@ export class EditCustomerComponent implements OnInit {
   ngOnInit(): void {
     this.activatedRoute.params.subscribe(
       params =>{
-        if(params.id == 0)
+        if(params.id == 0){
           this.customer = new Customer();
+          this.title = 'Új elem felvétele';
+        }
         else
           this.customerService.get(params.id).subscribe(
             item => {
               this.customer = item;
+              this.title = 'Szerkesztés';
             })
       }
     )
