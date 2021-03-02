@@ -13,6 +13,7 @@ import { ToastrService } from 'ngx-toastr';
 export class EditAddressComponent implements OnInit {
 
   address: Address = new Address();
+  title: string = '';
 
   constructor(
     private addressesService: AddressesService,
@@ -24,12 +25,15 @@ export class EditAddressComponent implements OnInit {
   ngOnInit(): void {
     this.activatedRoute.params.subscribe(
       params =>{
-        if(params.id == 0)
+        if(params.id == 0){
           this.address = new Address();
+          this.title = 'Új elem felvétele';
+        }
         else
           this.addressesService.get(params.id).subscribe(
             item => {
               this.address = item;
+              this.title = 'Szerkesztés';
             })
       }
     )

@@ -17,16 +17,18 @@
                   <tr class="bg-dark text-light ">
                     <th *ngFor="let col of columns">
                       <div (click)="onColumnSelect(col.name)" class="columnName text-center font-weight-bold">
-                        <i *ngIf="col.sortDir" [ngClass]="{ up:  'fa fa-arrow-circle-up',
-                                        down:'fa fa-arrow-circle-down',
-                                        none:''
+                        <i *ngIf="col.sortDir" 
+                            [ngClass]="{ up:  'fa fa-arrow-circle-up',
+                                        down: 'fa fa-arrow-circle-down',
+                                        none: ''
                                       }[col.sortDir]" aria-hidden="true"></i>
                         {{col.title}}
                       </div>
                       <input type="text" class="form-control text-center text-white" placeholder="Keresés itt..."
                         (keyup)="onSearchPhrase($event, col.name)">
-
                     </th>
+                    <th class="bg-dark font-weight-bold text-light text-left">SZERKESZTÉS</th>
+
                   </tr>
                 </thead>
                 <tbody>
