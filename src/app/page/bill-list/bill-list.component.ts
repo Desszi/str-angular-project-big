@@ -1,3 +1,4 @@
+import { CdkDragDrop, moveItemInArray } from "@angular/cdk/drag-drop";
 import { Component, OnInit } from "@angular/core";
 import { Bill } from "app/model/bill";
 import { Column } from "app/model/column";
@@ -21,6 +22,7 @@ export class BillListComponent implements OnInit {
   columns: Column[] = this.billService.columns;
   lastSelectedColumn: string = "";
   sortDir: string = "";
+  displayedColumns: string[] = [];
 
   constructor(
     private billService: BillService,
@@ -29,6 +31,11 @@ export class BillListComponent implements OnInit {
 
   ngOnInit(): void {
     this.update();
+
+    this.columns.forEach((colunm, index) => {
+      colunm.index = index;
+      this.displayedColumns[index] = colunm.name;
+    });
   }
 
   onDelete(item: Bill) {
@@ -73,7 +80,11 @@ export class BillListComponent implements OnInit {
     this.lastSelectedColumn = colName;
   }
 
-  /* drop(event: CdkDragDrop<string[]>) {
-    moveItemInArray(this.timePeriods, event.previousIndex, event.currentIndex);
-  } */
+  drop(event: CdkDragDrop<string[]>) {
+    moveItemInArray(
+      this.displayedColumns,
+      event.previousIndex,
+      event.currentIndex
+    );
+  }
 }
