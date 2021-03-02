@@ -89,8 +89,7 @@ export class AddressListComponent implements OnInit {
   }
 
 
-  drop(event: /*CdkDragDrop<string[]>*/ Event) {
-    console.log(event);
-    //moveItemInArray(this.displayedColumns, event.previousIndex, event.currentIndex);
+  drop(event: CdkDragDrop<string[]>) {
+    moveItemInArray(this.displayedColumns, event.previousIndex, event.currentIndex);
   }
 }

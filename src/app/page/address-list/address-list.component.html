@@ -14,12 +14,15 @@
           <div class="card-body">
             <div class="table-responsive">
               <table class="table">
-                <thead cdkDropList cdkDropListOrientation="horizontal">
-                  <tr class="bg-dark text-light ">
-                    <th *ngFor="let col of columns" (cdkDropListDropped)="drop($event)">
-                        <div cdkDrag (click)="onColumnSelect(col.name)" class="columnName text-center font-weight-bold">
+                <thead >
+                  <tr class="bg-dark text-light" cdkDropList cdkDropListOrientation="horizontal" (cdkDropListDropped)="drop($event)">
+                    <th *ngFor="let col of columns" >
+                        <div cdkDrag 
+                            (click)="onColumnSelect(col.name)" 
+                            class="columnName text-center">
                           <i *ngIf="col.sortDir" 
-                              [ngClass]="{ up:  'fa fa-arrow-circle-up',
+                            class="pr-1"
+                             [ngClass]="{ up:  'fa fa-arrow-circle-up',
                                           down: 'fa fa-arrow-circle-down',
                                           none: ''
                                         }[col.sortDir]" aria-hidden="true"></i>
@@ -27,16 +30,16 @@
                           <input  type="text" 
                                   class="form-control text-center text-white" 
                                   placeholder="Keresés itt..."
-                                  (keyup)="onSearchPhrase($event, col.name)">
-                        </div>
+                                  (keyup)="onSearchPhrase($event, col.name)"> 
+                          </div>
                      </th>
-                     <th class="bg-dark font-weight-bold text-light text-left">SZERKESZTÉS</th>
+                     <th class="bg-dark text-light text-center p-1">SZERKESZTÉS</th>
                   </tr>
                 </thead> 
                 <tbody>
                   <tr
                     *ngFor="let address of addresses | search:phraseString:lastSelectedColumn | sort:lastSelectedColumn:sortDir">
-                    <td *ngFor="let col of columns"> {{address[col.name]}} </td>
+                    <td *ngFor="let col of displayedColumns"> {{address[col]}} </td>
                     <td>
                       <div class="btn-group">
                         <button [routerLink]="'/address-list/edit-address/' + address.id" class="btn btn-info">

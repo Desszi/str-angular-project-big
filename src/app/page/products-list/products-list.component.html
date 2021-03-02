@@ -21,13 +21,12 @@
                                         <th *ngFor="let col of columns" class="p-1">
                                             <div (click)="onColumnSelect(col.name)" id="columnName"
                                                 class="d-flex no-wrap justify-content-center align-items-center text-center p-1">
-                                                <i *ngIf="col.sortDir" class="pr-1" [ngClass]="
-                                                { up: 'fa fa-arrow-circle-up',
-                                                down: 'fa fa-arrow-circle-down',
-                                                none: '' }
-                                                [col.sortDir]" aria-hidden="true"></i>
+                                                <i *ngIf="col.sortDir" class="pr-1" 
+                                                [ngClass]=" { up: 'fa fa-arrow-circle-up',
+                                                              down: 'fa fa-arrow-circle-down',
+                                                              none: '' }
+                                                             [col.sortDir]" aria-hidden="true"></i>
                                                 {{col.title}}
-                                                <!-- <i class="fa fa-times-circle pl-1"></i> -->
                                             </div>
                                             <input type="text" class="form-control text-center text-white"
                                                 placeholder="Keresés..." (keyup)="onSearchPhrase($event, col.name)">
