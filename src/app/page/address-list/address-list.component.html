@@ -16,7 +16,7 @@
               <table class="table">
                 <thead >
                   <tr class="bg-dark text-light" cdkDropList cdkDropListOrientation="horizontal" (cdkDropListDropped)="drop($event)">
-                    <th *ngFor="let col of columns" >
+                    <th *ngFor="let col of displayedColumns" >
                         <div cdkDrag 
                             (click)="onColumnSelect(col.name)" 
                             class="columnName text-center">
@@ -39,7 +39,7 @@
                 <tbody>
                   <tr
                     *ngFor="let address of addresses | search:phraseString:lastSelectedColumn | sort:lastSelectedColumn:sortDir">
-                    <td *ngFor="let col of displayedColumns" class="text-center"> {{address[col]}} </td>
+                    <td *ngFor="let col of displayedColumns" class="text-center"> {{address[col.name]}} </td>
                     <td>
                       <div class="btn-group">
                         <button [routerLink]="'/address-list/edit-address/' + address.id" class="btn btn-info">
