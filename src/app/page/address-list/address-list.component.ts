@@ -1,5 +1,7 @@
+import { CdkDragDrop, moveItemInArray } from '@angular/cdk/drag-drop';
 import { Component, OnInit } from '@angular/core';
 import { Address } from 'app/model/address';
+import { Column } from 'app/model/column';
 import { ConfigService } from 'app/service/config.service';
 import { BehaviorSubject } from 'rxjs';
 import { finalize } from 'rxjs/operators';
@@ -14,33 +16,77 @@ export class AddressListComponent implements OnInit {
 
   addresses: Address[] = null;
   loading: boolean = true;
+  columns: Column[] = this.addressesService.columns;
+  phraseString: string = '';
+  lastSelectedColumn: string = '';
+  sortDir: string = ''
+  displayedColumns: string[] = [];
 
   constructor(
     private addressesService: AddressesService,
-    private config:ConfigService
+    private config: ConfigService
   ) { }
 
   ngOnInit(): void {
     this.update();
-  }
 
+    this.columns.forEach((colunm, index) => {
+      colunm.index = index;
+      this.displayedColumns[index] = colunm.name;
+    });
+  }
   onDelete(item: Address) {
     this.addressesService.remove(item).subscribe(i => {
       this.update();
     });
   }
 
-  update(): void {
-    this.loading = true;
-      this.addressesService.getAll().pipe(
-        finalize(() =>{ this.loading = false;})
-      ).subscribe(()=>{});
+  onColumnSelect(colName: string): void {
+    if (this.lastSelectedColumn != colName)
+      this.columns.forEach(i => i.sortDir = '');
+    this.lastSelectedColumn = colName;
 
-  
-    setTimeout(()=>{  
-    this.addressesService.getAll().subscribe(items =>{
+    const state = this.addressesService.columns.find(i => i.name == colName);
+    if (state.sortDir == '')
+      state.sortDir = 'up';
+    if (state.sortDir == 'none')
+      state.sortDir = 'up'
+    else if (state.sortDir == 'up')
+      state.sortDir = 'down';
+    else if (state.sortDir == 'down')
+      state.sortDir = 'up'
+    this.sortDir = state.sortDir;
+  }
+
+  onSearchPhrase(event: Event, colName: string): void {
+    this.phraseString = (event.target as HTMLInputElement).value;
+    this.lastSelectedColumn = colName;
+  }
+
+  update(): void {
+    this.reset();
+    this.loading = true;
+    this.addressesService.getAll().pipe(
+      finalize(() => { this.loading = false; })
+    ).subscribe(() => { });
+
+    const x = setTimeout(() => {
+      clearTimeout(x);
+      this.addressesService.getAll().subscribe(items => {
         this.addresses = items;
       })
-    },this.config.updateDelayTimeMs);
+    }, this.config.updateDelayTimeMs);
+  }
+
+  reset():void{
+    this.addresses = [];
+    this.columns.forEach(i => i.sortDir = '');
+    this.phraseString = '';
+    this.lastSelectedColumn = '';
+    this.sortDir = ''
+  }
+
+  drop(event: CdkDragDrop<string[]>) {
+    moveItemInArray(this.displayedColumns, event.previousIndex, event.currentIndex);
   }
 }

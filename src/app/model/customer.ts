@@ -4,7 +4,7 @@ export class Customer {
     lastName: string = '';
     email: string = '';
     addressId: number = 0;
-    active: boolean = true;
+    active: boolean = false;
 
     constructor() { }
 }

@@ -6,6 +6,7 @@ import { Input } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { finalize } from 'rxjs/operators';
 import { ConfigService } from 'app/service/config.service';
+import { Column } from 'app/model/column';
 
 
 @Component({
@@ -16,8 +17,12 @@ import { ConfigService } from 'app/service/config.service';
 export class OrderListComponent implements OnInit {
   orders: Order[] = null;
   loading: boolean = true;
+  columns: Column[] = this.ordersService.columns;
+  phraseString: string = '';
+  lastSelectedColumn: string = '';
+  sortDir: string = ''
+  displayedColumns: string[] = [];
 
-  @Input() phraseString: string = '';
   direction: number = 1;
   columnKey: string = '';
 
@@ -31,19 +36,32 @@ export class OrderListComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.activatedRoute.params.subscribe((params) => {
-      this.phraseString = params.phrase;
-    });
     this.update();
+
+    this.columns.forEach((colunm, index) => {
+      colunm.index = index;
+      this.displayedColumns[index] = colunm.name;
+    });
   }
 
-  onColumnSelect(key: string): void {
-    if (this.columnKey === key) {
-      this.direction = this.direction * -1;
-    } else {
-      this.direction = 1;
-    }
-    this.columnKey = key;
+  onColumnSelect(colName: string): void {
+
+    if (this.lastSelectedColumn != colName)
+      this.columns.forEach(i => i.sortDir = '');
+
+    this.lastSelectedColumn = colName;
+
+    const state = this.ordersService.columns.find(i => i.name == colName);
+    if (state.sortDir == '')
+      state.sortDir = 'up';
+    if (state.sortDir == 'none')
+      state.sortDir = 'up'
+    else if (state.sortDir == 'up')
+      state.sortDir = 'down';
+    else if (state.sortDir == 'down')
+      state.sortDir = 'up'
+
+    this.sortDir = state.sortDir;
   }
 
 
@@ -66,8 +84,11 @@ export class OrderListComponent implements OnInit {
     },this.config.updateDelayTimeMs);
   }
 
-  onSearchPhrase(event: Event): void {
+  onSearchPhrase(event: Event, colName: string): void {
     this.phraseString = (event.target as HTMLInputElement).value;
+    this.lastSelectedColumn = colName;
   }
 
 }
+
+

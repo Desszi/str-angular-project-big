@@ -6,34 +6,44 @@
           <div class="card-header card-header-danger">
             <h4 class="card-title ">Címek</h4>
             <p class="card-category">Ügyfeleink címlistája</p>
-            <button [routerLink]="'/edit-address/0'" class="btn btn-large btn-success btn-block">
+            <button [routerLink]="'/address-list/edit-address/0'" 
+                    class="btn btn-large btn-success btn-block">
               <i class="fa fa-plus"></i>
             </button>
           </div>
           <div class="card-body">
             <div class="table-responsive">
               <table class="table">
-                <thead>
-                  <tr class="font-weight-bold text-center">
-                    <th class="font-weight-bold text-left">#</th>
-                    <th class="font-weight-bold text-left">IRÁNYÍTÓSZÁM</th>
-                    <th class="font-weight-bold text-left">MEGYE</th>
-                    <th class="font-weight-bold text-left">VÁROS</th>
-                    <th class="font-weight-bold text-left">UTCA</th>
-                    <th class="font-weight-bold text-left">MEGJEGYZÉS</th>
+                <thead >
+                  <tr class="bg-dark text-light" cdkDropList cdkDropListOrientation="horizontal" (cdkDropListDropped)="drop($event)">
+                    <th *ngFor="let col of columns" >
+                        <div cdkDrag 
+                            (click)="onColumnSelect(col.name)" 
+                            class="columnName text-center">
+                          <i *ngIf="col.sortDir" 
+                            class="pr-1"
+                             [ngClass]="{ up:  'fa fa-arrow-circle-up',
+                                          down: 'fa fa-arrow-circle-down',
+                                          none: ''
+                                        }[col.sortDir]" aria-hidden="true"></i>
+                          {{col.title}}
+                        </div>
+                        <input  type="text" 
+                                class="form-control text-center text-white" 
+                                placeholder="Keresés itt..."
+                                (keyup)="onSearchPhrase($event, col.name)"> 
+                          
+                     </th>
+                     <th class="bg-dark text-light text-center p-1">SZERKESZTÉS</th>
                   </tr>
-                </thead>
+                </thead> 
                 <tbody>
-                  <tr *ngFor="let address of addresses">
-                    <td>{{ address.id }}</td>
-                    <td>{{ address.zip }}</td>
-                    <td>{{ address.country }}</td>
-                    <td>{{ address.city }}</td>
-                    <td>{{ address.street }}</td>
-                    <td>{{ address.notes }}</td>
+                  <tr
+                    *ngFor="let address of addresses | search:phraseString:lastSelectedColumn | sort:lastSelectedColumn:sortDir">
+                    <td *ngFor="let col of displayedColumns"> {{address[col]}} </td>
                     <td>
                       <div class="btn-group">
-                        <button [routerLink] = "'/edit-address/' + address.id" class="btn btn-info">
+                        <button [routerLink]="'/address-list/edit-address/' + address.id" class="btn btn-info">
                           <i class="fa fa-edit"></i>
                         </button>
                         <button (click)="onDelete(address)" class="btn btn-danger">
