@@ -31,14 +31,18 @@
                         <div [hidden]="orderForm.controls.amount?.valid" class="error-message">
                             Csak számokat tartalmazhat.
                         </div>
+
                     </div>
-                    <div class="form-group my-5">
-                        <div class="custom-control custom-checkbox">
-                            <input type="checkbox" name="featured" [(ngModel)]="order.status"
-                                class="custom-control-input" id="featured">
-                            <label class="custom-control-label" for="featured">Új</label>
-                        </div>
+                    <div class="form-group my-3">
+                        <label for="catid">KATEGÓRIA</label>
+                        <select name="catid" [(ngModel)]="order.status" class="custom-select" required>
+                            <option value="new">Új</option>
+                            <option value="paid">Fizetve</option>
+                            <option value="shipped">Szállitás alatt</option>
+
+                        </select>
                     </div>
+
                     <button [disabled]="orderForm.invalid" type="submit" class="btn btn-primary btn-block btn-lg">
                         <i class="fa fa-save"></i>
                     </button>
