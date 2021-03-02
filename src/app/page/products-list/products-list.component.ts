@@ -1,3 +1,4 @@
+import { CdkDragDrop, moveItemInArray } from '@angular/cdk/drag-drop';
 import { Component, OnInit } from '@angular/core';
 import { Category } from 'app/model/category';
 import { Column } from 'app/model/column';
@@ -33,13 +34,12 @@ export class ProductsListComponent implements OnInit {
 
   phraseString: string = '';
 
-  direction: number = 1;
-  columnKey: string = '';
-
   columns: Column[] = this.productsService.columns;
   lastSelectedColumn: string = '';
   sortDir: string = ''
 
+  displayedColumns: string[] = [];
+  
   constructor(
     private productsService: ProductsService,
     private categotyService: CategoryService,
@@ -48,12 +48,14 @@ export class ProductsListComponent implements OnInit {
 
   ngOnInit(): void {
     this.update();
+    this.columns.forEach((colunm, index) => {
+      colunm.index = index;
+      this.displayedColumns[index] = colunm.name;
+    });
   }
 
   onDelete(item: Product) {
-    this.productsService.remove(item).subscribe(i => {
-      
-    });
+    this.productsService.remove(item).subscribe(i => {});
     this.update();
   }
 
@@ -120,6 +122,10 @@ export class ProductsListComponent implements OnInit {
     this.phraseString = '';
     this.lastSelectedColumn = '';
     this.sortDir = ''
+  }
+
+  drop(event: CdkDragDrop<string[]>) {
+    moveItemInArray(this.displayedColumns, event.previousIndex, event.currentIndex);
   }
 
 }

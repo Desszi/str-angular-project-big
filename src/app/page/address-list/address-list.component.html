@@ -31,8 +31,7 @@
                         <input  type="text" 
                                 class="form-control text-center text-white" 
                                 placeholder="Keresés itt..."
-                                (keyup)="onSearchPhrase($event, col.name)"> 
-                          
+                                (keyup)="onSearchPhrase($event, col.name)">   
                      </th>
                      <th class="bg-dark text-light text-center p-1">SZERKESZTÉS</th>
                   </tr>
@@ -40,7 +39,7 @@
                 <tbody>
                   <tr
                     *ngFor="let address of addresses | search:phraseString:lastSelectedColumn | sort:lastSelectedColumn:sortDir">
-                    <td *ngFor="let col of displayedColumns"> {{address[col]}} </td>
+                    <td *ngFor="let col of displayedColumns" class="text-center"> {{address[col]}} </td>
                     <td>
                       <div class="btn-group">
                         <button [routerLink]="'/address-list/edit-address/' + address.id" class="btn btn-info">
