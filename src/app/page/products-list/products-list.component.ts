@@ -57,6 +57,7 @@ export class ProductsListComponent implements OnInit {
   }
 
   update(): void {
+    this.reset();
     this.loading = true;
     this.productsService.getAll().pipe(
       finalize(() => { this.loading = false; })
@@ -68,6 +69,7 @@ export class ProductsListComponent implements OnInit {
     });
 
     const x = setTimeout(() => {
+     
       clearTimeout(x);
       this.productsService.getAll().subscribe(items => {
         items.forEach(item => {
@@ -106,10 +108,16 @@ export class ProductsListComponent implements OnInit {
     this.sortDir = state.sortDir;
   }
 
-
   onSearchPhrase(event: Event, colName: string): void {
     this.phraseString = (event.target as HTMLInputElement).value;
     this.lastSelectedColumn = colName;
+  }
+
+  reset():void{
+    this.columns.forEach(i => i.sortDir = '');
+    this.phraseString = '';
+    this.lastSelectedColumn = '';
+    this.sortDir = ''
   }
 
 }
