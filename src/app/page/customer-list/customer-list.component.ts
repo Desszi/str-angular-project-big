@@ -53,8 +53,9 @@ export class CustomerListComponent implements OnInit {
 
   onDelete(item: Customer) {
     this.customerService.remove(item).subscribe(i => {
+      this.update();
     });   
-    this.update();
+    
   }
 
   onColumnSelect(colName: string): void {
