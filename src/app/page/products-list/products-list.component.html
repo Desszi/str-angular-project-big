@@ -70,11 +70,11 @@
                                         <td class="text-center">{{ product.id }}</td>
                                         <td class="">{{ product.name }}</td>
                                         <td class="text-center">{{ product.type }}</td>
-                                        <td class="text-center">{{ product.cat }}</td>
+                                        <td class="text-center">{{ product.catID }}</td>
                                         <td class="text-center">{{ product.description }}</td>
                                         <td class="text-center">{{ product.price }}</td>
-                                        <td class="text-center">{{ product.featured | switch }}</td>
-                                        <td class="text-center">{{ product.active | switch }}</td>
+                                        <td class="text-center">{{ product.featured }}</td>
+                                        <td class="text-center">{{ product.active }}</td>
                                         <td>
                                             <div class="btn-group">
                                                 <button [routerLink]="'/product-list/edit-product/' + product.id"
