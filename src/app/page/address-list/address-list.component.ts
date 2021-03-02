@@ -19,6 +19,7 @@ export class AddressListComponent implements OnInit {
   phraseString: string = '';
   direction: number = 1;
   colName: string = '';
+  sortDir: string = 'none'
 
   constructor(
     private addressesService: AddressesService,
@@ -44,6 +45,16 @@ export class AddressListComponent implements OnInit {
     this.colName = colName;
   }
 
+  onColumnSelectX(colName: string):void {
+    if(this.sortDir == 'none')
+      this.sortDir = 'up'
+    else if(this.sortDir == 'up')
+      this.sortDir = 'down';
+    else if(this.sortDir == 'down')
+      this.sortDir = 'none'
+
+    this.colName = colName;
+  }
 
   onSearchPhrase(event: Event, colName:string ): void {
     this.phraseString = (event.target as HTMLInputElement).value;
@@ -56,9 +67,11 @@ export class AddressListComponent implements OnInit {
         finalize(() =>{ this.loading = false;})
       ).subscribe(()=>{});
 
-    setTimeout(()=>{  
+    const x = setTimeout(()=>{  
+    clearTimeout(x);
     this.addressesService.getAll().subscribe(items =>{
         this.addresses = items;
+
       })
     },this.config.updateDelayTimeMs);
   }

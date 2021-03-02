@@ -1,8 +1,26 @@
 import { Component, OnInit } from '@angular/core';
+import { Category } from 'app/model/category';
 import { Product } from 'app/model/product';
+import { CategoryService } from 'app/service/category.service';
 import { ConfigService } from 'app/service/config.service';
 import { ProductsService } from 'app/service/products.service';
 import { finalize } from 'rxjs/operators';
+
+
+export class ProductView {
+  id: number = 0;
+  name: string = '';
+  type: string = '';
+  cat: string = '';
+  description: string = '';
+  price: number = 0;
+  featured: boolean = false;
+  active: boolean = false;
+
+  constructor() { }
+}
+
+
 
 @Component({
   selector: 'app-products-list',
@@ -12,7 +30,8 @@ import { finalize } from 'rxjs/operators';
 
 export class ProductsListComponent implements OnInit {
 
-  products: Product[];
+  //products: Product[];
+  products: ProductView[] = [];
   loading: boolean;
 
   phraseString: string = '';
@@ -24,6 +43,7 @@ export class ProductsListComponent implements OnInit {
 
   constructor(
     private productsService: ProductsService,
+    private categotyService: CategoryService,
     private config: ConfigService
   ) { }
 
@@ -43,9 +63,21 @@ export class ProductsListComponent implements OnInit {
       finalize(() => { this.loading = false; })
     ).subscribe(() => { });
 
+    let categories:Category[];
+    this.categotyService.getAll().subscribe(cats=>{
+      categories = cats;
+    });
+
     setTimeout(() => {
       this.productsService.getAll().subscribe(items => {
-        this.products = items;
+        items.forEach(item=>{
+          let prd : ProductView = new ProductView();
+          prd.id = item.id;
+          prd.type = item.type;
+          prd.name = item.name;
+          prd.cat = categories.find(y=>y.id == item.catID).name;
+          this.products.push(prd);
+        })
       })
     }, this.config.updateDelayTimeMs);
   }
