@@ -11,71 +11,49 @@
                         </button>
                     </div>
                     <div class="card-body">
-                        <div class="form-group bg-dark mx-auto py-1">
-                            <input (keyup)="onSearchPhrase($event)" type="text"
-                                class="form-control text-center text-white mx-auto my-1 w-75"
-                                placeholder="Keresés a táblázatban...">
-
-                        </div>
                         <div class="table-responsive">
-                            <table class="table">
-                                <thead>
-                                    <tr>
-                                        <th  class="bg-light text-center border">
-                                            <input (keyup)="onSearchPhrase($event)" type="text" class="form-control"
-                                              placeholder="filter">
-                                        </th>
-                                        <th  class="bg-light text-center border">
-                                            <input type="text" class="form-control"
-                                              placeholder="filter">
-                                        </th>
-                                        <th  class="bg-light text-center border">
-                                            <input type="text" class="form-control"
-                                              placeholder="filter">
-                                        </th>
-                                        <th  class="bg-light text-center border">
-                                            <input type="text" class="form-control"
-                                              placeholder="filter">
-                                        </th>
-                                        <th  class="bg-light text-center border">
-                                            <input type="text" class="form-control"
-                                              placeholder="filter">
-                                        </th>
-                                    </tr>
-                                    <tr>
-                                        <th (click)="onColumnSelect('id')" class="bg-primary text-center">#</th>
-                                        <th (click)="onColumnSelect('customerID')" class="bg-info text-center">
-                                            Vásárló az.</th>
-                                        <th (click)="onColumnSelect('productID')" class="bg-primary text-center">
-                                            Termék az.</th>
-                                        <th (click)="onColumnSelect('amount')" class="bg-info text-center">Összeg</th>
-                                        <th (click)="onColumnSelect('status')" class="bg-primary text-center">Állapot
-                                        </th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr *ngFor="let order of orders | search: phraseString
-                                    | sort: columnKey:direction">
-                                        <td>{{ order.id }}</td>
-                                        <td>{{ order.customerID }}</td>
-                                        <td>{{ order.productID }}</td>
-                                        <td>{{ order.amount}}</td>
-                                        <td>{{ order.status | switch }}</td>
-                                        <td>
-                                            <div class="btn-group">
-                                                <button [routerLink]="'/order-list/edit-order/' + order.id" class="btn btn-info">
-                                                    <i class="fa fa-edit"></i>
-                                                </button>
-                                                <button (click)="onDelete(order)" class="btn btn-danger">
-                                                    <i class="fa fa-trash"></i>
-                                                </button>
-                                            </div>
-                                        </td>
-                                    </tr>
-                                </tbody>
-                            </table>
+                          <table class="table">
+                            <thead>
+                              <tr class="bg-dark text-light" cdkDropList cdkDropListOrientation="horizontal" (cdkDropListDropped)="drop($event)">
+                                <th *ngFor="let col of columns">
+                                  <div  cdkDrag
+                                        (click)="onColumnSelect(col.name)" 
+                                        class="columnName d-flex no-wrap justify-content-center align-items-center text-center p-1">
+                                    <i *ngIf="col.sortDir" 
+                                        [ngClass]="{ up:  'fa fa-arrow-circle-up',
+                                                    down:'fa fa-arrow-circle-down',
+                                                    none:''
+                                                  }[col.sortDir]" aria-hidden="true">
+                                    </i>
+                                    {{col.title}}
+                                  </div>
+                                  <input type="text" 
+                                         class="form-control text-center text-white"
+                                         placeholder="Keresés itt..."
+                                        (keyup)="onSearchPhrase($event, col.name)">
+                                </th>
+                                <th class="bg-dark text-light text-center p-1">SZERKESZTÉS</th>
+                              </tr>
+                            </thead>
+                            <tbody>
+                              <tr
+                                *ngFor="let order of orders | search:phraseString:lastSelectedColumn | sort:lastSelectedColumn:sortDir">
+                                <td *ngFor="let col of displayedColumns" class="text-center"> {{order[col]}} </td>
+                                <td>
+                                    <div class="btn-group">
+                                        <button [routerLink]="'/order-list/edit-order/' + order.id" class="btn btn-info">
+                                            <i class="fa fa-edit"></i>
+                                        </button>
+                                        <button (click)="onDelete(order)" class="btn btn-danger">
+                                            <i class="fa fa-trash"></i>
+                                        </button>
+                                    </div>
+                                </td>
+                              </tr>
+                            </tbody>
+                          </table>
                         </div>
-                    </div>
+                      </div>
                 </div>
             </div>
         </div>

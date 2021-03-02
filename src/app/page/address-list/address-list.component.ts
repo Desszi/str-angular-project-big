@@ -34,10 +34,7 @@ export class AddressListComponent implements OnInit {
       colunm.index = index;
       this.displayedColumns[index] = colunm.name;
     });
-
-    console.log('displayedColumns',this.displayedColumns);
   }
-
   onDelete(item: Address) {
     this.addressesService.remove(item).subscribe(i => {
       this.update();
@@ -82,15 +79,14 @@ export class AddressListComponent implements OnInit {
   }
 
   reset():void{
+    this.addresses = [];
     this.columns.forEach(i => i.sortDir = '');
     this.phraseString = '';
     this.lastSelectedColumn = '';
     this.sortDir = ''
   }
 
-
-  drop(event: /*CdkDragDrop<string[]>*/ Event) {
-    console.log(event);
-    //moveItemInArray(this.displayedColumns, event.previousIndex, event.currentIndex);
+  drop(event: CdkDragDrop<string[]>) {
+    moveItemInArray(this.displayedColumns, event.previousIndex, event.currentIndex);
   }
 }

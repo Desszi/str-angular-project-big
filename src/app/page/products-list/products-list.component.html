@@ -17,17 +17,18 @@
                         <div class="table-responsive">
                             <table class="table table-striped">
                                 <thead>
-                                    <tr class="bg-dark text-light">
+                                    <tr class="bg-dark text-light" cdkDropList cdkDropListOrientation="horizontal" (cdkDropListDropped)="drop($event)">
                                         <th *ngFor="let col of columns" class="p-1">
-                                            <div (click)="onColumnSelect(col.name)" id="columnName"
-                                                class="d-flex no-wrap justify-content-center align-items-center text-center p-1">
-                                                <i *ngIf="col.sortDir" class="pr-1" [ngClass]="
-                                                { up: 'fa fa-arrow-circle-up',
-                                                down: 'fa fa-arrow-circle-down',
-                                                none: '' }
-                                                [col.sortDir]" aria-hidden="true"></i>
+                                            <div cdkDrag
+                                                (click)="onColumnSelect(col.name)" 
+                                                class="columnName d-flex no-wrap justify-content-center align-items-center text-center p-1">
+                                                <i *ngIf="col.sortDir" class="pr-1" 
+                                                    [ngClass]=" { up: 'fa fa-arrow-circle-up',
+                                                                down: 'fa fa-arrow-circle-down',
+                                                                none: '' }
+                                                                [col.sortDir]" aria-hidden="true">
+                                                </i>
                                                 {{col.title}}
-                                                <!-- <i class="fa fa-times-circle pl-1"></i> -->
                                             </div>
                                             <input type="text" class="form-control text-center text-white"
                                                 placeholder="Keresés..." (keyup)="onSearchPhrase($event, col.name)">
@@ -39,7 +40,7 @@
                                 <tbody>
                                     <tr
                                         *ngFor="let product of products | search:phraseString:lastSelectedColumn | sort:lastSelectedColumn:sortDir">
-                                        <td *ngFor="let col of columns" class="text-center"> {{ product[col.name] }}
+                                        <td *ngFor="let col of displayedColumns" class="text-center"> {{ product[col] }}
                                         </td>
                                         <td>
                                             <div class="btn-group">
