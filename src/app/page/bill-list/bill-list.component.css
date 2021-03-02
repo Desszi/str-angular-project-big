@@ -6,3 +6,10 @@
   background-color: #667 !important;
   cursor: pointer;
 }
+
+.card-header-warning {
+  background: #002160 !important;
+}
+.card-title {
+  color: white;
+}

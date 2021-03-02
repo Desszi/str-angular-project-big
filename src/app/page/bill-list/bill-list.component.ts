@@ -1,5 +1,7 @@
+import { CdkDragDrop, moveItemInArray } from "@angular/cdk/drag-drop";
 import { Component, OnInit } from "@angular/core";
 import { Bill } from "app/model/bill";
+import { Column } from "app/model/column";
 import { BillService } from "app/service/bill.service";
 import { ConfigService } from "app/service/config.service";
 import { finalize } from "rxjs/internal/operators/finalize";
@@ -17,6 +19,11 @@ export class BillListComponent implements OnInit {
   direction: number = 1;
   columnKey: string = "";
 
+  columns: Column[] = this.billService.columns;
+  lastSelectedColumn: string = "";
+  sortDir: string = "";
+  displayedColumns: string[] = [];
+
   constructor(
     private billService: BillService,
     private config: ConfigService
@@ -24,6 +31,11 @@ export class BillListComponent implements OnInit {
 
   ngOnInit(): void {
     this.update();
+
+    this.columns.forEach((colunm, index) => {
+      colunm.index = index;
+      this.displayedColumns[index] = colunm.name;
+    });
   }
 
   onDelete(item: Bill) {
@@ -50,16 +62,29 @@ export class BillListComponent implements OnInit {
     }, this.config.updateDelayTimeMs);
   }
 
-  onColumnSelect(key: string): void {
-    if (this.columnKey === key) {
-      this.direction = this.direction * -1;
-    } else {
-      this.direction = 1;
-    }
-    this.columnKey = key;
+  onColumnSelect(colName: string): void {
+    if (this.lastSelectedColumn != colName)
+      this.columns.forEach((i) => (i.sortDir = ""));
+    this.lastSelectedColumn = colName;
+
+    const state = this.billService.columns.find((i) => i.name == colName);
+    if (state.sortDir == "") state.sortDir = "up";
+    if (state.sortDir == "none") state.sortDir = "up";
+    else if (state.sortDir == "up") state.sortDir = "down";
+    else if (state.sortDir == "down") state.sortDir = "up";
+    this.sortDir = state.sortDir;
   }
 
-  onSearchPhrase(event: Event): void {
+  onSearchPhrase(event: Event, colName: string): void {
     this.phraseString = (event.target as HTMLInputElement).value;
+    this.lastSelectedColumn = colName;
+  }
+
+  drop(event: CdkDragDrop<string[]>) {
+    moveItemInArray(
+      this.displayedColumns,
+      event.previousIndex,
+      event.currentIndex
+    );
   }
 }

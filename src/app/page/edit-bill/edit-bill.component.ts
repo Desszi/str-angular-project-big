@@ -12,6 +12,7 @@ import { ToastrService } from "ngx-toastr";
 })
 export class EditBillComponent implements OnInit {
   bill: Bill = new Bill();
+  title: string = "";
 
   constructor(
     private billService: BillService,
@@ -21,17 +22,16 @@ export class EditBillComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.activatedRoute.params.subscribe(
-      params =>{
-        if(params.id == 0)
-          this.bill = new Bill();
-        else
-          this.billService.get(params.id).subscribe(
-            item => {
-              this.bill = item;
-            })
-      }
-    )
+    this.activatedRoute.params.subscribe((params) => {
+      if (params.id == 0) {
+        this.bill = new Bill();
+        this.title = "Új elem felvétele";
+      } else
+        this.billService.get(params.id).subscribe((item) => {
+          this.bill = item;
+          this.title = "Szerkesztés";
+        });
+    });
   }
 
   onUpdate(form: NgForm, item: Bill): void {
