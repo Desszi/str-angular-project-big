@@ -45,7 +45,7 @@ export class EditProductComponent implements OnInit {
     try {
       if (item.id == 0) {
         this.productsService.create(item).subscribe(() => { });
-        this.toastr.warning('Sikeresn hozzáadásra került');
+        this.toastr.warning('Sikeresen hozzáadásra került');
         this.router.navigate(['/product-list']);
       }
       else {
