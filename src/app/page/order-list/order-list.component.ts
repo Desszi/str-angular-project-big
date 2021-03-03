@@ -81,7 +81,7 @@ export class OrderListComponent implements OnInit {
     this.reset();
     this.loading = true;
     this.ordersService.getAll().pipe(
-      finalize(() => { this.loading = false; })
+      finalize(() => { })
     ).subscribe(() => { });
 
     const x = setTimeout(() => {
@@ -104,8 +104,8 @@ export class OrderListComponent implements OnInit {
           orders.push(order);
         })
         this.orders = orders;
+        this.loading = false;
       })
-
     }, this.config.updateDelayTimeMs);
   }
 

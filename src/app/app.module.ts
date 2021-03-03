@@ -31,8 +31,10 @@ import { EditBillComponent } from "./page/edit-bill/edit-bill.component";
 import { InfoCardComponent } from './common/info-card/info-card.component';
 import { EditAddressComponent } from './page/edit-address/edit-address.component';
 import { AboutComponent } from './page/about/about.component';
-import {DragDropModule} from '@angular/cdk/drag-drop';
+import { DragDropModule} from '@angular/cdk/drag-drop';
 import { SumPipe } from './pipe/sum.pipe';
+import { MatProgressSpinnerModule} from '@angular/material/progress-spinner';
+import {MatProgressBarModule} from '@angular/material/progress-bar';
 
 @NgModule({
   imports: [
@@ -46,7 +48,9 @@ import { SumPipe } from './pipe/sum.pipe';
     BrowserAnimationsModule,
     CommonModule,
     ToastrModule.forRoot(),
-    DragDropModule
+    DragDropModule,
+    MatProgressSpinnerModule,
+    MatProgressBarModule
   ],
   declarations: [
     AppComponent,

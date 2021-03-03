@@ -57,7 +57,7 @@ export class BillListComponent implements OnInit {
   update(): void {
     this.loading = true;
     this.billService.getAll().pipe(
-      finalize(() => { this.loading = false; })
+      finalize(() => { })
     ).subscribe(() => { });
 
     const x = setTimeout(() => {
@@ -75,6 +75,7 @@ export class BillListComponent implements OnInit {
           bills.push(bill)
         });
         this.bills = bills;
+        this.loading = false; 
       });
     }, this.config.updateDelayTimeMs);
   }
