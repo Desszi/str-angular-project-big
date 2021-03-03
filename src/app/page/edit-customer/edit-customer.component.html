@@ -10,23 +10,27 @@
         <form #customerForm="ngForm" (ngSubmit)="onUpdate(customerForm, customer)">
           <div class="form-group my-3">
             <label for="lastName">VEZETÉKNÉV</label>
-            <input name="lastName" [(ngModel)]="customer.lastName" type="text" class="form-control" pattern=".{2,25}"
-              required value="Default customer">
+            <input name="lastName" [(ngModel)]="customer.lastName" type="text" class="form-control"
+              pattern="^[A-Z,ÁÉÍÓÖŐÚÜŰ]{1}[a-z,áéíóöőúüű]{1,19}" required>
             <div [hidden]="customerForm.controls.lastName?.valid" class="error-message">
-              Legalább 2, legfeljebb 25 karakterből kell állnia.
+              Legalább 2, legfeljebb 20 betűből kell állnia, nagy betűvel kell kezdődnie.
             </div>
           </div>
           <div class="form-group my-3">
             <label for="firstName">KERESZTNÉV</label>
-            <input name="firstName" [(ngModel)]="customer.firstName" type="text" class="form-control" pattern=".{2,25}"
-              required value="Default customer">
+            <input name="firstName" [(ngModel)]="customer.firstName" type="text" class="form-control"
+              pattern="^[A-Z,ÁÉÍÓÖŐÚÜŰ]{1}[a-z,áéíóöőúüű]{1,19}" required>
             <div [hidden]="customerForm.controls.firstName?.valid" class="error-message">
-              Legalább 2, legfeljebb 25 karakterből kell állnia.
+              Legalább 2, legfeljebb 20 betűből kell állnia, nagy betűvel kell kezdődnie.
             </div>
           </div>
           <div class="form-group my-3">
             <label for="email">E-MAIL CÍM</label>
-            <input name="email" [(ngModel)]="customer.email" class="form-control" required value="Default customer">
+            <input name="email" [(ngModel)]="customer.email" type="text" class="form-control"
+              pattern="^.{3,}@{1}.{3,}\.{1}[a-z]{2,}$" required>
+            <div [hidden]="customerForm.controls.email?.valid" class="error-message">
+              Legalább 10 karakterből kell állnia, @ és . karaktert is kell tartalmaznia. (Minta: xyz@abc.hu)
+            </div>
           </div>
           <div class="form-group my-3">
             <div class="custom-control custom-checkbox">
