@@ -17,7 +17,7 @@
                 <thead>
                   <tr class="bg-dark text-light" cdkDropList cdkDropListOrientation="horizontal"
                     (cdkDropListDropped)="drop($event)">
-                    <th *ngFor="let col of displayedColumns">
+                    <th *ngFor="let col of displayedColumns" class="p-1">
                       <div cdkDrag (click)="onColumnSelect(col.name)"
                         class="columnName d-flex no-wrap justify-content-center align-items-center text-center p-1">
                         <i *ngIf="col.sortDir" class="pr-1" [ngClass]="{ up: 'fa fa-arrow-circle-up',
@@ -51,7 +51,7 @@
                 </tbody>
                 <tfoot>
                   <tr class="bg-dark text-light text-center">
-                    <td *ngFor="let col of displayedColumns" class="text-center"> 
+                    <td *ngFor="let col of displayedColumns" class="text-center">
                       <span *ngIf="col.footer"> {{ orders | sum:col.name:phraseString:lastSelectedColumn }}</span>
                     </td>
                     <td>
