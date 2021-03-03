@@ -13,7 +13,7 @@
             <input name="name" [(ngModel)]="product.name" type="text" class="form-control" pattern=".{5,35}" required
               value="Default product">
             <div [hidden]="productForm.controls.name?.valid" class="error-message">
-              A Név mezőnek legalább 5, legfeljebb 35 karakterből kell állnia.
+              Legalább 5, legfeljebb 35 karakterből kell állnia.
             </div>
           </div>
           <div class="form-group my-3">
@@ -21,7 +21,7 @@
             <input name="type" [(ngModel)]="product.type" type="text" class="form-control" pattern=".{5,25}" required
               value="Default product">
             <div [hidden]="productForm.controls.type?.valid" class="error-message">
-              A Típus mezőnek legalább 5, legfeljebb 25 karakterből kell állnia.
+              Legalább 5, legfeljebb 25 karakterből kell állnia.
             </div>
           </div>
           <div class="form-group my-3">
@@ -42,7 +42,7 @@
             <textarea class="form-control" name="description" [(ngModel)]="product.description" cols="60" rows="2"
               pattern=".{5,100}" required value="Default product"></textarea>
             <div [hidden]="productForm.controls.description?.valid" class="error-message">
-              A Leírás mezőnek legalább 5, legfeljebb 100 karakterből kell állnia.
+              Legalább 5, legfeljebb 100 karakterből kell állnia.
             </div>
           </div>
           <div class="form-group my-3">
@@ -50,7 +50,7 @@
             <input name="price" [(ngModel)]="product.price" type="text" class="form-control" pattern="^[1-9][0-9]{2,}"
               required value="Default product">
             <div [hidden]="productForm.controls.price?.valid" class="error-message">
-              Az Ár mezőnek legalább 3 számkarakterből kell állnia.
+              Legalább 3 számkarakterből kell állnia, a szám nem kezdődhet nullával.
             </div>
           </div>
           <div class="form-group my-3">
@@ -67,11 +67,9 @@
               <label class="custom-control-label" for="active">ELÉRHETŐ</label>
             </div>
           </div>
-
-          <button [disabled]="productForm.invalid" type="submit" class="btn btn-primary btn-block btn-lg">
+          <button [disabled]="productForm.invalid" type="submit" class="btn btn-primary btn-block btn-lg mt-5">
             <i class="fa fa-save"></i>
           </button>
-
         </form>
       </div>
     </div>
