@@ -24,9 +24,9 @@ export class AboutComponent implements OnInit {
   ngOnInit(): void {
     this.cards.forEach(item => {
       if (item.fullName == 'MARGIT RÓBERT') {
-        item.css_scss = Math.floor(Math.random() * 100);
-        item.angular = Math.floor(Math.random() * 100);
-        item.javascript = Math.floor(Math.random() * 100);
+        item.css_scss = Math.floor(Math.random() * 100 + 25);
+        item.angular = Math.floor(Math.random() * 100 + 25);
+        item.javascript = Math.floor(Math.random() * 100 + 25);
       }
     })
   }
