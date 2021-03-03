@@ -29,10 +29,10 @@ import { EditCustomerComponent } from './page/edit-customer/edit-customer.compon
 import { EditOrderComponent } from './page/edit-order/edit-order.component';
 import { EditBillComponent } from "./page/edit-bill/edit-bill.component";
 import { InfoCardComponent } from './common/info-card/info-card.component';
-import { SwitchPipe } from './pipe/switch.pipe';
 import { EditAddressComponent } from './page/edit-address/edit-address.component';
 import { AboutComponent } from './page/about/about.component';
 import {DragDropModule} from '@angular/cdk/drag-drop';
+import { SumPipe } from './pipe/sum.pipe';
 
 @NgModule({
   imports: [
@@ -65,9 +65,9 @@ import {DragDropModule} from '@angular/cdk/drag-drop';
     EditBillComponent,
     InfoCardComponent,
     DashboardComponent,
-    SwitchPipe,
     EditAddressComponent,
     AboutComponent,
+    SumPipe,
   ],
   providers: [],
   bootstrap: [AppComponent],

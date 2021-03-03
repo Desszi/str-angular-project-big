@@ -9,6 +9,17 @@ import { ConfigService } from 'app/service/config.service';
 import { Column } from 'app/model/column';
 import { CdkDragDrop, moveItemInArray } from '@angular/cdk/drag-drop';
 
+export class OrderView {
+  id: number = 0;
+  customerID: number = 0;
+  productID: number = 0;
+  amount: number = 0;
+  status: string = '';
+
+  constructor() { }
+}
+
+
 
 @Component({
   selector: 'app-order-list',
@@ -16,22 +27,17 @@ import { CdkDragDrop, moveItemInArray } from '@angular/cdk/drag-drop';
   styleUrls: ['./order-list.component.css']
 })
 export class OrderListComponent implements OnInit {
-  orders: Order[] = null;
+  orders: OrderView[] = null;
   loading: boolean = true;
   columns: Column[] = this.ordersService.columns;
   phraseString: string = '';
   lastSelectedColumn: string = '';
   sortDir: string = ''
   displayedColumns: Column[] = [];
-
-  direction: number = 1;
-  columnKey: string = '';
-
   orderList = this.ordersService.getAll();
 
   constructor(
     private ordersService: OrdersService,
-    private activatedRoute: ActivatedRoute,
     private config: ConfigService
 
   ) { }
@@ -65,7 +71,6 @@ export class OrderListComponent implements OnInit {
     this.sortDir = state.sortDir;
   }
 
-
   onDelete(item: Order) {
     this.ordersService.remove(item).subscribe(i => {
       this.update();
@@ -79,10 +84,27 @@ export class OrderListComponent implements OnInit {
       finalize(() => { this.loading = false; })
     ).subscribe(() => { });
 
-    setTimeout(() => {
+   const x = setTimeout(() => {
+    clearTimeout(x);
+     const orders: OrderView[] = [];
       this.ordersService.getAll().subscribe(items => {
-        this.orders = items;
-      })
+        items.forEach(item => { 
+          const order: OrderView = new OrderView();
+          order.id = item.id;
+          order.customerID = item.customerID;
+          order.productID = item.productID;
+          order.amount= item.amount;
+          if(item.status=='paid')
+            order.status = 'Fizetve';
+          else if(item.status == 'new')
+            order.status = 'Új';
+          else if(item.status == 'shipped')
+            order.status = 'Szállítás alatt';
+            orders.push(order);
+        })
+        this.orders = orders;
+      }) 
+
     }, this.config.updateDelayTimeMs);
   }
 
@@ -102,7 +124,6 @@ export class OrderListComponent implements OnInit {
   drop(event: CdkDragDrop<string[]>) {
     moveItemInArray<Column>(this.displayedColumns, event.previousIndex, event.currentIndex);
   }
-
 }
 
 

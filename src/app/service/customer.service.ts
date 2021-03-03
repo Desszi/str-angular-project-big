@@ -12,16 +12,16 @@ import { ConfigService } from './config.service';
 })
 
 export class CustomerService extends BaseService<Customer> {
-  constructor(httpClient: HttpClient, config:ConfigService) {
+  constructor(httpClient: HttpClient, config: ConfigService) {
     super(config, httpClient, "customers");
   }
 
-  columns:Column[] = [
-    {index:0, name:'id', title:'#', type:'text', sortDir:''},
-    {index:1, name:'firstName', title:'VEZETÉKNÉV', type:'text', sortDir:''},
-    {index:2, name:'lastName', title:'KERESZTNÉV', type:'text', sortDir:''},    
-    {index:3, name:'fullAddress', title:'CíM', type:'text', sortDir:''},
-    {index:4, name:'email', title:'EMAIL', type:'text', sortDir:''},
-    {index:5, name:'active', title:'AKTíV', type:'text', sortDir:''},
+  columns: Column[] = [
+    { index: 0, name: 'id', title: '#', type: 'text', sortDir: '',footer:false },
+    { index: 1, name: 'firstName', title: 'VEZETÉKNÉV', type: 'text', sortDir: '' ,footer:false},
+    { index: 2, name: 'lastName', title: 'KERESZTNÉV', type: 'text', sortDir: '',footer:false },
+    { index: 3, name: 'fullAddress', title: 'CíM', type: 'text', sortDir: '',footer:false},
+    { index: 4, name: 'email', title: 'EMAIL', type: 'text', sortDir: '',footer:false },
+    { index: 5, name: 'active', title: 'ELÉRHETŐ', type: 'text', sortDir: '',footer:false },
   ]
 }

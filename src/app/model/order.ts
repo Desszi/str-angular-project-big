@@ -7,13 +7,3 @@ export class Order {
 
     constructor() { }
 }
-
-
-
-
-
-//"id": 1,
-//"customerID": 33,
-//  "productID": 30,
-//    "amount": 49,
-//      "status": "paid"
