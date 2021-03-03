@@ -636,7 +636,7 @@
   "addresses": [
     {
       "id": 1,
-      "zip": 8,
+      "zip": 8354,
       "country": "Greece",
       "city": "Stírion",
       "street": "2 Burning Wood Plaza",
@@ -644,15 +644,15 @@
     },
     {
       "id": 2,
-      "zip": 96,
+      "zip": 961,
       "country": "Philippines",
       "city": "Gandara",
-      "street": "00 Petterle Parkway",
+      "street": "10 Petterle Parkway",
       "notes": "encoding"
     },
     {
       "id": 3,
-      "zip": 40,
+      "zip": 401,
       "country": "Russia",
       "city": "Uchaly",
       "street": "8 Grayhawk Crossing",
@@ -660,7 +660,7 @@
     },
     {
       "id": 4,
-      "zip": 9,
+      "zip": 9001,
       "country": "Brazil",
       "city": "Itumbiara",
       "street": "17 Anthes Way",
@@ -668,7 +668,7 @@
     },
     {
       "id": 5,
-      "zip": 25,
+      "zip": 254,
       "country": "Colombia",
       "city": "Puerto López",
       "street": "90684 Mariners Cove Hill",
@@ -676,7 +676,7 @@
     },
     {
       "id": 6,
-      "zip": 51,
+      "zip": 5147,
       "country": "Philippines",
       "city": "Salimbalan",
       "street": "0 Logan Place",
@@ -684,7 +684,7 @@
     },
     {
       "id": 7,
-      "zip": 23,
+      "zip": 2317,
       "country": "Malaysia",
       "city": "Kangar",
       "street": "587 Sherman Pass",
@@ -692,7 +692,7 @@
     },
     {
       "id": 8,
-      "zip": 77,
+      "zip": 771,
       "country": "Philippines",
       "city": "Makiwalo",
       "street": "4545 Golden Leaf Hill",
@@ -708,7 +708,7 @@
     },
     {
       "id": 10,
-      "zip": 59,
+      "zip": 59140,
       "country": "Colombia",
       "city": "El Carmen de Bolívar",
       "street": "897 Graedel Pass",
@@ -724,7 +724,7 @@
     },
     {
       "id": 12,
-      "zip": 74,
+      "zip": 748991,
       "country": "Norway",
       "city": "Bergen",
       "street": "56346 Anderson Point",
@@ -732,7 +732,7 @@
     },
     {
       "id": 13,
-      "zip": 53,
+      "zip": 538,
       "country": "Indonesia",
       "city": "Mander",
       "street": "5561 Gina Road",
@@ -748,7 +748,7 @@
     },
     {
       "id": 15,
-      "zip": 83,
+      "zip": 8301,
       "country": "Thailand",
       "city": "Phitsanulok",
       "street": "97109 Hoffman Alley",
@@ -756,7 +756,7 @@
     },
     {
       "id": 16,
-      "zip": 15,
+      "zip": 159,
       "country": "China",
       "city": "Gushan",
       "street": "034 Kenwood Trail",
@@ -772,7 +772,7 @@
     },
     {
       "id": 18,
-      "zip": 82,
+      "zip": 820095,
       "country": "Tajikistan",
       "city": "Khŭjand",
       "street": "84311 Burning Wood Street",
@@ -780,7 +780,7 @@
     },
     {
       "id": 19,
-      "zip": 77,
+      "zip": 77446,
       "country": "Poland",
       "city": "Blizne",
       "street": "3 Cody Road",
@@ -788,7 +788,7 @@
     },
     {
       "id": 20,
-      "zip": 2,
+      "zip": 2114,
       "country": "Sweden",
       "city": "Hörby",
       "street": "04688 Goodland Circle",
@@ -812,7 +812,7 @@
     },
     {
       "id": 23,
-      "zip": 75,
+      "zip": 750,
       "country": "Philippines",
       "city": "Lais",
       "street": "44837 Eliot Pass",
@@ -820,7 +820,7 @@
     },
     {
       "id": 24,
-      "zip": 1,
+      "zip": 1010,
       "country": "Argentina",
       "city": "Veinticinco de Mayo",
       "street": "8930 Anthes Junction",
@@ -836,7 +836,7 @@
     },
     {
       "id": 26,
-      "zip": 98,
+      "zip": 98110,
       "country": "Gambia",
       "city": "Kass Wollof",
       "street": "09167 Jana Court",
@@ -860,7 +860,7 @@
     },
     {
       "id": 29,
-      "zip": 64,
+      "zip": 644,
       "country": "Lithuania",
       "city": "Veisiejai",
       "street": "554 Pawling Lane",
@@ -868,7 +868,7 @@
     },
     {
       "id": 30,
-      "zip": 78,
+      "zip": 7408,
       "country": "Portugal",
       "city": "Fenais da Ajuda",
       "street": "06 Green Ridge Road",
@@ -876,7 +876,7 @@
     },
     {
       "id": 31,
-      "zip": 42,
+      "zip": 42424,
       "country": "Kyrgyzstan",
       "city": "Bazar-Korgon",
       "street": "36882 Kim Pass",
@@ -908,7 +908,7 @@
     },
     {
       "id": 35,
-      "zip": 31,
+      "zip": 3152,
       "country": "France",
       "city": "Orléans",
       "street": "400 Bunker Hill Crossing",
@@ -916,7 +916,7 @@
     },
     {
       "id": 36,
-      "zip": 90,
+      "zip": 904,
       "country": "China",
       "city": "Liulihe",
       "street": "3265 Garrison Alley",
@@ -940,7 +940,7 @@
     },
     {
       "id": 39,
-      "zip": 39,
+      "zip": 391,
       "country": "Panama",
       "city": "El Quiteño",
       "street": "4 Parkside Circle",
@@ -972,7 +972,7 @@
     },
     {
       "id": 43,
-      "zip": 76,
+      "zip": 7667,
       "country": "Poland",
       "city": "Nowy Staw",
       "street": "1300 Clemons Street",
@@ -980,7 +980,7 @@
     },
     {
       "id": 44,
-      "zip": 22,
+      "zip": 2222,
       "country": "France",
       "city": "Orléans",
       "street": "1067 New Castle Circle",
@@ -988,7 +988,7 @@
     },
     {
       "id": 45,
-      "zip": 83,
+      "zip": 83111,
       "country": "Indonesia",
       "city": "Sugihan",
       "street": "97 Golf Course Point",
@@ -996,7 +996,7 @@
     },
     {
       "id": 46,
-      "zip": 82,
+      "zip": 8242,
       "country": "France",
       "city": "La Charité-sur-Loire",
       "street": "6 Rowland Circle",
@@ -1020,7 +1020,7 @@
     },
     {
       "id": 49,
-      "zip": 22,
+      "zip": 222220,
       "country": "Argentina",
       "city": "Brea Pozo",
       "street": "714 Mayfield Place",

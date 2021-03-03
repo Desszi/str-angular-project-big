@@ -9,7 +9,7 @@
                 <label>{{'#'+ order.id}}</label>
                 <form #orderForm="ngForm" (ngSubmit)="onUpdate(orderForm, order)">
                     <div class="form-group my-3">
-                        <label for="customerID">VÁSÁRLÓ SZÁMA.</label>
+                        <label for="customerID">VÁSÁRLÓ SZÁMA</label>
                         <input name="customerID" [(ngModel)]="order.customerID" type="text" class="form-control"
                             pattern="^[1-9]{1}[0-9]{0,10}" required value="0">
                         <div [hidden]="orderForm.controls.customerID?.valid" class="error-message">
