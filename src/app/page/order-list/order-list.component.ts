@@ -84,7 +84,8 @@ export class OrderListComponent implements OnInit {
       finalize(() => { this.loading = false; })
     ).subscribe(() => { });
 
-    setTimeout(() => {
+   const x = setTimeout(() => {
+    clearTimeout(x);
      const orders: OrderView[] = [];
       this.ordersService.getAll().subscribe(items => {
         items.forEach(item => { 

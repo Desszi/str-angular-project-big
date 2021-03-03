@@ -6,13 +6,23 @@ import { BillService } from "app/service/bill.service";
 import { ConfigService } from "app/service/config.service";
 import { finalize } from "rxjs/internal/operators/finalize";
 
+export class BillView {
+  id: number = 0;
+  orderID: number;
+  amount: number;
+  status: string = "new";
+
+  constructor() { }
+}
+
+
 @Component({
   selector: "app-bill-list",
   templateUrl: "./bill-list.component.html",
   styleUrls: ["./bill-list.component.css"],
 })
 export class BillListComponent implements OnInit {
-  bills: Bill[];
+  bills: BillView[];
   loading: boolean;
   phraseString: string = "";
 
@@ -47,12 +57,24 @@ export class BillListComponent implements OnInit {
   update(): void {
     this.loading = true;
     this.billService.getAll().pipe(
-        finalize(() => { this.loading = false; })
-         ).subscribe(() => { });
+      finalize(() => { this.loading = false; })
+    ).subscribe(() => { });
 
-    setTimeout(() => {
+    const x = setTimeout(() => {
+      clearTimeout(x);
+      const bills: BillView[] = [];
       this.billService.getAll().subscribe((items) => {
         this.bills = items;
+        items.forEach(item => {
+          const bill: BillView = new BillView();
+          bill.id = item.id;
+          bill.orderID = item.orderID;
+          bill.amount = item.amount;
+          bill.status = item.status = "new";
+          bill.status ? bill.status = 'Új' : bill.status = 'Fizetve';
+          bills.push(bill)
+        });
+        this.bills = bills;
       });
     }, this.config.updateDelayTimeMs);
   }
@@ -76,6 +98,6 @@ export class BillListComponent implements OnInit {
   }
 
   drop(event: CdkDragDrop<string[]>) {
-    moveItemInArray<Column>(this.displayedColumns,event.previousIndex,event.currentIndex);
+    moveItemInArray<Column>(this.displayedColumns, event.previousIndex, event.currentIndex);
   }
 }
