@@ -84,26 +84,27 @@ export class OrderListComponent implements OnInit {
       finalize(() => { this.loading = false; })
     ).subscribe(() => { });
 
-   const x = setTimeout(() => {
-    clearTimeout(x);
-     const orders: OrderView[] = [];
+    const x = setTimeout(() => {
+      clearTimeout(x);
+      const orders: OrderView[] = [];
       this.ordersService.getAll().subscribe(items => {
-        items.forEach(item => { 
+        items.forEach(item => {
           const order: OrderView = new OrderView();
           order.id = item.id;
           order.customerID = item.customerID;
           order.productID = item.productID;
-          order.amount= item.amount;
-          if(item.status=='paid')
+          order.amount = item.amount;
+          order.status = item.status;
+          if (item.status === 'paid')
             order.status = 'Fizetve';
-          else if(item.status == 'new')
+          else if (item.status === 'new')
             order.status = 'Új';
-          else if(item.status == 'shipped')
+          else if (item.status === 'shipped')
             order.status = 'Szállítás alatt';
-            orders.push(order);
+          orders.push(order);
         })
         this.orders = orders;
-      }) 
+      })
 
     }, this.config.updateDelayTimeMs);
   }
