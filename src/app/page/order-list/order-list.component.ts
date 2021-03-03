@@ -71,7 +71,6 @@ export class OrderListComponent implements OnInit {
     this.sortDir = state.sortDir;
   }
 
-
   onDelete(item: Order) {
     this.ordersService.remove(item).subscribe(i => {
       this.update();
@@ -86,6 +85,7 @@ export class OrderListComponent implements OnInit {
     ).subscribe(() => { });
 
     setTimeout(() => {
+     const orders: OrderView[] = [];
       this.ordersService.getAll().subscribe(items => {
         items.forEach(item => { 
           const order: OrderView = new OrderView();
@@ -93,18 +93,17 @@ export class OrderListComponent implements OnInit {
           order.customerID = item.customerID;
           order.productID = item.productID;
           order.amount= item.amount;
-
           if(item.status=='paid')
             order.status = 'Fizetve';
           else if(item.status == 'new')
             order.status = 'Új';
           else if(item.status == 'shipped')
             order.status = 'Szállítás alatt';
-
-            this.orders.push(order);
+            orders.push(order);
         })
-        
-      })
+        this.orders = orders;
+      }) 
+
     }, this.config.updateDelayTimeMs);
   }
 
@@ -124,7 +123,6 @@ export class OrderListComponent implements OnInit {
   drop(event: CdkDragDrop<string[]>) {
     moveItemInArray<Column>(this.displayedColumns, event.previousIndex, event.currentIndex);
   }
-
 }
 
 
