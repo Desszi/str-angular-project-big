@@ -74,6 +74,7 @@ export class ProductsListComponent implements OnInit {
 
     const x = setTimeout(() => {
       clearTimeout(x);
+      const products:ProductView[]=[];
       this.productsService.getAll().subscribe(items => {
         items.forEach(item => {
           const product: ProductView = new ProductView();
@@ -87,8 +88,9 @@ export class ProductsListComponent implements OnInit {
           (product.featured == true) ? product.featured = 'Igen' : product.featured = 'Nem';
           product.active = item.active;
           (product.active == true) ? product.active = 'Igen' : product.active = 'Nem';
-          this.products.push(product);
+          products.push(product);
         })
+        this.products=products;
       })
     }, this.config.updateDelayTimeMs);
   }

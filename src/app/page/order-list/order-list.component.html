@@ -48,6 +48,14 @@
                     </td>
                   </tr>
                 </tbody>
+                <tfoot>
+                  <tr class="bg-dark text-light text-center">
+                    <td *ngFor="let col of displayedColumns" class="text-center"> 
+                      <span *ngIf="col.footer"> {{ orders | sum:col.name:phraseString:lastSelectedColumn }}</span>
+                    </td>
+                    <td>
+                  </tr>
+                </tfoot>
               </table>
             </div>
           </div>
