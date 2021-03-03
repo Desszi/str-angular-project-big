@@ -46,7 +46,7 @@ export class EditAddressComponent implements OnInit {
         this.addressesService.create(item).subscribe(
           () => { }
         );
-        this.toastr.warning('Sikeresn hozzáadásra került');
+        this.toastr.warning('Sikeresen hozzáadásra került');
         this.router.navigate(['/address-list']);
       }
       else {

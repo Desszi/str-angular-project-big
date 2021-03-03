@@ -38,7 +38,7 @@ export class EditBillComponent implements OnInit {
     try {
       if (item.id == 0) {
         this.billService.create(item).subscribe(() => {});
-        this.toastr.warning("Sikeresn hozzáadásra került");
+        this.toastr.warning("Sikeresen hozzáadásra került");
         this.router.navigate(["/bill-list"]);
       } else {
         this.billService.update(item).subscribe(() => {});
