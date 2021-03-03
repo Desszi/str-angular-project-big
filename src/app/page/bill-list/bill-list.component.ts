@@ -57,7 +57,7 @@ export class BillListComponent implements OnInit {
   update(): void {
     this.loading = true;
     this.billService.getAll().pipe(
-      finalize(() => { this.loading = false; })
+      finalize(() => { })
     ).subscribe(() => { });
 
     const x = setTimeout(() => {
@@ -70,11 +70,12 @@ export class BillListComponent implements OnInit {
           bill.id = item.id;
           bill.orderID = item.orderID;
           bill.amount = item.amount;
-          bill.status = item.status = "new";
-          bill.status ? bill.status = 'Új' : bill.status = 'Fizetve';
+          bill.status = item.status;
+          bill.status === 'new' ? bill.status = 'Új' : bill.status = 'Fizetve';
           bills.push(bill)
         });
         this.bills = bills;
+        this.loading = false; 
       });
     }, this.config.updateDelayTimeMs);
   }
