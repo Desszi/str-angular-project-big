@@ -3,44 +3,40 @@
     <div class="row">
       <div class="col-md-12">
         <div class="card">
-          <div class="card-header card-header-danger">
-            <h4 class="card-title ">Címek</h4>
+          <div class="card-header card-header-info">
+            <h4 class="card-title">Címek</h4>
             <p class="card-category">Ügyfeleink címlistája</p>
-            <button [routerLink]="'/address-list/edit-address/0'" 
-                    class="btn btn-large btn-success btn-block">
+            <button class="btn btn-large btn-success btn-block" [routerLink]="'/address-list/edit-address/0'">
               <i class="fa fa-plus"></i>
             </button>
           </div>
           <div class="card-body">
             <div class="table-responsive">
-              <table class="table">
-                <thead >
-                  <tr class="bg-dark text-light" cdkDropList cdkDropListOrientation="horizontal" (cdkDropListDropped)="drop($event)">
-                    <th *ngFor="let col of displayedColumns" >
-                        <div cdkDrag 
-                            (click)="onColumnSelect(col.name)" 
-                            class="columnName text-center">
-                          <i *ngIf="col.sortDir" 
-                            class="pr-1"
-                             [ngClass]="{ up:  'fa fa-arrow-circle-up',
+              <table class="table table-striped">
+                <thead>
+                  <tr class="bg-dark text-light" cdkDropList cdkDropListOrientation="horizontal"
+                    (cdkDropListDropped)="drop($event)">
+                    <th *ngFor="let col of displayedColumns" class="p-1">
+                      <div cdkDrag (click)="onColumnSelect(col.name)"
+                        class="columnName text-center  d-flex no-wrap justify-content-center align-items-center text-center p-1">
+                        <i *ngIf="col.sortDir" class="pr-1" [ngClass]="{ up: 'fa fa-arrow-circle-up',
                                           down: 'fa fa-arrow-circle-down',
-                                          none: ''
-                                        }[col.sortDir]" aria-hidden="true"></i>
-                          {{col.title}}
-                        </div>
-                        <input  type="text" 
-                                class="form-control text-center text-white" 
-                                placeholder="Keresés itt..."
-                                (keyup)="onSearchPhrase($event, col.name)">   
-                     </th>
-                     <th class="bg-dark text-light text-center p-1">SZERKESZTÉS</th>
+                                          none: '' }
+                                          [col.sortDir]">
+                        </i>
+                        {{col.title}}
+                      </div>
+                      <input type="text" class="form-control text-center text-white" placeholder="Keresés itt..."
+                        (keyup)="onSearchPhrase($event, col.name)">
+                    </th>
+                    <th class="bg-dark text-light text-center p-1">SZERKESZTÉS</th>
                   </tr>
-                </thead> 
+                </thead>
                 <tbody>
                   <tr
                     *ngFor="let address of addresses | search:phraseString:lastSelectedColumn | sort:lastSelectedColumn:sortDir">
-                    <td *ngFor="let col of displayedColumns" class="text-center"> {{address[col.name]}} </td>
-                    <td>
+                    <td *ngFor="let col of displayedColumns" class="text-center"> {{ address[col.name] }} </td>
+                    <td class="d-flex justify-content-center">
                       <div class="btn-group">
                         <button [routerLink]="'/address-list/edit-address/' + address.id" class="btn btn-info">
                           <i class="fa fa-edit"></i>
@@ -60,7 +56,6 @@
     </div>
   </div>
 </div>
-
 <div *ngIf="loading" class="main-content">
   <app-loading> </app-loading>
 </div>

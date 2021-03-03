@@ -2,10 +2,7 @@
   <div class="container-fluid">
     <div class="row my-5">
       <div *ngIf="bill" class="col-6 offset-3 bg-light">
-        <button
-          [routerLink]="'/address-list'"
-          class="btn btn-info btn-block btn-lg mt-3"
-        >
+        <button [routerLink]="'/bill-list'" class="btn btn-info btn-block btn-lg mt-3">
           <i class="fa fa-arrow-circle-left"></i>
         </button>
         <h1 class="h2 text-center text-primary pt-3">{{ title }}</h1>
@@ -13,53 +10,24 @@
         <form #billForm="ngForm" (ngSubmit)="onUpdate(billForm, bill)">
           <div class="form-group">
             <label for="orderID">Rendelés szám</label>
-            <input
-              name="orderID"
-              [(ngModel)]="bill.orderID"
-              type="text"
-              class="form-control"
-              pattern="^[1-9][0-9]{0,10}"
-              required
-              value="0"
-            />
-            <div
-              [hidden]="billForm.controls.orderID?.valid"
-              class="error-message"
-            >
+            <input name="orderID" [(ngModel)]="bill.orderID" type="text" class="form-control"
+              pattern="^[1-9][0-9]{0,10}" required value="0" />
+            <div [hidden]="billForm.controls.orderID?.valid" class="error-message">
               A rendelési szám csak számokat tartalmazhat, és nagyobb, mint 0.
             </div>
             <label for="amount">Rendelés összeg</label>
-            <input
-              name="amount"
-              [(ngModel)]="bill.amount"
-              type="text"
-              class="form-control"
-              pattern="^[1-9][0-9]{0,10}"
-              required
-              value="0"
-            />
-            <div
-              [hidden]="billForm.controls.amount?.valid"
-              class="error-message"
-            >
+            <input name="amount" [(ngModel)]="bill.amount" type="text" class="form-control" pattern="^[1-9][0-9]{0,10}"
+              required value="0" />
+            <div [hidden]="billForm.controls.amount?.valid" class="error-message">
               A rendelési összeg csak számokat tartalmazhat, és nem lehet nulla.
             </div>
             <label for="status">Rendelés állapota</label>
-            <select
-              class="form-control"
-              name="status"
-              [(ngModel)]="bill.status"
-              required
-            >
+            <select class="form-control" name="status" [(ngModel)]="bill.status" required>
               <option value="new">Új</option>
               <option value="paid">Fizetve</option>
             </select>
           </div>
-          <button
-            [disabled]="billForm.invalid"
-            type="submit"
-            class="btn btn-primary btn-block btn-lg"
-          >
+          <button [disabled]="billForm.invalid" type="submit" class="btn btn-primary btn-block btn-lg">
             <i class="fa fa-save"></i>
           </button>
         </form>

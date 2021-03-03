@@ -1,15 +1,12 @@
-#columnName {
+.columnName {
   transition: 0.5s;
 }
 
-#columnName:hover {
+.columnName:hover {
   background-color: #667 !important;
   cursor: pointer;
 }
 
-.card-header-warning {
-  background: #002160 !important;
-}
-.card-title {
-  color: white;
+.card-header-malev {
+  background: #002160;
 }
