@@ -64,7 +64,7 @@ export class ProductsListComponent implements OnInit {
     this.reset();
     this.loading = true;
     this.productsService.getAll().pipe(
-      finalize(() => { this.loading = false; })
+      finalize(() => {  })
     ).subscribe(() => { });
 
     let categories: Category[];
@@ -91,6 +91,7 @@ export class ProductsListComponent implements OnInit {
           products.push(product);
         })
         this.products=products;
+        this.loading = false;
       })
     }, this.config.updateDelayTimeMs);
   }

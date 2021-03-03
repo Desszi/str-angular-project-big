@@ -67,13 +67,14 @@ export class AddressListComponent implements OnInit {
     this.reset();
     this.loading = true;
     this.addressesService.getAll().pipe(
-      finalize(() => { this.loading = false; })
+      finalize(() => { })
     ).subscribe(() => { });
 
     const x = setTimeout(() => {
       clearTimeout(x);
       this.addressesService.getAll().subscribe(items => {
         this.addresses = items;
+        this.loading = false; 
       })
     }, this.config.updateDelayTimeMs);
   }

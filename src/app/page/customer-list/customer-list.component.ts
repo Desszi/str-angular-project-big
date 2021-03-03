@@ -84,7 +84,7 @@ export class CustomerListComponent implements OnInit {
     this.reset();
     this.loading = true;
     this.customerService.getAll().pipe(
-      finalize(() => { this.loading = false; })
+      finalize(() => {  })
     ).subscribe(() => { });
 
     let addresses: Address[];
@@ -105,6 +105,7 @@ export class CustomerListComponent implements OnInit {
           customer.active = item.active;
           (customer.active == true) ? customer.active = 'Igen' : customer.active = 'Nem';
           this.customers.push(customer);
+          this.loading = false;
         })
       })
     }, this.config.updateDelayTimeMs);
