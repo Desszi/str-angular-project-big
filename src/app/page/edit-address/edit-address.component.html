@@ -35,7 +35,7 @@
           <div class="form-group my-3">
             <label for="street">HÁZSZÁM, UTCA</label>
             <input name="street" [(ngModel)]="address.street" type="text" class="form-control"
-              pattern="^([1-9]{1})|([1-9]{1}[0-9]{1,})([ ][A-Z,ÁÉÍÓÖŐÚÜŰ]{1}[a-z,áéíóöőúüű]{1,}){1,}" required>
+              pattern="^([1-9]{1}|[1-9]{1}[0-9]{1,})([ ][A-Z,ÁÉÍÓÖŐÚÜŰ]{1}[a-z,áéíóöőúüű]{1,}){2,}" required>
             <div [hidden]="addressForm.controls.street?.valid" class="error-message">
               A kitöltéskor az itt látható mintát kell követni: 123 Abigail Street
             </div>
