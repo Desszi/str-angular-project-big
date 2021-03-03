@@ -33,6 +33,14 @@
             </div>
           </div>
           <div class="form-group my-3">
+            <label for="addressId">VÁSÁRLÓ az.</label>
+            <input name="addressId" [(ngModel)]="customer.addressId" type="text" class="form-control"
+              pattern="^.*$" required>
+            <div [hidden]="customerForm.controls.addressId?.valid" class="error-message">
+              Legalább 10 karakterből kell állnia, @ és . karaktert is kell tartalmaznia. (Minta: xyz@abc.hu)
+            </div>
+          </div>
+          <div class="form-group my-3">
             <div class="custom-control custom-checkbox">
               <input type="checkbox" name="active" [(ngModel)]="customer.active" class="custom-control-input"
                 id="active">
