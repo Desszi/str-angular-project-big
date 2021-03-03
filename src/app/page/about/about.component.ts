@@ -10,7 +10,7 @@ export class AboutComponent implements OnInit {
 
   cards: AboutCard[] = [
     { id: 1, fullName: 'KIRÁLY ÁRPÁD', image: '', html: 85, css_scss: 75, javascript: 65, angular: 100, git: '' },
-    { id: 2, fullName: 'MARGIT RÓBERT', image: '', html: 80, css_scss: 75, javascript: 65, angular: 50, git: '' },
+    { id: 2, fullName: 'MARGIT RÓBERT', image: '../assets/img/faces/marrob.jpg', html: 80, css_scss: 75, javascript: 65, angular: 50, git: 'https://github.com/marrob/' },
     { id: 3, fullName: 'ORMOS ATTILA', image: '', html: 85, css_scss: 43, javascript: 65, angular: 50, git: '' },
     { id: 4, fullName: 'PORKOLÁB MERCÉDESZ', image: '', html: 85, css_scss: 81, javascript: 65, angular: 50, git: '' },
     { id: 5, fullName: 'SZŰCS TAMÁS', image: '../assets/img/faces/SzT.jpg', html: 85, css_scss: 75, javascript: 65, angular: 50, git: 'https://github.com/Oborsil/' },
@@ -22,6 +22,12 @@ export class AboutComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
+    this.cards.forEach(item=>{
+      if(item.fullName=='MARGIT RÓBERT'){
+        item.css_scss = Math.floor(Math.random() * 100); 
+        item.angular = Math.floor(Math.random() * 100); 
+        item.javascript = Math.floor(Math.random() * 100); 
+      }
+    })
   }
-
 }
