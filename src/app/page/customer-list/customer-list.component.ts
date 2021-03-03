@@ -35,7 +35,7 @@ export class CustomerListComponent implements OnInit {
   phraseString: string = '';
   lastSelectedColumn: string = '';
   sortDir: string = ''
-  displayedColumns: string[] = [];
+  displayedColumns: Column[] = [];
 
   constructor(
     private customerService: CustomerService,
@@ -45,9 +45,10 @@ export class CustomerListComponent implements OnInit {
 
   ngOnInit(): void {
     this.update();
+    this.displayedColumns = [];
     this.columns.forEach((colunm, index) => {
       colunm.index = index;
-      this.displayedColumns[index] = colunm.name;
+      this.displayedColumns.push(colunm);
     });
   }
 
@@ -118,7 +119,7 @@ export class CustomerListComponent implements OnInit {
   }
 
   drop(event: CdkDragDrop<string[]>) {
-    moveItemInArray(this.displayedColumns, event.previousIndex, event.currentIndex);
+    moveItemInArray<Column>(this.displayedColumns, event.previousIndex, event.currentIndex);
   }
 }
 
