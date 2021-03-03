@@ -1,1 +1,52 @@
-<p>about works!</p>
+<div class="main-content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-header card-header-success">
+                        <h4 class="card-title ">Rólunk</h4>
+                        <p class="card-category"> F10 Button Forever :)</p>
+                    </div>
+                    <section class="py-5">
+                        <div class="container">
+                            <div class="row">
+                                <div *ngFor="let card of cards" class="col-lg-3 col-md-4 mb-4 mb-md-0 pb-3">
+                                    <div class="bg-light text-dark card border-0 shadow h-100">
+                                        <img src="{{ card.image }}" alt="{{ card.fullName }}" class="card-img-top">
+                                        <div class="card-body">
+                                            <h3 class="card-title text-center font-weight-bold text-dark">{{
+                                                card.fullName }}</h3>
+                                        </div>
+                                        <div>
+                                            <div class="progress m-2">
+                                                <div class="bg-warning text-secondary progress-bar text-left pl-2"
+                                                    role="progressbar" [style.width.%]="card.html">HTML</div>
+                                            </div>
+                                            <div class="progress m-2">
+                                                <div class="bg-primary progress-bar text-left pl-2" role="progressbar"
+                                                    [style.width.%]="card.css_scss">CSS / SCSS</div>
+                                            </div>
+                                            <div class="progress m-2">
+                                                <div class="bg-success progress-bar text-left pl-2" role="progressbar"
+                                                    [style.width.%]="card.javascript">JavaScript</div>
+                                            </div>
+                                            <div class="progress m-2">
+                                                <div class="bg-danger progress-bar text-left pl-2" role="progressbar"
+                                                    [style.width.%]="card.angular">Angular</div>
+                                            </div>
+                                        </div>
+                                        <nav class="nav m-4 justify-content-center">
+                                            <a class="card-link" href="{{ card.git }}" target="blank">
+                                                <i class="fa fa-3x fa-github"></i>
+                                            </a>
+                                        </nav>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

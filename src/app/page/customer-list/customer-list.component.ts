@@ -35,7 +35,7 @@ export class CustomerListComponent implements OnInit {
   phraseString: string = '';
   lastSelectedColumn: string = '';
   sortDir: string = ''
-  displayedColumns: string[] = [];
+  displayedColumns: Column[] = [];
 
   constructor(
     private customerService: CustomerService,
@@ -45,25 +45,25 @@ export class CustomerListComponent implements OnInit {
 
   ngOnInit(): void {
     this.update();
+    this.displayedColumns = [];
     this.columns.forEach((colunm, index) => {
       colunm.index = index;
-      this.displayedColumns[index] = colunm.name;
+      this.displayedColumns.push(colunm);
     });
   }
 
   onDelete(item: Customer) {
-    this.customerService.remove(item).subscribe(i => {
-      this.update();
-    });   
-    
+    this.customerService.remove(item).subscribe(i => {});   
+    this.update();
   }
 
   onColumnSelect(colName: string): void {
     if (this.lastSelectedColumn != colName)
       this.columns.forEach(i => i.sortDir = '');
+
     this.lastSelectedColumn = colName;
 
-    const state = this.addressesService.columns.find(i => i.name == colName);
+    const state = this.customerService.columns.find(i => i.name == colName);
     if (state.sortDir == '')
       state.sortDir = 'up';
     if (state.sortDir == 'none')
@@ -81,16 +81,16 @@ export class CustomerListComponent implements OnInit {
   }
 
   update(): void {
+    this.reset();
     this.loading = true;
     this.customerService.getAll().pipe(
-      finalize(() => { this.loading = false; })
+      finalize(() => {  })
     ).subscribe(() => { });
 
     let addresses: Address[];
     this.addressesService.getAll().subscribe(adds => {
       addresses = adds;
     });
-
     const x = setTimeout(() => {
       clearTimeout(x);
       this.customerService.getAll().subscribe(items => {
@@ -105,6 +105,7 @@ export class CustomerListComponent implements OnInit {
           customer.active = item.active;
           (customer.active == true) ? customer.active = 'Igen' : customer.active = 'Nem';
           this.customers.push(customer);
+          this.loading = false;
         })
       })
     }, this.config.updateDelayTimeMs);
@@ -119,7 +120,7 @@ export class CustomerListComponent implements OnInit {
   }
 
   drop(event: CdkDragDrop<string[]>) {
-    moveItemInArray(this.displayedColumns, event.previousIndex, event.currentIndex);
+    moveItemInArray<Column>(this.displayedColumns, event.previousIndex, event.currentIndex);
   }
 }
 

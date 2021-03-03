@@ -1,65 +1,70 @@
-<div *ngIf="!loading" class="main-content">
-    <div class="container-fluid">
-        <div class="row">
-            <div class="col-md-12">
-                <div class="card">
-                    <div class="card-header card-header-danger">
-                        <h4 class="card-title ">Rendelések</h4>
-                        <p class="card-category"> Beszéljük meg egy sör mellett!</p>
-                        <button [routerLink]="'/order-list/edit-order/0'" class="btn btn-large btn-warning btn-block">
-                            <i class="fa fa-plus"></i>
-                        </button>
-                    </div>
-                    <div class="card-body">
-                        <div class="table-responsive">
-                          <table class="table">
-                            <thead>
-                              <tr class="bg-dark text-light" cdkDropList cdkDropListOrientation="horizontal" (cdkDropListDropped)="drop($event)">
-                                <th *ngFor="let col of columns">
-                                  <div  cdkDrag
-                                        (click)="onColumnSelect(col.name)" 
-                                        class="columnName d-flex no-wrap justify-content-center align-items-center text-center p-1">
-                                    <i *ngIf="col.sortDir" 
-                                        [ngClass]="{ up:  'fa fa-arrow-circle-up',
+<div class="main-content">
+  <div class="container-fluid">
+    <div class="row">
+      <mat-progress-bar *ngIf="loading" mode="indeterminate"></mat-progress-bar>
+      <div class="col-md-12">
+        <div class="card">
+          <div class="card-header card-header-danger">
+            <h4 class="card-title ">Rendelések</h4>
+            <p class="card-category"> Beszéljük meg egy sör mellett!</p>
+            <button class="btn btn-large btn-success btn-block" [routerLink]="'/order-list/edit-order/0'">
+              <i class="fa fa-plus"></i>
+            </button>
+          </div>
+          <div class="card-body">
+            <div class="table-responsive">
+              <table class="table table-striped">
+                <thead>
+                  <tr class="bg-dark text-light" cdkDropList cdkDropListOrientation="horizontal"
+                    (cdkDropListDropped)="drop($event)">
+                    <th *ngFor="let col of displayedColumns" class="p-1">
+                      <div cdkDrag (click)="onColumnSelect(col.name)"
+                        class="columnName d-flex no-wrap justify-content-center align-items-center text-center p-1">
+                        <i *ngIf="col.sortDir" class="pr-1" [ngClass]="{ up: 'fa fa-arrow-circle-up',
                                                     down:'fa fa-arrow-circle-down',
-                                                    none:''
-                                                  }[col.sortDir]" aria-hidden="true">
-                                    </i>
-                                    {{col.title}}
-                                  </div>
-                                  <input type="text" 
-                                         class="form-control text-center text-white"
-                                         placeholder="Keresés itt..."
-                                        (keyup)="onSearchPhrase($event, col.name)">
-                                </th>
-                                <th class="bg-dark text-light text-center p-1">SZERKESZTÉS</th>
-                              </tr>
-                            </thead>
-                            <tbody>
-                              <tr
-                                *ngFor="let order of orders | search:phraseString:lastSelectedColumn | sort:lastSelectedColumn:sortDir">
-                                <td *ngFor="let col of displayedColumns" class="text-center"> {{order[col]}} </td>
-                                <td>
-                                    <div class="btn-group">
-                                        <button [routerLink]="'/order-list/edit-order/' + order.id" class="btn btn-info">
-                                            <i class="fa fa-edit"></i>
-                                        </button>
-                                        <button (click)="onDelete(order)" class="btn btn-danger">
-                                            <i class="fa fa-trash"></i>
-                                        </button>
-                                    </div>
-                                </td>
-                              </tr>
-                            </tbody>
-                          </table>
-                        </div>
+                                                    none:'' }
+                                                    [col.sortDir]">
+                        </i>
+                        {{col.title}}
                       </div>
-                </div>
+                      <input type="text" class="form-control text-center text-white" placeholder="Keresés itt..."
+                        (keyup)="onSearchPhrase($event, col.name)">
+                    </th>
+                    <th class="bg-dark text-light text-center p-1">SZERKESZTÉS</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr
+                    *ngFor="let order of orders | search:phraseString:lastSelectedColumn | sort:lastSelectedColumn:sortDir">
+                    <td *ngFor="let col of displayedColumns" class="text-center"> {{order[col.name]}} </td>
+                    <td class="d-flex justify-content-center">
+                      <div class="btn-group">
+                        <button [routerLink]="'/order-list/edit-order/' + order.id" class="btn btn-info">
+                          <i class="fa fa-edit"></i>
+                        </button>
+                        <button (click)="onDelete(order)" class="btn btn-danger">
+                          <i class="fa fa-trash"></i>
+                        </button>
+                      </div>
+                    </td>
+                  </tr>
+                </tbody>
+                <tfoot>
+                  <tr class="bg-dark text-light text-center">
+                    <td *ngFor="let col of displayedColumns" class="text-center">
+                      <span *ngIf="col.footer"> {{ orders | sum:col.name:phraseString:lastSelectedColumn }}</span>
+                    </td>
+                    <td>
+                  </tr>
+                </tfoot>
+              </table>
             </div>
+          </div>
         </div>
+      </div>
     </div>
+  </div>
 </div>
-
 <div *ngIf="loading" class="main-content">
   <app-loading> </app-loading>
 </div>

@@ -9,6 +9,17 @@ import { ConfigService } from 'app/service/config.service';
 import { Column } from 'app/model/column';
 import { CdkDragDrop, moveItemInArray } from '@angular/cdk/drag-drop';
 
+export class OrderView {
+  id: number = 0;
+  customerID: number = 0;
+  productID: number = 0;
+  amount: number = 0;
+  status: string = '';
+
+  constructor() { }
+}
+
+
 
 @Component({
   selector: 'app-order-list',
@@ -16,32 +27,27 @@ import { CdkDragDrop, moveItemInArray } from '@angular/cdk/drag-drop';
   styleUrls: ['./order-list.component.css']
 })
 export class OrderListComponent implements OnInit {
-  orders: Order[] = null;
+  orders: OrderView[] = null;
   loading: boolean = true;
   columns: Column[] = this.ordersService.columns;
   phraseString: string = '';
   lastSelectedColumn: string = '';
   sortDir: string = ''
-  displayedColumns: string[] = [];
-
-  direction: number = 1;
-  columnKey: string = '';
-
+  displayedColumns: Column[] = [];
   orderList = this.ordersService.getAll();
 
   constructor(
     private ordersService: OrdersService,
-    private activatedRoute: ActivatedRoute,
-    private config:ConfigService
+    private config: ConfigService
 
   ) { }
 
   ngOnInit(): void {
     this.update();
-
+    this.displayedColumns = [];
     this.columns.forEach((colunm, index) => {
       colunm.index = index;
-      this.displayedColumns[index] = colunm.name;
+      this.displayedColumns.push(colunm);
     });
   }
 
@@ -65,7 +71,6 @@ export class OrderListComponent implements OnInit {
     this.sortDir = state.sortDir;
   }
 
-
   onDelete(item: Order) {
     this.ordersService.remove(item).subscribe(i => {
       this.update();
@@ -73,16 +78,35 @@ export class OrderListComponent implements OnInit {
   }
 
   update(): void {
+    this.reset();
     this.loading = true;
-      this.ordersService.getAll().pipe(
-        finalize(() =>{ this.loading = false;})
-      ).subscribe(()=>{});
+    this.ordersService.getAll().pipe(
+      finalize(() => { })
+    ).subscribe(() => { });
 
-    setTimeout(()=>{  
-    this.ordersService.getAll().subscribe(items =>{
-        this.orders = items;
+    const x = setTimeout(() => {
+      clearTimeout(x);
+      const orders: OrderView[] = [];
+      this.ordersService.getAll().subscribe(items => {
+        items.forEach(item => {
+          const order: OrderView = new OrderView();
+          order.id = item.id;
+          order.customerID = item.customerID;
+          order.productID = item.productID;
+          order.amount = item.amount;
+          order.status = item.status;
+          if (item.status === 'paid')
+            order.status = 'Fizetve';
+          else if (item.status === 'new')
+            order.status = 'Új';
+          else if (item.status === 'shipped')
+            order.status = 'Szállítás alatt';
+          orders.push(order);
+        })
+        this.orders = orders;
+        this.loading = false;
       })
-    },this.config.updateDelayTimeMs);
+    }, this.config.updateDelayTimeMs);
   }
 
   onSearchPhrase(event: Event, colName: string): void {
@@ -90,7 +114,7 @@ export class OrderListComponent implements OnInit {
     this.lastSelectedColumn = colName;
   }
 
-  reset():void{
+  reset(): void {
     this.orders = [];
     this.columns.forEach(i => i.sortDir = '');
     this.phraseString = '';
@@ -99,9 +123,8 @@ export class OrderListComponent implements OnInit {
   }
 
   drop(event: CdkDragDrop<string[]>) {
-    moveItemInArray(this.displayedColumns, event.previousIndex, event.currentIndex);
+    moveItemInArray<Column>(this.displayedColumns, event.previousIndex, event.currentIndex);
   }
-
 }
 
 

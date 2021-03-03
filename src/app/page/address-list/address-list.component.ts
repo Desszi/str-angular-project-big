@@ -20,7 +20,7 @@ export class AddressListComponent implements OnInit {
   phraseString: string = '';
   lastSelectedColumn: string = '';
   sortDir: string = ''
-  displayedColumns: string[] = [];
+  displayedColumns: Column[] = [];
 
   constructor(
     private addressesService: AddressesService,
@@ -29,10 +29,10 @@ export class AddressListComponent implements OnInit {
 
   ngOnInit(): void {
     this.update();
-
+    this.displayedColumns = [];
     this.columns.forEach((colunm, index) => {
       colunm.index = index;
-      this.displayedColumns[index] = colunm.name;
+      this.displayedColumns.push(colunm);
     });
   }
   onDelete(item: Address) {
@@ -67,13 +67,14 @@ export class AddressListComponent implements OnInit {
     this.reset();
     this.loading = true;
     this.addressesService.getAll().pipe(
-      finalize(() => { this.loading = false; })
+      finalize(() => { })
     ).subscribe(() => { });
 
     const x = setTimeout(() => {
       clearTimeout(x);
       this.addressesService.getAll().subscribe(items => {
         this.addresses = items;
+        this.loading = false; 
       })
     }, this.config.updateDelayTimeMs);
   }
@@ -87,6 +88,6 @@ export class AddressListComponent implements OnInit {
   }
 
   drop(event: CdkDragDrop<string[]>) {
-    moveItemInArray(this.displayedColumns, event.previousIndex, event.currentIndex);
+    moveItemInArray<Column>(this.displayedColumns, event.previousIndex, event.currentIndex);
   }
 }
