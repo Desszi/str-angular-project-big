@@ -8,7 +8,9 @@ export class SumPipe implements PipeTransform {
 
 
     if (!Array.isArray(items) || !phrase) {
-      return items.reduce((a, b) => a + b[attr], 0);
+      if(Array.isArray(items))
+        return items.reduce((a, b) => a + b[attr], 0);
+      else return 0;
     }
     if (Number(phrase)) {
       return items.filter(item => Number(item[key]) == Number(phrase)).reduce((a, b) => a + b[attr], 0);
@@ -16,8 +18,5 @@ export class SumPipe implements PipeTransform {
       phrase = phrase.toLowerCase();
       return items.filter(item => String(item[key]).toLowerCase().includes(phrase)).reduce((a, b) => a + b[attr], 0);
     }
-
-
-      //return items.reduce((a, b) => a + b[attr], 0);
   }
 }
