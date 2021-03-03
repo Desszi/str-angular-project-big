@@ -6,23 +6,23 @@
           <div class="card-header card-header-danger">
             <h4 class="card-title ">Rendelések</h4>
             <p class="card-category"> Beszéljük meg egy sör mellett!</p>
-            <button [routerLink]="'/order-list/edit-order/0'" class="btn btn-large btn-warning btn-block">
+            <button class="btn btn-large btn-success btn-block" [routerLink]="'/order-list/edit-order/0'">
               <i class="fa fa-plus"></i>
             </button>
           </div>
           <div class="card-body">
             <div class="table-responsive">
-              <table class="table">
+              <table class="table table-striped">
                 <thead>
                   <tr class="bg-dark text-light" cdkDropList cdkDropListOrientation="horizontal"
                     (cdkDropListDropped)="drop($event)">
                     <th *ngFor="let col of displayedColumns">
                       <div cdkDrag (click)="onColumnSelect(col.name)"
                         class="columnName d-flex no-wrap justify-content-center align-items-center text-center p-1">
-                        <i class="pr-1" *ngIf="col.sortDir" [ngClass]="{ up:  'fa fa-arrow-circle-up',
+                        <i *ngIf="col.sortDir" class="pr-1" [ngClass]="{ up: 'fa fa-arrow-circle-up',
                                                     down:'fa fa-arrow-circle-down',
-                                                    none:''
-                                                  }[col.sortDir]" aria-hidden="true">
+                                                    none:'' }
+                                                    [col.sortDir]">
                         </i>
                         {{col.title}}
                       </div>
@@ -36,7 +36,7 @@
                   <tr
                     *ngFor="let order of orders | search:phraseString:lastSelectedColumn | sort:lastSelectedColumn:sortDir">
                     <td *ngFor="let col of displayedColumns" class="text-center"> {{order[col.name]}} </td>
-                    <td>
+                    <td class="d-flex justify-content-center">
                       <div class="btn-group">
                         <button [routerLink]="'/order-list/edit-order/' + order.id" class="btn btn-info">
                           <i class="fa fa-edit"></i>
@@ -56,7 +56,6 @@
     </div>
   </div>
 </div>
-
 <div *ngIf="loading" class="main-content">
   <app-loading> </app-loading>
 </div>
