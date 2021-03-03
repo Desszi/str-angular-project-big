@@ -19,10 +19,8 @@
                     (cdkDropListDropped)="drop($event)">
                     <th *ngFor="let col of displayedColumns" class="p-1">
                       <div cdkDrag (click)="onColumnSelect(col.name)"
-                        class="columnName text-center  d-flex no-wrap justify-content-center align-items-center text-center p-1">
-                        <i *ngIf="col.sortDir" 
-                              class="pr-1" 
-                              [ngClass]="{ up: 'fa fa-arrow-circle-up',
+                        class="columnName d-flex no-wrap justify-content-center align-items-center text-center p-1">
+                        <i *ngIf="col.sortDir" class="pr-1" [ngClass]="{ up: 'fa fa-arrow-circle-up',
                                           down: 'fa fa-arrow-circle-down',
                                           none: '' }
                                           [col.sortDir]">
@@ -54,8 +52,8 @@
                 </tbody>
                 <tfoot>
                   <tr class="bg-dark text-light text-center">
-                    <td *ngFor="let col of displayedColumns" class="text-center"> 
-                      <span *ngIf="col.footer"> {{ orders | sum:col.name:phraseString:lastSelectedColumn }}</span>
+                    <td *ngFor="let col of displayedColumns" class="text-center">
+                      <span *ngIf="col.footer"> {{ customers | sum:col.name:phraseString:lastSelectedColumn }}</span>
                     </td>
                     <td>
                   </tr>
