@@ -1,7 +1,8 @@
-<div *ngIf="!loading" class="main-content">
+<div class="main-content">
   <div class="container-fluid">
     <div class="row">
       <div class="col-md-12">
+        <mat-progress-bar *ngIf="loading" mode="indeterminate"></mat-progress-bar>
         <div class="card">
           <div class="card-header card-header-info">
             <h4 class="card-title">Címek</h4>
@@ -63,7 +64,4 @@
       </div>
     </div>
   </div>
-</div>
-<div *ngIf="loading" class="main-content">
-  <app-loading> </app-loading>
 </div>
