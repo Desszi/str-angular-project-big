@@ -39,7 +39,7 @@ export class ProductsListComponent implements OnInit {
   sortDir: string = ''
 
   displayedColumns: Column[] = [];
-  
+
   constructor(
     private productsService: ProductsService,
     private categotyService: CategoryService,
@@ -56,7 +56,7 @@ export class ProductsListComponent implements OnInit {
   }
 
   onDelete(item: Product) {
-    this.productsService.remove(item).subscribe(i => {});
+    this.productsService.remove(item).subscribe(i => { });
     this.update();
   }
 
@@ -64,7 +64,7 @@ export class ProductsListComponent implements OnInit {
     this.reset();
     this.loading = true;
     this.productsService.getAll().pipe(
-      finalize(() => {  })
+      finalize(() => { })
     ).subscribe(() => { });
 
     let categories: Category[];
@@ -74,7 +74,7 @@ export class ProductsListComponent implements OnInit {
 
     const x = setTimeout(() => {
       clearTimeout(x);
-      const products:ProductView[]=[];
+      const products: ProductView[] = [];
       this.productsService.getAll().subscribe(items => {
         items.forEach(item => {
           const product: ProductView = new ProductView();
@@ -85,12 +85,12 @@ export class ProductsListComponent implements OnInit {
           product.description = item.description;
           product.price = item.price;
           product.featured = item.featured;
-          (product.featured == true) ? product.featured = 'Igen' : product.featured = 'Nem';
+          product.featured == true ? product.featured = 'Igen' : product.featured = 'Nem';
           product.active = item.active;
-          (product.active == true) ? product.active = 'Igen' : product.active = 'Nem';
+          product.active == true ? product.active = 'Igen' : product.active = 'Nem';
           products.push(product);
         })
-        this.products=products;
+        this.products = products;
         this.loading = false;
       })
     }, this.config.updateDelayTimeMs);
@@ -119,7 +119,7 @@ export class ProductsListComponent implements OnInit {
     this.lastSelectedColumn = colName;
   }
 
-  reset():void{
+  reset(): void {
     this.products = [];
     this.columns.forEach(i => i.sortDir = '');
     this.phraseString = '';
