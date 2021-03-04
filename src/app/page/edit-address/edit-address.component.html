@@ -12,7 +12,7 @@
             <label for="zip">IRÁNYÍTÓSZÁM</label>
             <input name="zip" [(ngModel)]="address.zip" type="text" class="form-control" pattern="^[1-9]{1}[0-9]{1,5}"
               required>
-            <div [hidden]="addressForm.controls.zip?.valid" class="error-message">
+            <div [hidden]="addressForm.controls.zip?.valid || addressForm.controls.zip.pristine" class="error-message">
               Legalább 2, legfeljebb 6 jegyű számnak kell lennie, a szám nem kezdődhet nullával.
             </div>
           </div>
@@ -20,7 +20,7 @@
             <label for="country">ORSZÁG</label>
             <input name="country" [(ngModel)]="address.country" type="text" class="form-control"
               pattern="^[A-Z,ÁÉÍÓÖŐÚÜŰ]{1}[a-z,áéíóöőúüű]{1,}" required>
-            <div [hidden]="addressForm.controls.country?.valid" class="error-message">
+            <div [hidden]="addressForm.controls.country?.valid || addressForm.controls.country.pristine" class="error-message">
               Csak betűkből állhat, nagy betűvel kell kezdődnie.
             </div>
           </div>
@@ -28,15 +28,15 @@
             <label for="city">VÁROS</label>
             <input name="city" [(ngModel)]="address.city" type="text" class="form-control"
               pattern="^[A-Z,ÁÉÍÓÖŐÚÜŰ]{1}[A-Z,ÁÉÍÓÖŐÚÜŰ,a-z,áéíóöőúüű ]{1,}" required>
-            <div [hidden]="addressForm.controls.city?.valid" class="error-message">
+            <div [hidden]="addressForm.controls.city?.valid || addressForm.controls.city.pristine" class="error-message">
               Csak betűkből állhat, nagy betűvel kell kezdődnie.
             </div>
           </div>
           <div class="form-group my-3">
             <label for="street">HÁZSZÁM, UTCA</label>
             <input name="street" [(ngModel)]="address.street" type="text" class="form-control"
-              pattern="^([1-9]{1})|([1-9]{1}[0-9]{1,})([ ][A-Z,ÁÉÍÓÖŐÚÜŰ]{1}[a-z,áéíóöőúüű]{1,}){1,}" required>
-            <div [hidden]="addressForm.controls.street?.valid" class="error-message">
+              pattern="^([1-9]{1}|[1-9]{1}[0-9]{1,})([ ][A-Z,ÁÉÍÓÖŐÚÜŰ]{1}[a-z,áéíóöőúüű]{1,}){2,}" required>
+            <div [hidden]="addressForm.controls.street?.valid || addressForm.controls.street.pristine" class="error-message">
               A kitöltéskor az itt látható mintát kell követni: 123 Abigail Street
             </div>
           </div>
@@ -44,7 +44,7 @@
             <label for="notes">MEGJEGYZÉS</label>
             <input name="notes" [(ngModel)]="address.notes" type="text" class="form-control" pattern="\D{5,20}"
               required>
-            <div [hidden]="addressForm.controls.notes?.valid" class="error-message">
+            <div [hidden]="addressForm.controls.notes?.valid || addressForm.controls.notes.pristine" class="error-message">
               Legalább 5, legfeljebb 20 betűből kell állnia.
             </div>
           </div>
