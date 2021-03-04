@@ -16,7 +16,7 @@ export class BillService extends BaseService<Bill> {
   columns: Column[] = [
     { index: 0, name: "id", title: "#", type: "text", sortDir: "", footer: false },
     { index: 1, name: "orderID", title: "AZONOSÍTÓ", type: "text", sortDir: "", footer: false },
-    { index: 2, name: "amount", title: "ÖSSZEG", type: "text", sortDir: "", footer: true },
+    { index: 2, name: "amount", title: "ÖSSZEG (eFt)", type: "text", sortDir: "", footer: true },
     { index: 3, name: "status", title: "ÁLLAPOT", type: "text", sortDir: "", footer: false }
   ];
 }

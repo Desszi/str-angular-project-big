@@ -18,7 +18,7 @@ export class OrdersService extends BaseService<Order> {
     { index: 0, name: 'id', title: '#', type: 'text', sortDir: '', footer: false },
     { index: 1, name: 'customerID', title: 'VÁSÁRLÓSZÁM', type: 'text', sortDir: '', footer: false },
     { index: 2, name: 'productID', title: 'TERMÉKSZÁM', type: 'text', sortDir: '', footer: false },
-    { index: 3, name: 'amount', title: 'ÖSSZEG', type: 'text', sortDir: '', footer: true },
+    { index: 3, name: 'amount', title: 'ÖSSZEG (eFt)', type: 'text', sortDir: '', footer: true },
     { index: 4, name: 'status', title: 'ÁLLAPOT', type: 'text', sortDir: '', footer: false },
   ]
 }
