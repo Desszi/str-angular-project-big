@@ -18,14 +18,14 @@ export class DashboardComponent implements OnInit {
   activeCustomerCount: number = 0; //Aktív vásárlók száma
   activeBillsCount: number = 0 // Jelenlegi számlák száma
   newBillsSum: number = 0; //Számlák összege
-  
+
   //Különböző rendelések státuszának kimutatásához használt adatok
   productsStatusChart: any;
-  
+
   newOrdersCount: number = 0; //Új megrendelések
   paidOrdersCount: number = 0; //Fizetett rendelések száma
   shippedOrdersCount: number = 0; //Kiszállított rendelés
-  
+
   loading: boolean; //Betöltésért felel.
 
   productsSumChart: any;
@@ -104,106 +104,106 @@ export class DashboardComponent implements OnInit {
     this.loading = true;
     //Aktív státuszú termékek kiszűrése, számuk meghatározása.
     this.productsService.getAll()
-      .pipe( finalize(() => this.loading = false)
-     ).subscribe(products => {
-      this.activeProductsCount = products.filter(p => p.active).length;
-    })
+      .pipe(finalize(() => this.loading = false)
+      ).subscribe(products => {
+        this.activeProductsCount = products.filter(p => p.active).length;
+      })
 
     this.loading = true;
     //A rendszerben lévő számlák száma.
     this.billsService.getAll()
-     .pipe( finalize(() => this.loading = false)
-    ).subscribe(bills => {
-      this.activeBillsCount = bills.length;
-    })
+      .pipe(finalize(() => this.loading = false)
+      ).subscribe(bills => {
+        this.activeBillsCount = bills.length;
+      })
 
     this.loading = true;
     //Aktív státuszú vásárlók kiszűrése és számuk meghatározása.
     this.customersService.getAll()
-     .pipe( finalize(() => this.loading = false)
-    ).subscribe(customers => {
-      this.activeCustomerCount = customers.filter(c => c.active).length;
-    })
+      .pipe(finalize(() => this.loading = false)
+      ).subscribe(customers => {
+        this.activeCustomerCount = customers.filter(c => c.active).length;
+      })
 
 
     this.loading = true;
     //Különböző státuszú rendelések száma
     this.ordersService.getAll()
-     .pipe( finalize(() => this.loading = false)
-    ).subscribe(orders => {
-      this.newOrdersCount = orders.filter(n_o => n_o.status == "new").length;
-      this.paidOrdersCount = orders.filter(p_o => p_o.status == "paid").length;
-      this.shippedOrdersCount = orders.filter(s_o => s_o.status == "shipped").length;
+      .pipe(finalize(() => this.loading = false)
+      ).subscribe(orders => {
+        this.newOrdersCount = orders.filter(n_o => n_o.status == "new").length;
+        this.paidOrdersCount = orders.filter(p_o => p_o.status == "paid").length;
+        this.shippedOrdersCount = orders.filter(s_o => s_o.status == "shipped").length;
 
-      //Összesítés
-      let newOrdersSum = 0;
-      let paidOrdersSum = 0;
-      let shippedOrdersSum = 0;
+        //Összesítés
+        let newOrdersSum = 0;
+        let paidOrdersSum = 0;
+        let shippedOrdersSum = 0;
 
-      orders.filter(n_o => n_o.status == "new").forEach(item => newOrdersSum += item.amount);
-      orders.filter(p_o => p_o.status == "paid").forEach(item => paidOrdersSum += item.amount);
-      orders.filter(s_o => s_o.status == "shipped").forEach(item => shippedOrdersSum += item.amount);
+        orders.filter(n_o => n_o.status == "new").forEach(item => newOrdersSum += item.amount);
+        orders.filter(p_o => p_o.status == "paid").forEach(item => paidOrdersSum += item.amount);
+        orders.filter(s_o => s_o.status == "shipped").forEach(item => shippedOrdersSum += item.amount);
 
-      this.loading = true;
-      this.billsService.getAll()
-       .pipe( finalize(() => this.loading = false)
-      ).subscribe(bills => {
-        this.newBillsSum = 0;
-        bills.filter(b => b.status == "new")
-             .forEach(item => this.newBillsSum += item.amount);
-      })
-  
+        this.loading = true;
+        this.billsService.getAll()
+          .pipe(finalize(() => this.loading = false)
+          ).subscribe(bills => {
+            this.newBillsSum = 0;
+            bills.filter(b => b.status == "new")
+              .forEach(item => this.newBillsSum += item.amount);
+          })
 
-      //Oszlopdiagram ahol a rendelések száma kimutatható.
-      var datawebsiteViewsChart = {
-        labels: ['Új rendelés', 'Fizetett rend.', 'Kiszállított rend.'],
-        series: [
-          [this.newOrdersCount,this.paidOrdersCount,this.shippedOrdersCount]
-        ]
-      };
-      var optionswebsiteViewsChart = {
-        axisX: {
-          showGrid: false
-        },
-        low: 0,
-        high: 100,
-        chartPadding: { top: 0, right: 5, bottom: 0, left: 0 }
-      };
-      var responsiveOptions: any[] = [
-        ['screen and (max-width: 640px)', {
-          seriesBarDistance: 3,
+
+        //Oszlopdiagram ahol a rendelések száma kimutatható.
+        var datawebsiteViewsChart = {
+          labels: ['Új rendelés', 'Fizetett rendelés', 'Kiszállított rendelés'],
+          series: [
+            [this.newOrdersCount, this.paidOrdersCount, this.shippedOrdersCount]
+          ]
+        };
+        var optionswebsiteViewsChart = {
           axisX: {
-            labelInterpolationFnc: function (value) {
-              return value[0];
+            showGrid: false
+          },
+          low: 0,
+          high: 60,
+          chartPadding: { top: 0, right: 0, bottom: 0, left: 0 }
+        };
+        var responsiveOptions: any[] = [
+          ['screen and (max-width: 640px)', {
+            seriesBarDistance: 3,
+            axisX: {
+              labelInterpolationFnc: function (value) {
+                return value[0];
+              }
             }
-          }
-        }]
-      ];
-      var websiteViewsChart = new Chartist.Bar('#websiteViewsChart', datawebsiteViewsChart, optionswebsiteViewsChart, responsiveOptions);
+          }]
+        ];
+        var websiteViewsChart = new Chartist.Bar('#websiteViewsChart', datawebsiteViewsChart, optionswebsiteViewsChart, responsiveOptions);
         this.startAnimationForBarChart(websiteViewsChart);
-      
-      // Vonaldiagram, ahol az általános adatok látszódnak.
-      const dataDailySalesChart: any = {
-        labels: ['Termékek', 'Vásárlók', 'Számlák'],
-        series: [
-          [this.activeProductsCount, this.activeCustomerCount, this.activeBillsCount]
-        ]
-      };
-  
-      const optionsDailySalesChart: any = {
-        lineSmooth: Chartist.Interpolation.cardinal({
-          tension: 0
-        }),
-        low: 0,
-        high: 120, // creative tim: we recommend you to set the high sa the biggest value + something for a better look
-        chartPadding: { top: 0, right: 0, bottom: 0, left: 0 },
-      }
-  
-      var dailySalesChart = new Chartist.Line('#dailySalesChart', dataDailySalesChart, optionsDailySalesChart);
-      this.startAnimationForLineChart(dailySalesChart); 
 
-   
-    })
+        // Vonaldiagram, ahol az általános adatok látszódnak.
+        const dataDailySalesChart: any = {
+          labels: ['Termékek', 'Vásárlók', 'Számlák'],
+          series: [
+            [this.activeProductsCount, this.activeCustomerCount, this.activeBillsCount]
+          ]
+        };
+
+        const optionsDailySalesChart: any = {
+          lineSmooth: Chartist.Interpolation.cardinal({
+            tension: 0
+          }),
+          low: 0,
+          high: 120, // creative tim: we recommend you to set the high sa the biggest value + something for a better look
+          chartPadding: { top: 0, right: 0, bottom: 0, left: 0 },
+        }
+
+        var dailySalesChart = new Chartist.Line('#dailySalesChart', dataDailySalesChart, optionsDailySalesChart);
+        this.startAnimationForLineChart(dailySalesChart);
+
+
+      })
 
   }
 }
