@@ -9,31 +9,31 @@
                 <label>{{'#'+ order.id}}</label>
                 <form #orderForm="ngForm" (ngSubmit)="onUpdate(orderForm, order)">
                     <div class="form-group my-3">
-                        <label for="customerID">VÁSÁRLÓ SZÁMA.</label>
+                        <label for="customerID">VÁSÁRLÓSZÁM</label>
                         <input name="customerID" [(ngModel)]="order.customerID" type="text" class="form-control"
-                            pattern="^[1-9]{1}[0-9]{0,10}" required value="0">
-                        <div [hidden]="orderForm.controls.customerID?.valid" class="error-message">
-                            Csak számokat tartalmazhat, a szám nem kezdődhet nullával.
+                            pattern="^[1-9]{1}[0-9]{0,1}" required>
+                        <div [hidden]="orderForm.controls.customerID?.valid || orderForm.controls.customerID.pristine" class="error-message">
+                            Legfeljebb 2 jegyű számot tartalmazhat, a szám nem kezdődhet nullával.
                         </div>
                     </div>
                     <div class="form-group my-3">
-                        <label for="productID">TERMÉK SZÁMA</label>
+                        <label for="productID">TERMÉKSZÁM</label>
                         <input name="productID" [(ngModel)]="order.productID" type="text" class="form-control"
-                            pattern="^[1-9]{1}[0-9]{0,10}" required value="0">
-                        <div [hidden]="orderForm.controls.productID?.valid" class="error-message">
-                            Csak számokat tartalmazhat, a szám nem kezdődhet nullával.
+                            pattern="^[1-9]{1}[0-9]{0,1}" required>
+                        <div [hidden]="orderForm.controls.productID?.valid || orderForm.controls.productID.pristine" class="error-message">
+                            Legfeljebb 2 jegyű számot tartalmazhat, a szám nem kezdődhet nullával.
                         </div>
                     </div>
                     <div class="form-group my-3">
                         <label for="amount">ÖSSZEG</label>
                         <input name="amount" [(ngModel)]="order.amount" type="text" class="form-control"
-                            pattern="^[1-9]{1}[0-9]{0,10}" required value="0">
-                        <div [hidden]="orderForm.controls.amount?.valid" class="error-message">
+                            pattern="^[1-9]{1}[0-9]{0,}" required>
+                        <div [hidden]="orderForm.controls.amount?.valid || orderForm.controls.amount.pristine" class="error-message">
                             Csak számokat tartalmazhat, a szám nem kezdődhet nullával.
                         </div>
                     </div>
                     <div class="form-group my-3">
-                        <label for="catid">KATEGÓRIA</label>
+                        <label for="catid">ÁLLAPOT</label>
                         <select name="catid" [(ngModel)]="order.status" class="custom-select" required>
                             <option value="new">Új</option>
                             <option value="paid">Fizetve</option>

@@ -3,7 +3,7 @@ export class Customer {
     firstName: string = '';
     lastName: string = '';
     email: string = '';
-    addressId: number = 0;
+    addressId: number;
     active: boolean = false;
 
     constructor() { }

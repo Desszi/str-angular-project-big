@@ -15,10 +15,10 @@ export class OrdersService extends BaseService<Order> {
   }
 
   columns: Column[] = [
-    { index: 0, name: 'id', title: '#', type: 'text', sortDir: '' },
-    { index: 1, name: 'customerID', title: 'VÁSÁRLÓ SZÁMA', type: 'text', sortDir: '' },
-    { index: 2, name: 'productID', title: 'TERMÉK SZÁMA', type: 'text', sortDir: '' },
-    { index: 3, name: 'amount', title: 'ÖSSZEG', type: 'text', sortDir: '' },
-    { index: 4, name: 'status', title: 'ÁLLAPOT', type: 'text', sortDir: '' },
+    { index: 0, name: 'id', title: '#', type: 'text', sortDir: '', footer: false },
+    { index: 1, name: 'customerID', title: 'VÁSÁRLÓSZÁM', type: 'text', sortDir: '', footer: false },
+    { index: 2, name: 'productID', title: 'TERMÉKSZÁM', type: 'text', sortDir: '', footer: false },
+    { index: 3, name: 'amount', title: 'ÖSSZEG', type: 'text', sortDir: '', footer: true },
+    { index: 4, name: 'status', title: 'ÁLLAPOT', type: 'text', sortDir: '', footer: false },
   ]
 }

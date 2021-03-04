@@ -16,8 +16,8 @@ export class CustomerView {
   firstName: string = '';
   lastName: string = '';
   email: string = '';
-  fullAddress: number | string = 0;
-  active: boolean | string = false;
+  fullAddress: string = '';
+  active: string = '';
 
   constructor() { }
 }
@@ -84,7 +84,7 @@ export class CustomerListComponent implements OnInit {
     this.reset();
     this.loading = true;
     this.customerService.getAll().pipe(
-      finalize(() => { this.loading = false; })
+      finalize(() => {  })
     ).subscribe(() => { });
 
     let addresses: Address[];
@@ -96,15 +96,21 @@ export class CustomerListComponent implements OnInit {
       this.customerService.getAll().subscribe(items => {
         items.forEach(item => {
           const customer: CustomerView = new CustomerView();
-          const addressClass = addresses.find(elem => elem.id == item.addressId);
+          let address = addresses.find(elem => elem.id == item.addressId);
+          if(typeof(address) == 'undefined'){
+            address = new Address();
+            address.country = 'Budapest';
+            address.city = 'Budpest';
+            address.street = 'Fehérvári út';
+          }
           customer.id = item.id;
           customer.firstName = item.firstName;
           customer.lastName = item.lastName;
-          customer.fullAddress = `${addressClass.country}, ${addressClass.city}, ${addressClass.street}`;
+          customer.fullAddress = `${address.country}, ${address.city}, ${address.street}`;
           customer.email = item.email;
-          customer.active = item.active;
-          (customer.active == true) ? customer.active = 'Igen' : customer.active = 'Nem';
+          (item.active == true) ? customer.active = 'Igen' : customer.active = 'Nem';
           this.customers.push(customer);
+          this.loading = false;
         })
       })
     }, this.config.updateDelayTimeMs);

@@ -10,10 +10,10 @@ export class SearchPipe implements PipeTransform {
     if (key) {
       if (!Array.isArray(value) || !phrase) {
         return value;
-      }
-      if (Number(phrase)) {
-        return value.filter(item => Number(item[key]) == Number(phrase));
-      } else {
+      }else{
+      //if (Number(phrase)) {
+      //  return value.filter(item => Number(item[key]) == Number(phrase));
+      //} else {
         phrase = phrase.toLowerCase();
         return value.filter(item => String(item[key]).toLowerCase().includes(phrase));
       }

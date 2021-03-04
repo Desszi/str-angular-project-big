@@ -45,7 +45,7 @@ export class EditCustomerComponent implements OnInit {
     try {
       if (item.id == 0) {
         this.customerService.create(item).subscribe(() => {});
-        this.toastr.warning('Sikeresn hozzáadásra került');
+        this.toastr.warning('Sikeresen hozzáadásra került');
         this.router.navigate(['/customer-list']);
       }
       else {
