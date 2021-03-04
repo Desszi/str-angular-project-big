@@ -11,10 +11,10 @@
                         <div class="container">
                             <div class="row">
                                 <div *ngFor="let card of cards" class="col-lg-3 col-md-4 mb-4 mb-md-0 pb-3">
-                                    <div class="bg-light text-dark card border-0 shadow h-100">
+                                    <div class="bg-light text-dark card border-0 shadow ">
                                         <img src="{{ card.image }}" alt="{{ card.fullName }}" class="card-img-top">
-                                        <div class="card-body">
-                                            <h3 class="card-title text-center font-weight-bold text-dark">{{
+                                        <div class="">
+                                            <h3 class="card-title text-center font-weight-bold text-dark py-3">{{
                                                 card.fullName }}</h3>
                                         </div>
                                         <div>
