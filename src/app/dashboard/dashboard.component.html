@@ -5,7 +5,7 @@
               <app-info-card
                 [icon] = "'sports_bar'"
                 [cardClass] = "'card-header-warning'"
-                [title]= "'Aktív termékek száma'"
+                [title]= "'Aktív termékek száma (db)'"
                 [content] = "activeProductsCount"
                 [footer] = "'Sör'">
               </app-info-card>
@@ -14,7 +14,7 @@
               <app-info-card
                 [icon] = "'group'"
                 [cardClass] = "'card-header-success'"
-                [title]= "'Aktív vásárlók száma'"
+                [title]= "'Aktív vásárlók száma (fő)'"
                 [content] = "activeCustomerCount"
                 [footer] = "'Sör'">
               </app-info-card>
@@ -23,7 +23,7 @@
             <app-info-card
               [icon] = "'priority_high'"
               [cardClass] = "'card-header-danger'"
-              [title]= "'Nem fizetett rendelések száma'"
+              [title]= "'Nem fizetett rendelések száma (db)'"
               [content] = "newOrdersCount"
               [footer] = "'Sör'">
             </app-info-card>
@@ -32,7 +32,7 @@
             <app-info-card
               [icon] = "'thumb_down'"
               [cardClass] = "'card-header-danger'"
-              [title]= "'Nem fizetett számlák összege'"
+              [title]= "'Nem fizetett számlák összege (eFt)'"
               [content] = "newBillsSum | number " 
               [footer] = "'Sör'">
             </app-info-card> 
