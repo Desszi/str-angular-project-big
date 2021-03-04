@@ -55,7 +55,7 @@
       </li>
     </ul>
   </div>
-  <ul class="nav sidebar">
+  <ul class="nav custom-sidebar">
     <li routerLinkActive="active" *ngFor="let menuItem of menuItems" class="{{ menuItem.class }} nav-item">
       <a class="nav-link" [routerLink]="[menuItem.path]">
         <i class="material-icons">{{ menuItem.icon }}</i>
