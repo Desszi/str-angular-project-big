@@ -15,13 +15,13 @@ export class SumPipe implements PipeTransform {
       }
       else return 0;
     }
-    if (Number(phrase)) {
+    /*if (Number(phrase)) {
       let sum = 0;
       items.filter(item => Number(item[key]) == Number(phrase)).forEach((a) => {
         sum += parseInt('' + a[attr]);
       });
       return sum;
-    } else {
+    } else*/ {
       let sum = 0;
       phrase = phrase.toLowerCase();
       items.filter(item => String(item[key]).toLowerCase().includes(phrase)).forEach((a) => {
