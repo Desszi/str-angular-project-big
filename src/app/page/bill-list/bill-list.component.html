@@ -53,8 +53,7 @@
                   <tr class="bg-dark text-light text-center">
                     <td *ngFor="let col of displayedColumns" class="text-center">
                       <span *ngIf="col.footer"> {{ bills | sum:col.name:phraseString:lastSelectedColumn |
-                        currency:'HUF':'symbol':'4.0'
-                        }}
+                        currency:'HUF':'symbol':'4.0' }}
                       </span>
                     </td>
                     <td>
