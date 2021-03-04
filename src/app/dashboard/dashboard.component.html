@@ -19,8 +19,8 @@
             </div>
             <div class="col-lg-3 col-md-6 col-sm-6">
                 <app-info-card [icon]="'thumb_down'" [cardClass]="'card-header-danger'"
-                    [title]="'Nem fizetett számlák összege (eFt)'" [content]="newBillsSum | number "
-                    [footer]="'🕘 Éppen most'">
+                    [title]="'Nem fizetett számlák összege (eFt)'" [content]="newBillsSum |
+                    currency:'HUF':'symbol':'4.0'" [footer]="'🕘 Éppen most'">
                 </app-info-card>
             </div>
         </div>
