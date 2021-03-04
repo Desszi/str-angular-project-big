@@ -12,7 +12,7 @@
                         <label for="customerID">VÁSÁRLÓSZÁM</label>
                         <input name="customerID" [(ngModel)]="order.customerID" type="text" class="form-control"
                             pattern="^[1-9]{1}[0-9]{0,1}" required>
-                        <div [hidden]="orderForm.controls.customerID?.valid" class="error-message">
+                        <div [hidden]="orderForm.controls.customerID?.valid || orderForm.controls.customerID.pristine" class="error-message">
                             Legfeljebb 2 jegyű számot tartalmazhat, a szám nem kezdődhet nullával.
                         </div>
                     </div>
@@ -20,7 +20,7 @@
                         <label for="productID">TERMÉKSZÁM</label>
                         <input name="productID" [(ngModel)]="order.productID" type="text" class="form-control"
                             pattern="^[1-9]{1}[0-9]{0,1}" required>
-                        <div [hidden]="orderForm.controls.productID?.valid" class="error-message">
+                        <div [hidden]="orderForm.controls.productID?.valid || orderForm.controls.productID.pristine" class="error-message">
                             Legfeljebb 2 jegyű számot tartalmazhat, a szám nem kezdődhet nullával.
                         </div>
                     </div>
@@ -28,7 +28,7 @@
                         <label for="amount">ÖSSZEG</label>
                         <input name="amount" [(ngModel)]="order.amount" type="text" class="form-control"
                             pattern="^[1-9]{1}[0-9]{0,}" required>
-                        <div [hidden]="orderForm.controls.amount?.valid" class="error-message">
+                        <div [hidden]="orderForm.controls.amount?.valid || orderForm.controls.amount.pristine" class="error-message">
                             Csak számokat tartalmazhat, a szám nem kezdődhet nullával.
                         </div>
                     </div>
