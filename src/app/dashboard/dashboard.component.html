@@ -1,77 +1,66 @@
 <div class="main-content">
-  <div class="container-fluid">
-      <div class="row">
-          <div class="col-lg-3 col-md-6 col-sm-6">
-              <app-info-card
-                [icon] = "'sports_bar'"
-                [cardClass] = "'card-header-warning'"
-                [title]= "'Aktív termékek száma (db)'"
-                [content] = "activeProductsCount"
-                [footer] = "'Sör'">
-              </app-info-card>
-          </div>
-          <div class="col-lg-3 col-md-6 col-sm-6">
-              <app-info-card
-                [icon] = "'group'"
-                [cardClass] = "'card-header-success'"
-                [title]= "'Aktív vásárlók száma (fő)'"
-                [content] = "activeCustomerCount"
-                [footer] = "'Sör'">
-              </app-info-card>
-          </div>
-          <div class="col-lg-3 col-md-6 col-sm-6">
-            <app-info-card
-              [icon] = "'priority_high'"
-              [cardClass] = "'card-header-danger'"
-              [title]= "'Nem fizetett rendelések száma (db)'"
-              [content] = "newOrdersCount"
-              [footer] = "'Sör'">
-            </app-info-card>
-          </div>
-          <div class="col-lg-3 col-md-6 col-sm-6">
-            <app-info-card
-              [icon] = "'thumb_down'"
-              [cardClass] = "'card-header-danger'"
-              [title]= "'Nem fizetett számlák összege (eFt)'"
-              [content] = "newBillsSum | number " 
-              [footer] = "'Sör'">
-            </app-info-card> 
-          </div>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-lg-3 col-md-6 col-sm-6">
+                <app-info-card [icon]="'sports_bar'" [cardClass]="'card-header-warning'"
+                    [title]="'Aktív termékek száma (db)'" [content]="activeProductsCount" [footer]="'🕘 Éppen most'">
+                </app-info-card>
+            </div>
+            <div class="col-lg-3 col-md-6 col-sm-6">
+                <app-info-card [icon]="'group'" [cardClass]="'card-header-success'"
+                    [title]="'Aktív vásárlók száma (fő)'" [content]="activeCustomerCount" [footer]="'🕘 Éppen most'">
+                </app-info-card>
+            </div>
+            <div class="col-lg-3 col-md-6 col-sm-6">
+                <app-info-card [icon]="'priority_high'" [cardClass]="'card-header-danger'"
+                    [title]="'Nem fizetett rendelések száma (db)'" [content]="newOrdersCount"
+                    [footer]="'🕘 Éppen most'">
+                </app-info-card>
+            </div>
+            <div class="col-lg-3 col-md-6 col-sm-6">
+                <app-info-card [icon]="'thumb_down'" [cardClass]="'card-header-danger'"
+                    [title]="'Nem fizetett számlák összege (eFt)'" [content]="newBillsSum | number "
+                    [footer]="'🕘 Éppen most'">
+                </app-info-card>
+            </div>
+        </div>
     </div>
-</div>
-<div class="row">
-  <div class="col-md-6">
-      <div class="card card-chart">
-          <div class="card-header card-header-success">
-              <div class="ct-chart" id="dailySalesChart"></div>
-          </div>
-          <div class="card-body">
-              <h4 class="card-title">A webshop adatai</h4>
-              <p class="card-category">
-                  <span class="text-success"><i class="fa fa-long-arrow-up"></i> Nyilvántartásunk </span> növekvő tendenciát mutat, egyre több vásárló bizalmát nyerjük el.</p>
-          </div>
-          <div class="card-footer">
-              <div class="stats">
-                  <i class="material-icons">access_time</i> Éppen most 
-              </div>
-          </div>
-      </div>
-  </div>
-  <div class="col-md-6">
-      <div class="card card-chart">
-          <div class="card-header card-header-warning">
-              <div class="ct-chart" id="websiteViewsChart"></div>
-          </div>
-          <div class="card-body">
-              <h4 class="card-title">Aktuális rendelések státusza</h4>
-              <p class="card-category">A webshopunk rendeléseinek eloszlása kategóriák szerint oszlopdiagramon ábrázolva.</p>
-          </div>
-          <div class="card-footer">
-              <div class="stats">
-                  <i class="material-icons">access_time</i> Éppen most
-              </div>
-          </div>
-      </div>
-  </div>
-</div>
+    <div class="row">
+        <div class="col-md-6">
+            <div class="card card-chart">
+                <div class="card-header card-header-success">
+                    <div class="ct-chart" id="dailySalesChart"></div>
+                </div>
+                <div class="card-body">
+                    <h4 class="card-title">A webshop adatai</h4>
+                    <p class="card-category">
+                        <span class="text-success"><i class="fa fa-long-arrow-up"></i> Nyilvántartásunk </span> növekvő
+                        tendenciát mutat, egyre több vásárló bizalmát nyerjük el.
+                    </p>
+                </div>
+                <div class="card-footer">
+                    <div class="stats">
+                        <i class="material-icons">access_time</i> Éppen most
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="card card-chart">
+                <div class="card-header card-header-warning">
+                    <div class="ct-chart" id="websiteViewsChart"></div>
+                </div>
+                <div class="card-body">
+                    <h4 class="card-title">Aktuális rendelések státusza</h4>
+                    <p class="card-category">A webshopunk rendeléseinek eloszlása kategóriák szerint oszlopdiagramon
+                        ábrázolva.</p>
+                </div>
+                <div class="card-footer">
+                    <div class="stats">
+                        <i class="material-icons">access_time</i> Éppen most
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
