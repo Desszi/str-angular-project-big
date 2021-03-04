@@ -15,8 +15,8 @@ export class AboutComponent implements OnInit {
     { id: 4, fullName: 'PORKOLÁB MERCÉDESZ', image: '../assets/img/faces/desszi.jpg', html: 95, css_scss: 88, javascript: 93, angular: 67, git: 'https://github.com/Desszi/' },
     { id: 5, fullName: 'SZŰCS TAMÁS', image: '../assets/img/faces/SzT.jpg', html: 85, css_scss: 75, javascript: 65, angular: 50, git: 'https://github.com/Oborsil/' },
     { id: 6, fullName: 'TAKÁCS BÁLINT', image: '../assets/img/faces/balint.jpg', html: 87, css_scss: 77, javascript: 67, angular: 57, git: 'https://github.com/takib77/' },
-    { id: 7, fullName: 'VILLÁNYI ÁGNES', image: '', html: 85, css_scss: 75, javascript: 99, angular: 50, git: 'https://github.com/Afonya74' },
-    { id: 8, fullName: 'GONDA VALÉR', image: '', html: 97, css_scss: 75, javascript: 25, angular: 50, git: '' }
+    { id: 7, fullName: 'VILLÁNYI ÁGNES', image: '../assets/img/faces/Agi.jpg', html: 85, css_scss: 80, javascript: 60, angular: 50, git: 'https://github.com/Afonya74/' },
+    { id: 8, fullName: 'GONDA VALÉR', image: '../assets/img/faces/GV.jpg', html: 70, css_scss: 40, javascript: 85, angular: 90, git: 'https://github.com/Afonya74/' }
   ]
 
   constructor() { }
