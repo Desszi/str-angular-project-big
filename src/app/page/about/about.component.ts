@@ -15,8 +15,8 @@ export class AboutComponent implements OnInit {
     { id: 4, fullName: 'PORKOLÁB MERCÉDESZ', image: '', html: 85, css_scss: 81, javascript: 65, angular: 50, git: '' },
     { id: 5, fullName: 'SZŰCS TAMÁS', image: '../assets/img/faces/SzT.jpg', html: 85, css_scss: 75, javascript: 65, angular: 50, git: 'https://github.com/Oborsil/' },
     { id: 6, fullName: 'TAKÁCS BÁLINT', image: '', html: 66, css_scss: 75, javascript: 65, angular: 50, git: '' },
-    { id: 7, fullName: 'VILLÁNYI ÁGNES', image: '', html: 85, css_scss: 75, javascript: 99, angular: 50, git: '' },
-    { id: 8, fullName: 'GONDA VALÉR', image: '', html: 97, css_scss: 75, javascript: 25, angular: 50, git: '' }
+    { id: 7, fullName: 'VILLÁNYI ÁGNES', image: '../assets/img/faces/Agi.jpg', html: 85, css_scss: 80, javascript: 60, angular: 50, git: '' },
+    { id: 8, fullName: 'GONDA VALÉR', image: '../assets/img/faces/GV.jpg', html: 70, css_scss: 40, javascript: 85, angular: 90, git: '' }
   ]
 
   constructor() { }
