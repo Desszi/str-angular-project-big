@@ -12,7 +12,7 @@
             <label for="orderID">AZONOSÍTÓ</label>
             <input name="orderID" [(ngModel)]="bill.orderID" type="text" class="form-control" pattern="^[1-9][0-9]{0,}"
               required>
-            <div [hidden]="billForm.controls.orderID?.valid" class="error-message">
+            <div [hidden]="billForm.controls.orderID?.valid || billForm.controls.orderID.pristine" class="error-message">
               Csak számokat tartalmazhat, a szám nem kezdődhet nullával.
             </div>
           </div>
@@ -20,7 +20,7 @@
             <label for="amount">ÖSSZEG</label>
             <input name="amount" [(ngModel)]="bill.amount" type="text" class="form-control" pattern="^[1-9][0-9]{0,}"
               required>
-            <div [hidden]="billForm.controls.amount?.valid" class="error-message">
+            <div [hidden]="billForm.controls.amount?.valid || billForm.controls.amount.pristine" class="error-message">
               Csak számokat tartalmazhat, a szám nem kezdődhet nullával.
             </div>
           </div>
